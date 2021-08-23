@@ -1,0 +1,44 @@
+body {
+   border: 1px solid black;
+}
+
+.banner {
+    margin: auto;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.banner .input-group {
+    margin: auto;
+    width: 25%;
+    justify-content: center;
+}
+
+.search-button {
+    color: #fff;
+    background-color: #332539;
+    border-color: #332539;
+}
+
+.recommended {
+    margin: auto;
+    width: 100%;
+    background-color: rgba(212, 184, 165, 0.2);
+}
+
+.recommended .row {
+    margin: auto;
+    width: 75%;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.card-img {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.col-sm-3 {
+    margin: 10px;
+}
