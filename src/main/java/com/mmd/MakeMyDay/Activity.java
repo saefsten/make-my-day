@@ -1,31 +1,40 @@
 package com.mmd.MakeMyDay;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name="ID")
     private Long id;
+    @Column (name="NAME")
     private String name;
-    //private List<ActivityCategory> categories = new ArrayList<>();
+    @Column (name="CATEGORIES")
+//    private List<ActivityCategory> categories = new ArrayList<>();
+    @OneToMany
+    private List<String> categories;
+    @Column (name="PRICE")
     private Double price;
+    @Column (name="DURATION")
     private Duration approxDuration;
+    @Column (name="DESCRIPTION")
     private String description;
+    @Column (name="URL")
     private String url;
+    @Column (name="ADDRESS")
     private String address;
 
     public Activity() {
     }
 
-    public Activity(String name, /*List<ActivityCategory> categories,*/ Double price, Duration approxDuration, String description, String url, String address) {
+    public Activity(String name, List<String> categories, Double price, Duration approxDuration, String description, String url, String address) {
         this.name = name;
-        //this.categories = categories;
+        this.categories = categories;
         this.price = price;
         this.approxDuration = approxDuration;
         this.description = description;
@@ -49,13 +58,13 @@ public class Activity {
         this.name = name;
     }
 
-    /*public List<ActivityCategory> getCategories() {
+    public List<String> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<ActivityCategory> categories) {
+    public void setCategories(List<String> categories) {
         this.categories = categories;
-    }*/
+    }
 
     public Double getPrice() {
         return price;
