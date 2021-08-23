@@ -1,31 +1,44 @@
 package com.mmd.MakeMyDay;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.Duration;
+import java.util.Set;
 
 @Entity
 public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name="ID")
     private Long id;
+    @Column (name="NAME")
     private String name;
-    //private List<ActivityCategory> categories = new ArrayList<>();
+    @Column (name="PRICE")
     private Double price;
+    @Column (name="DURATION")
     private Duration approxDuration;
+    @Column (name="DESCRIPTION")
     private String description;
+    @Column (name="URL")
     private String url;
+    @Column (name="ADDRESS")
     private String address;
+
+    @Column (name="CATEGORIES")
+    @ManyToMany
+    @JoinTable(
+            name = "ACT_CAT",
+            joinColumns = @JoinColumn(name = "CATEGORIES"),
+            inverseJoinColumns = @JoinColumn(name = "CATEGORY")
+    )
+    private Set<Categories> categories;
 
     public Activity() {
     }
 
-    public Activity(String name, /*List<ActivityCategory> categories,*/ Double price, Duration approxDuration, String description, String url, String address) {
+    public Activity(String name, Set<Categories> categories, Double price, Duration approxDuration, String description, String url, String address) {
         this.name = name;
-        //this.categories = categories;
+        this.categories = categories;
         this.price = price;
         this.approxDuration = approxDuration;
         this.description = description;
@@ -49,13 +62,13 @@ public class Activity {
         this.name = name;
     }
 
-    /*public List<ActivityCategory> getCategories() {
+    public Set<Categories> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<ActivityCategory> categories) {
+    public void setCategories(Set<Categories> categories) {
         this.categories = categories;
-    }*/
+    }
 
     public Double getPrice() {
         return price;

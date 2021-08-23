@@ -1,0 +1,14 @@
+div {
+    border: solid black 1px;
+}
+
+.event-row {
+    min-height: 50px;
+}
+
+.event-time {
+    background-color: #5050FF;
+    border-radius: 10px 0px 0px 10px;
+    align-items: center;
+    justify-content: center;
+}
