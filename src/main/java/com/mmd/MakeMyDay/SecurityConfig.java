@@ -23,8 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/packages",
                         "/activities",
                         "/createMyDay",
-                        "/img/emoji.png",
-                        "/css/style.css"
+                        "/img/**",
+                        "/css/**",
+                        "/js/**"
                         ).permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
