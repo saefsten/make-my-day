@@ -9,6 +9,6 @@ div {
 .event-time {
     background-color: #5050FF;
     border-radius: 10px 0px 0px 10px;
+    display: flex;
     align-items: center;
-    justify-content: center;
 }
