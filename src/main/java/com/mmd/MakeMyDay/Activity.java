@@ -2,8 +2,7 @@ package com.mmd.MakeMyDay;
 
 import javax.persistence.*;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Activity {
@@ -14,10 +13,6 @@ public class Activity {
     private Long id;
     @Column (name="NAME")
     private String name;
-    @Column (name="CATEGORIES")
-//    private List<ActivityCategory> categories = new ArrayList<>();
-    @OneToMany
-    private List<String> categories;
     @Column (name="PRICE")
     private Double price;
     @Column (name="DURATION")
@@ -29,10 +24,19 @@ public class Activity {
     @Column (name="ADDRESS")
     private String address;
 
+    @Column (name="CATEGORIES")
+    @ManyToMany
+    @JoinTable(
+            name = "ACT_CAT",
+            joinColumns = @JoinColumn(name = "CATEGORIES"),
+            inverseJoinColumns = @JoinColumn(name = "CATEGORY")
+    )
+    private Set<Categories> categories;
+
     public Activity() {
     }
 
-    public Activity(String name, List<String> categories, Double price, Duration approxDuration, String description, String url, String address) {
+    public Activity(String name, Set<Categories> categories, Double price, Duration approxDuration, String description, String url, String address) {
         this.name = name;
         this.categories = categories;
         this.price = price;
@@ -58,11 +62,11 @@ public class Activity {
         this.name = name;
     }
 
-    public List<String> getCategories() {
+    public Set<Categories> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<String> categories) {
+    public void setCategories(Set<Categories> categories) {
         this.categories = categories;
     }
 
