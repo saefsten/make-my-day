@@ -10,4 +10,19 @@ public class MMDController {
     String index(){
         return "start";
     }
+
+    @GetMapping("/packages")
+    String packages(){
+        return "package/packages";
+    }
+
+    @GetMapping("/activities")
+    String activities(){
+        return "activity/activities";
+    }
+
+    @GetMapping("/createMyDay")
+    String createMyDay(){
+        return "createMyDay/createMyDay";
+    }
 }
