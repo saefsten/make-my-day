@@ -11,20 +11,12 @@ public class ActivityService {
     @Autowired
     ActivityRepository activityRepository;
 
-    @Autowired
-    CategoryRepository categoryRepository;
-
     public List<Activity> findAllActivities() {
         return (List<Activity>)activityRepository.findAll();
     }
 
     public Activity findActivityById(Long id) {
-        Activity activity = activityRepository.findById(id).get();
-        if (activity == null) {
-            System.out.println("Activity not found");
-            return null;
-        }
-        return activity;
+        return activityRepository.findById(id).get();
     }
 
     public List<Activity> findActivityByCategory(String category) {
