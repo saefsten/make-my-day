@@ -24,19 +24,14 @@ public class Activity {
     @Column (name="ADDRESS")
     private String address;
 
-    @Column (name="CATEGORIES")
+    @Column (name="CATEGORIES_IN_ACTIVITY")
     @ManyToMany
-    @JoinTable(
-            name = "ACT_CAT",
-            joinColumns = @JoinColumn(name = "CATEGORIES"),
-            inverseJoinColumns = @JoinColumn(name = "CATEGORY")
-    )
-    private Set<Categories> categories;
+    private Set<Category> categories;
 
     public Activity() {
     }
 
-    public Activity(String name, Set<Categories> categories, Double price, Duration approxDuration, String description, String url, String address) {
+    public Activity(String name, Set<Category> categories, Double price, Duration approxDuration, String description, String url, String address) {
         this.name = name;
         this.categories = categories;
         this.price = price;
@@ -62,11 +57,11 @@ public class Activity {
         this.name = name;
     }
 
-    public Set<Categories> getCategories() {
+    public Set<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<Categories> categories) {
+    public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
 

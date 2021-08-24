@@ -4,22 +4,23 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Categories {
+public class Category {
     @Id
     private int id;
-    @Column(name="CATEGORY")
-    private String category;
+    @Column(name="CATEGORYNAME")
+    private String categoryName;
 
-    @ManyToMany
+    @Column (name="ACTIVITIES_WITH_CATEGORY")
+    @ManyToMany (mappedBy = "categories")
     private Set<Activity> activities;
 
-    public Categories() {
+    public Category() {
 
     }
 
-    public Categories(int id, String category, Set<Activity> activities) {
+    public Category(int id, String categoryName, Set<Activity> activities) {
         this.id = id;
-        this.category = category;
+        this.categoryName = categoryName;
         this.activities = activities;
     }
 
@@ -32,11 +33,11 @@ public class Categories {
     }
 
     public String getCategory() {
-        return category;
+        return categoryName;
     }
 
     public void setCategory(String category) {
-        this.category = category;
+        this.categoryName = category;
     }
 
     public Set<Activity> getActivities() {
