@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 public class MMDController {
 
-    @GetMapping("/start")
+
     @Autowired
     ActivityRepository activityRepository;
 
