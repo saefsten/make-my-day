@@ -81,7 +81,12 @@ function handleDrop(e) {
         // prevent default action (open as link for some elements)
         event.preventDefault();
         // move dragged elem to the selected drop target
+        console.log(dragged.id)
         if ( event.target.className == "row event-row" ) {
+            if (dragged.id == "eventBox") {
+                console.log("Yes")
+                let newDraggable = addDraggableDiv()
+            }
             event.target.style.background = "";
             dragged.parentNode.removeChild( dragged );
             event.target.appendChild( dragged );
@@ -89,3 +94,26 @@ function handleDrop(e) {
         }
 
     }, false);
+
+    function addDraggableDiv() {
+        let newDraggable = document.createElement("div")
+        newDraggable.classList.add("col")
+        newDraggable.classList.add("event-section")
+        newDraggable.setAttribute('draggable', true)
+
+        let firstChild = document.createElement("div")
+        firstChild.classList.add("event-time")
+
+        let timeChild = document.createElement("div")
+        let timeHead = document.createElement("h4")
+        timeHead.innerText = "--:--"
+
+        let descriptionChild = document.createElement("div")
+        descriptionChild.classList.add("event-description")
+        let description = document.createElement("strong")
+        description.innerText = "Description"
+        let paragraph = document.createElement("p")
+        paragraph.innerText = "Very interesting text with maybe links..."
+
+        return newDraggable
+    }
