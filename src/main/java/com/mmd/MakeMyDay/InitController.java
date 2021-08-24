@@ -11,7 +11,7 @@ public class InitController {
     @Autowired
     PasswordEncoder encoder;
 
-    @GetMapping("/init")
+    @GetMapping("/init") //saves a hardcoded user in the database
     public String init(){
         // tries to find the user so that we only save the user if it does not exist
         User user = userRepository.findByEmail("email");
