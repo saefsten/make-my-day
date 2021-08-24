@@ -1,5 +1,5 @@
-a {
-    color: #F9F4F1 !important;
+.navLinks {
+color: #F9F4F1 !important;
 }
 
 .login {
@@ -8,8 +8,13 @@ color: #002660 !important;
 margin: 5px;
 }
 
+.login:hover {
+background-color: #F9F4F1;
+}
+
 .register {
 background-color: #68ADE1;
 color: #F9F4F1;
 margin: 5px;
 }
+

@@ -1,7 +1,20 @@
-div {
+.footer {
     color: #F9F4F1;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 1px 10px;
 }
 
-a {
-    color: #F9F4F1;
+.footerPadding {
+    padding-top: 8px;
+    padding-bottom: 2px;
+}
+
+.footer:hover {
+    color: #C0D0DE;
+}
+
+.icon {
+padding: 4px !important;
+margin-bottom: 3px;
 }

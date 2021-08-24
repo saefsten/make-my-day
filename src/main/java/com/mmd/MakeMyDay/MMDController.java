@@ -25,4 +25,5 @@ public class MMDController {
     String createMyDay(){
         return "createMyDay/createMyDay";
     }
+
 }
