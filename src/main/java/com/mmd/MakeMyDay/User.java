@@ -1,9 +1,6 @@
 package com.mmd.MakeMyDay;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -14,16 +11,18 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private String username;
 
     public User() {
     }
 
-    public User(String password, String firstName, String lastName, String email) {
+    public User(String password, String firstName, String lastName, String email, String username) {
 
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.username = username;
     }
 
     public Long getId() {
@@ -64,5 +63,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

@@ -30,7 +30,7 @@ public class SecurityUserPrincipal implements UserDetails {
     // the getUsername method in SecurityUserPrincipal is using the username in our user object
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return user.getUsername();
     }
 
     // we need to override these 4 methods since they exist in the interface, we could add columns for these values in the database and variables to delegate to in our user object

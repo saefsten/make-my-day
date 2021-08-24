@@ -15,13 +15,17 @@
 <body>
 <header th:insert="fragments/header :: header"></header>
 
+<div th:if="${message!=null}" th:text="${message}">
+
+</div>
 <div>
     <h2>Register</h2>
     <form action="/register" method="POST">
         <div><label> First Name : <input type="text" name="firstName"/> </label></div>
         <div><label> Last Name: <input type="text" name="lastName"/> </label></div>
         <div><label> Email: <input type="text" name="email"/> </label></div>
-        <div><label> Password: <input type="password" name="email"/> </label></div>
+        <div><label> Username: <input type="text" name="username"/> </label></div>
+        <div><label> Password: <input type="password" name="password"/> </label></div>
         <div><input type="submit" value="Register"/></div>
     </form>
 </div>
