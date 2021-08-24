@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="icon" href="/img/emoji.png">
-    <link rel="stylesheet" href="../static/css/login.css" th:href="'/static/css/login.css'">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body>
@@ -23,12 +23,12 @@
     Invalid username and password.
 </div>
 
-<div>
+<div class="form">
     <h2>Login</h2>
     <form th:action="@{/login}" method="POST">
-        <div><label> Username : <input type="text" name="username"/> </label></div>
-        <div><label> Password: <input type="password" name="password"/> </label></div>
-        <div><input type="submit" value="Login"/></div>
+        <div class="space"><label> Username : <input type="text" name="username"/> </label></div>
+        <div class="space"><label> Password: <input type="password" name="password"/> </label></div>
+        <div class="space"><input type="submit" value="Login"/></div>
     </form>
 </div>
 
