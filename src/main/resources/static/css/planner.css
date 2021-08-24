@@ -1,0 +1,40 @@
+div {
+    //border: solid black 1px;
+}
+
+.event-row {
+    min-height: 64px;
+}
+
+.event-section {
+    display: flex;
+}
+
+.event-time {
+    background-color: #5050FF;
+    border: solid #5050FF 1px;
+    border-radius: 10px 0px 0px 10px;
+    display: flex;
+    align-items: center;
+    color: #F9F4F1;
+    width: 80px;
+    min-height: 64px;
+    justify-content: center;
+}
+
+.event-description {
+    border-radius: 0px 10px 10px 0px;
+    border: solid #DDDDDD 1px;
+    min-height: 64px;
+    min-width: 500px;
+    padding-left: 10px;
+}
+
+.event-time h4 {
+    margin-bottom: 0;
+}
+
+.time-stamp {
+    border-top: solid gray 1px;
+    min-height: 66px;
+}
