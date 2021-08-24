@@ -83,19 +83,20 @@ function handleDrop(e) {
         // move dragged elem to the selected drop target
         console.log(dragged.id)
         if ( event.target.className == "row event-row" ) {
-            if (dragged.id == "eventBox") {
-                console.log("Yes")
-                let newDraggable = addDraggableDiv()
+            if (dragged.id.includes("eventBox")) {
+                console.log(dragged)
+                dragged = addDraggableDiv(dragged)
+            } else {
+                dragged.parentNode.removeChild( dragged );
             }
             event.target.style.background = "";
-            dragged.parentNode.removeChild( dragged );
             event.target.appendChild( dragged );
             event.target.querySelector(".event-time h4").innerText = event.target.querySelector(".time-stamp").innerText
         }
 
     }, false);
 
-    function addDraggableDiv() {
+    function addDraggableDiv(dragged) {
         let newDraggable = document.createElement("div")
         newDraggable.classList.add("col")
         newDraggable.classList.add("event-section")
@@ -111,9 +112,23 @@ function handleDrop(e) {
         let descriptionChild = document.createElement("div")
         descriptionChild.classList.add("event-description")
         let description = document.createElement("strong")
-        description.innerText = "Description"
+        description.innerText = dragged.querySelector("h5").innerText
         let paragraph = document.createElement("p")
-        paragraph.innerText = "Very interesting text with maybe links..."
+        let siteLink = document.createElement("a")
+        siteLink.setAttribute("href", dragged.querySelector(".link-info"))
+        siteLink.innerText = dragged.querySelector(".link-info").innerText
+        siteLink.classList.add("link-info")
+        paragraph.appendChild(siteLink)
+
+        // Append all in correct order
+        timeChild.appendChild(timeHead)
+        firstChild.appendChild(timeChild)
+
+        descriptionChild.appendChild(description)
+        descriptionChild.appendChild(paragraph)
+
+        newDraggable.appendChild(firstChild)
+        newDraggable.appendChild(descriptionChild)
 
         return newDraggable
     }
