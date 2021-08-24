@@ -28,10 +28,10 @@
     <form action="/register" method="POST">
         <div class="container">
         <h2>Register</h2>
-        <label> First Name: <input type="text" name="firstName" id="firstName"/> </label>
-        <label> Last name: <input type="text" name="lastName" id="lastName"/> </label>
-        <label> Email: <input type="text" name="username" id="username"/> </label>
-        <label> Password: <input type="password" name="password" id="psw"/> </label>
+        <label> First Name: <input type="text" name="firstName"/> </label>
+        <label> Last name: <input type="text" name="lastName"/> </label>
+        <label> Email: <input type="text" name="username"/> </label>
+        <label> Password: <input type="password" name="password"/> </label>
         <button type="submit" class="btn register">Register</button>
         <br>
         <div th:if="${message!=null}" th:text="${message}"></div>

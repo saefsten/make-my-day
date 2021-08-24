@@ -27,8 +27,8 @@
     <form th:action="@{/login}" method="POST">
         <div class="container">
             <h2>Login</h2>
-        <label> Email: <input type="text" name="username" id="username"/> </label>
-        <label> Password: <input type="password" name="password" id="psw"/> </label>
+        <label> Email: <input type="text" name="username"/> </label>
+        <label> Password: <input type="password" name="password"/> </label>
         <button type="submit" class="btn register">Login</button>
             <br>
             <div th:if="${param.error}">
