@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/h2/**",
                         "/packages",
                         "/activities",
+                        "/activity/**",
                         "/createMyDay",
                         "/img/**",
                         "/css/**",

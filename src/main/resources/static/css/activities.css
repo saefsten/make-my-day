@@ -1,0 +1,23 @@
+.activitiesPage {
+    padding: 10px 20px;
+    margin: 40px;
+}
+
+.activities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-column-gap:30px;
+    grid-row-gap:30px;
+
+}
+
+.activities article {
+    position:relative;
+    font-size:15px;
+    max-width: 300px;
+}
+
+.activitiesPage .activities a{
+    text-decoration: none;
+    color: #002660;
+}
