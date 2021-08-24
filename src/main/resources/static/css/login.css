@@ -1,4 +1,15 @@
 
 body{
-background-color: red;
+    text-align: center;
+}
+
+
+.formplacement{
+margin-top: 50px;
+}
+
+
+
+label{
+margin-right: 20px;
 }
