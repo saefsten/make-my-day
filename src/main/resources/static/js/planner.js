@@ -102,6 +102,26 @@ function handleDrop(e) {
         newDraggable.classList.add("event-section")
         newDraggable.setAttribute('draggable', true)
 
+        const duration = parseInt(dragged.querySelector("small").innerText.substring(0, dragged.querySelector("small").innerText.indexOf(" ")))
+
+        switch(duration) {
+            case 1:
+                newDraggable.classList.add("event-1h")
+                break
+            case 2:
+                newDraggable.classList.add("event-2h")
+                break
+            case 3:
+                newDraggable.classList.add("event-3h")
+                break
+            case 4:
+                newDraggable.classList.add("event-4h")
+                break
+            default:
+                newDraggable.classList.add("event-1h")
+                break
+        }
+
         let firstChild = document.createElement("div")
         firstChild.classList.add("event-time")
 

@@ -3,11 +3,30 @@ div {
 }
 
 .event-row {
-    min-height: 64px;
+    min-height: 67px;
 }
 
 .event-section {
     display: flex;
+    position: absolute;
+    margin-left: 60px;
+    max-width: 695px;
+}
+
+.event-1h {
+    min-height: 67px;
+}
+
+.event-2h {
+    min-height: 134px;
+}
+
+.event-3h {
+    min-height: 201px;
+}
+
+.event-4h {
+    min-height: 268px;
 }
 
 .event-time {
@@ -18,14 +37,12 @@ div {
     align-items: center;
     color: #F9F4F1;
     width: 80px;
-    min-height: 64px;
     justify-content: center;
 }
 
 .event-description {
     border-radius: 0px 10px 10px 0px;
     border: solid #DDDDDD 1px;
-    min-height: 64px;
     min-width: 500px;
     padding-left: 10px;
 }
