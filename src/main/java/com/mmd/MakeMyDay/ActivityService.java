@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ActivityService {
@@ -11,8 +12,11 @@ public class ActivityService {
     @Autowired
     ActivityRepository activityRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     public List<Activity> findAllActivities() {
-        return (List<Activity>)activityRepository.findAll();
+        return (List<Activity>) activityRepository.findAll();
     }
 
     public Activity findActivityById(Long id) {
@@ -22,6 +26,10 @@ public class ActivityService {
     public List<Activity> findActivityByCategory(String category) {
         List<Activity> activities = activityRepository.findByCategories_CategoryName(category);
         return activities;
+    }
+
+    public void saveActivity(Activity activity) {
+        activityRepository.save(activity);
     }
 
 }

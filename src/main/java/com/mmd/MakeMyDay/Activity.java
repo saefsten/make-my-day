@@ -2,6 +2,7 @@ package com.mmd.MakeMyDay;
 
 import javax.persistence.*;
 import java.time.Duration;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -28,6 +29,11 @@ public class Activity {
     @ManyToMany
     private Set<Category> categories;
 
+    @ManyToMany(mappedBy = "userFavouriteActivities",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.PERSIST)
+    private Set<User> users = new HashSet<>();
+
     public Activity() {
     }
 
@@ -39,6 +45,11 @@ public class Activity {
         this.description = description;
         this.url = url;
         this.address = address;
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+        user.getUserFavouriteActivities().add(this);
     }
 
     public Long getId() {
@@ -104,4 +115,13 @@ public class Activity {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
 }
