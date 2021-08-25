@@ -35,6 +35,7 @@
                         </div>
                     </div>
                     <div class="event-description">
+                        <button class="delete-btn" onclick="clickedDelete(this)">x</button>
                         <strong>Description</strong>
                         <p>Very interesting text with maybe links...</p>
                     </div>
@@ -79,6 +80,7 @@
                                 <div th:id="'eventBox' + ${activity.id}" draggable="true">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1" th:text="${activity.name}"></h5>
+                                        <!--<h5 class="hidden" th:text="${activity.category}"></h5>-->
                                         <small class="text-muted" th:text="${activity.approxDuration}"></small>
                                     </div>
                                     <p class="mb-1" th:text="${activity.description}"></p>
