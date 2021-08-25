@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/css/style.css" th:href="'css/style.css'">
     <link rel="stylesheet" href="../../static/css/header.css" th:href="'css/header.css'">
+    <link rel="stylesheet" href="../../static/css/footer.css" th:href="'css/footer.css'">
     <link rel="stylesheet" href="../../static/css/planner.css" th:href="'css/planner.css'">
     <link rel="icon" href="/img/emoji.png">
     <title>Make my day</title>
@@ -34,6 +35,7 @@
                         </div>
                     </div>
                     <div class="event-description">
+                        <button class="delete-btn" onclick="clickedDelete(this)">x</button>
                         <strong>Description</strong>
                         <p>Very interesting text with maybe links...</p>
                     </div>
@@ -61,44 +63,43 @@
         <div class="col">
             <h4>Events:</h4>
             <div class="list-group">
-                <div class="list-group-item list-group-item-action">
-                    <div id="eventBox1" draggable="true">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Punk Royal</h5>
-                            <small class="text-muted">2 hour</small>
-                        </div>
-                        <p class="mb-1">Pay us a visit for a sumptuous Royale menu. The flavors are deeply well-balanced, where every little sensation and tone has a purpose. Prepare for a menu of flavors that gild your taste buds and a serving that you will not forget.</p>
-                        <small><a href="http://punkroyal.se" class="link-info">Visit webpage</a></small>
-                    </div>
+                <form id="search-activities" action="/createMyDay" method="post" class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <!--aria-label="Search" name="category">-->
+                    <!--<button class="btn btn-outline-secondary" type="submit">Search</button>-->
+                </form>
+
+                <div>
+                    <button class="btn btn-outline-secondary" onclick="allEvents()">All events</button>
                 </div>
-                <div class="list-group-item list-group-item-action">
-                    <div id="eventBox2" draggable="true">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">BodyFlight</h5>
-                            <small class="text-muted">1 hour</small>
+
+                <div id="activity-list">
+                    <ul>
+                        <div class="list-group-item list-group-item-action" th:each="activity : ${activities}">
+                            <li>
+                                <div th:id="'eventBox' + ${activity.id}" draggable="true">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1" th:text="${activity.name}"></h5>
+                                        <!--<h5 class="hidden" th:text="${activity.category}"></h5>-->
+                                        <small class="text-muted" th:text="${activity.approxDuration}"></small>
+                                    </div>
+                                    <p class="mb-1" th:text="${activity.description}"></p>
+                                    <small><a th:href="${activity.url}">Visit webpage</a></small>
+                                </div>
+                            </li>
                         </div>
-                        <p class="mb-1">I världens två främsta vindtunnlar väntar den otroliga känslan av ett fritt fall utan att behöva hoppa från ett plan. Under de hisnande 120 sekunderna finns en instruktör med och ger vägledning och stöd under hela upplevelsen. Tack vare luftströmmar på upp till 300 km/h är den här upplevelsen ett måste!</p>
-                        <small><a href="http://punkroyal.se" class="link-info">Visit webpage</a></small>
-                    </div>
+                    </ul>
                 </div>
-                <div class="list-group-item list-group-item-action">
-                    <div id="eventBox3" draggable="true">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">List group item heading</h5>
-                            <small class="text-muted">1 hour</small>
-                        </div>
-                        <p class="mb-1">Some placeholder content in a paragraph.</p>
-                        <small><a href="http://punkroyal.se" class="link-info">Visit webpage</a></small>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
 </div>
 
 
-<div th:insert="fragments/footer :: footer"></div>
+<footer th:insert="fragments/footer :: footer"></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 <script th:src="'js/planner.js'" src="../../static/js/planner.js"></script>
+<script th:src="'js/events.js'" src="../../static/js/events.js"></script>
 </body>
 </html>

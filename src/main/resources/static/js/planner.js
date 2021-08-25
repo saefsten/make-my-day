@@ -63,15 +63,15 @@ function handleDrop(e) {
 
     document.addEventListener("dragenter", function( event ) {
         // highlight potential drop target when the draggable element enters it
-        if ( event.target.className == "row" ) {
-            event.target.style.background = "purple";
+        if ( event.target.className == "row event-row" ) {
+            event.target.style.background = "#e2dedb";
         }
 
     }, false);
 
     document.addEventListener("dragleave", function( event ) {
         // reset background of potential drop target when the draggable element leaves it
-        if ( event.target.className == "row" ) {
+        if ( event.target.className == "row event-row" ) {
             event.target.style.background = "";
         }
 
@@ -135,15 +135,23 @@ function handleDrop(e) {
         description.innerText = dragged.querySelector("h5").innerText
         let paragraph = document.createElement("p")
         let siteLink = document.createElement("a")
-        siteLink.setAttribute("href", dragged.querySelector(".link-info"))
-        siteLink.innerText = dragged.querySelector(".link-info").innerText
-        siteLink.classList.add("link-info")
-        paragraph.appendChild(siteLink)
+        if (dragged.querySelector(".link-info") != null) {
+            siteLink.setAttribute("href", dragged.querySelector(".link-info"))
+            siteLink.innerText = dragged.querySelector(".link-info").innerText
+            siteLink.classList.add("link-info")
+            paragraph.appendChild(siteLink)
+        }
+
+        let button = document.createElement("button")
+        button.classList.add("delete-btn")
+        button.setAttribute('onclick', 'clickedDelete(this)')
+        button.innerText = 'x'
 
         // Append all in correct order
         timeChild.appendChild(timeHead)
         firstChild.appendChild(timeChild)
 
+        descriptionChild.appendChild(button)
         descriptionChild.appendChild(description)
         descriptionChild.appendChild(paragraph)
 
@@ -151,4 +159,9 @@ function handleDrop(e) {
         newDraggable.appendChild(descriptionChild)
 
         return newDraggable
+    }
+
+    function clickedDelete(button) {
+        const element = button.parentElement.parentElement
+        element.parentElement.removeChild(element)
     }
