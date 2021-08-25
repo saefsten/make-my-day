@@ -19,9 +19,15 @@
 <body>
 <header th:insert="fragments/header :: header"></header>
 
-<div class="activitiesPage">
+<div class="activitiesDetailPage">
+    <img th:src="${'/img/' + activity.id + '.jpg'}" class="activity-img"/>
+    <div class="activity-txt">
     <h1 th:text="${activity.name}"></h1>
     <p th:text="${activity.description}"></p>
+        <p th:text="${activity.address}"></p>
+        <p th:text="${#numbers.formatDecimal(activity.price,1,2)} + ' kr'"></p>
+        <p th:text="${activity.url}"></p>
+    </div>
 </div>
 
 <div th:insert="fragments/footer :: footer"></div>

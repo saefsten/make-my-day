@@ -32,12 +32,14 @@
 <!--                        <span th:href="'/user/addfavourite?id=' + ${activity.id}" class="favme dashicons dashicons-heart"></span>-->
 <!--                    </div>-->
 <!--                </div>-->
+
                 <div class="card" style="width: 18rem;">
                     <img th:src="${'/img/' + activity.id + '.jpg'}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${activity.name}"></h5>
                         <p class="card-text" th:text="${activity.description}"></p>
                         <a th:href="'/user/addfavourite?id=' + ${activity.id}">Add to favourites</a>
+                        <a th:href="${'/activity/' + activity.id}" button type="submit" class="btn register registerbtn">View</a>
                     </div>
                 </div>
             </a>
