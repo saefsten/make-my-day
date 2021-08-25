@@ -1,14 +1,12 @@
 package com.mmd.MakeMyDay;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
@@ -70,13 +68,6 @@ public class MMDController {
         Activity activity = activityService.findActivityById(id);
         model.addAttribute("activity", activity);
         return "activity/activityDetails";
-    }
-
-    @GetMapping("/createMyDay")
-    String createMyDay(Model model){
-        List<Activity> activities = (List<Activity>) activityService.findAllActivities();
-        model.addAttribute("activities", activities);
-        return "createMyDay/createMyDay";
     }
 
 /*
