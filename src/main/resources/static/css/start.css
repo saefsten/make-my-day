@@ -1,36 +1,49 @@
-body {
-   border: 1px solid black;
-}
-
 .banner {
+    background-image: url("/img/start-banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 65% 0%;
+    min-height: 550px;
+    position: relative;
+    background-image: url("/img/start-banner.jpg");
     margin: auto;
     width: 100%;
-    border: 1px solid black;
 }
 
 .banner .input-group {
     margin: auto;
-    width: 25%;
+    width: 25vw;
     justify-content: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.search-button {
-    color: #fff;
-    background-color: #332539;
-    border-color: #332539;
+#search-button {
+    width: 5vw;
+    font-size: 0.9vw;
+    color: #F9F4F1;
+    background-color: #2A76C0;
+    border-color: #2A76C0;
 }
 
-.recommended {
-    margin: auto;
-    width: 100%;
+#search-button:hover {
+    background-color: #81C4F0;
+    border-color: #81C4F0;
+}
+
+#recommended {
     background-color: rgba(212, 184, 165, 0.2);
+    height: 55vh;
 }
 
-.recommended .row {
+.container-fluid .row {
+    padding-top: 20px;
     margin: auto;
     width: 75%;
     justify-content: center;
-    border: 1px solid black;
 }
 
 .card-img {
@@ -41,4 +54,49 @@ body {
 
 .col-sm-3 {
     margin: 10px;
+    margin-top: 20px;
+}
+
+.card-text {
+    font-size: 1vw;
+    color: #F9F4F1;
+    background-color: rgba(99, 99, 99, 0.5);
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .recommendations-title   {
+    font-size: 24px;
+    }
+  }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .recommendations-title  {
+    font-size: 26px;
+    }
+  }
+
+// Large devices (desktops, 992px and up) {
+    .recommendations-title   {
+    font-size: 28px;
+    }
+  }
+
+@media (min-width: 992px) {
+    .recommendations-title  {
+    font-size: 30px;
+    }
+  }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .recommendations-title  {
+    font-size: 32px;
+    }
+  }
+
+.recommendations-title {
+    text-align: center;
 }

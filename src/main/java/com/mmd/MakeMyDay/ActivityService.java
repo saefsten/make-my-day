@@ -20,7 +20,8 @@ public class ActivityService {
     }
 
     public List<Activity> findActivityByCategory(String category) {
-        List<Activity> activities = activityRepository.findByCategories_Category(category);
+        List<Activity> activities = activityRepository.findByCategories_CategoryName(category);
         return activities;
     }
+
 }
