@@ -16,8 +16,8 @@ public class Activity {
     private String name;
     @Column (name="PRICE")
     private Double price;
-    @Column (name="DURATION")
-    private int duration;
+    @Column (name="HOURS")
+    private int hours;
     @Column (name="DESCRIPTION")
     private String description;
     @Column (name="URL")
@@ -37,11 +37,11 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(String name, Set<Category> categories, Double price, int duration, String description, String url, String address) {
+    public Activity(String name, Set<Category> categories, Double price, int hours, String description, String url, String address) {
         this.name = name;
         this.categories = categories;
         this.price = price;
-        this.duration = duration;
+        this.hours = hours;
         this.description = description;
         this.url = url;
         this.address = address;
@@ -84,12 +84,12 @@ public class Activity {
         this.price = price;
     }
 
-    public int getDuration() {
-        return duration;
+    public int getHours() {
+        return hours;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setHours(int hours) {
+        this.hours = hours;
     }
 
     public String getDescription() {

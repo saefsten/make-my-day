@@ -32,11 +32,11 @@ public class LoginController {
     }
 
    @PostMapping("/register")
-    public String registerNewUser(Model model, HttpSession session, @RequestParam String firstName, @RequestParam  String lastName, @RequestParam String email, @RequestParam String password, @RequestParam String username){
+    public String registerNewUser(Model model, HttpSession session, @RequestParam String firstName, @RequestParam  String lastName, @RequestParam String password, @RequestParam String username){
        User newUser = userRepository.findByUsername(username);
        model.addAttribute("username", username);
        if(newUser == null){
-           User user = new User(encoder.encode(password), firstName, lastName, email, username);
+           User user = new User(encoder.encode(password), firstName, lastName, username);
            userRepository.save(user);
            return "start";
        }

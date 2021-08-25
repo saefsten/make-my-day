@@ -26,7 +26,7 @@
         <article th:each="activity: ${activities}">
             <a th:href="${'/activity/' + activity.id}">
                 <div class="card" style="width: 18rem;">
-                    <img src="/img/card-img-food.jpg" class="card-img-top" alt="...">
+                    <img th:src="${'/img/' + activity.id + '.jpg'}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${activity.name}"></h5>
                         <p class="card-text" th:text="${activity.description}"></p>
