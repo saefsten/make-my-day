@@ -47,6 +47,7 @@ public class MMDController {
         return "createMyDay/createMyDay";
     }
 
+/*
     @PostMapping("/createMyDay")
     String createMyDayPost(Model model, @RequestParam String category){
         System.out.println(category);
@@ -54,5 +55,6 @@ public class MMDController {
         model.addAttribute("activities", activities);
         return "createMyDay/createMyDay";
     }
+*/
 
 }
