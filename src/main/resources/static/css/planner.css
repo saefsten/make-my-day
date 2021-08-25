@@ -41,6 +41,7 @@ div {
 }
 
 .event-description {
+    background-color: #FFFFFF;
     border-radius: 0px 10px 10px 0px;
     border: solid #DDDDDD 1px;
     min-width: 500px;
@@ -54,4 +55,17 @@ div {
 .time-stamp {
     border-top: solid gray 1px;
     min-height: 66px;
+}
+
+.delete-btn {
+    float:right;
+    height:100%;
+    background-color: #CC0000;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    color: #FFFFFF;
+}
+
+.delete-btn:hover {
+    background-color: #990000;
 }
