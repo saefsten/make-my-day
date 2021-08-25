@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
@@ -9,6 +9,12 @@
     <title>Title</title>
 </head>
 <body>
+
+<div th:if="${!favourites.isEmpty()}">
+    <ul th:each="fav : ${favourites}">
+        <li th:text="${fav.name}"></li>
+    </ul>
+</div>
 
 </body>
 </html>

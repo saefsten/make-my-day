@@ -1,7 +1,10 @@
 package com.mmd.MakeMyDay;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
+@Table(name = "USERS")
 @Entity
 public class User {
     @Id
@@ -12,6 +15,10 @@ public class User {
     private String lastName;
     private String email;
     private String username;
+    @ManyToMany (
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.PERSIST)
+    private Set<Activity> userFavouriteActivities = new HashSet<>();
 
     public User() {
     }
@@ -23,6 +30,15 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.username = username;
+    }
+
+    public void addFavouriteActivity(Activity activity) {
+        userFavouriteActivities.add(activity);
+        activity.getUsers().add(this);
+
+        System.out.println(userFavouriteActivities.size());
+        System.out.println(activity.getUsers().size());
+
     }
 
     public Long getId() {
@@ -71,5 +87,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Set<Activity> getUserFavouriteActivities() {
+        return userFavouriteActivities;
+    }
+
+    public void setUserFavouriteActivities(Set<Activity> userFavouriteActivities) {
+        this.userFavouriteActivities = userFavouriteActivities;
     }
 }
