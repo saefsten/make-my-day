@@ -1,6 +1,12 @@
 .activitiesPage {
     padding: 10px 20px;
-    margin: 40px;
+    margin: 30px;
+}
+
+.activitiesDetailPage{
+display: flex;
+margin: 30px;
+padding: 10px 20px;
 }
 
 .activities {
@@ -26,4 +32,32 @@
     width: 100%;
     height: 15vw;
     object-fit: cover;
+}
+
+html, body {
+    height:100%;
+}
+
+.activity-img{
+    width:  400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.activity-txt{
+margin-left: 10px;
+
+}
+
+.registerbtn {
+  background-color: #C0D0DE;
+  color: #002660 !important;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+
+}
+
+.registerbtn:hover {
+  opacity:1;
 }

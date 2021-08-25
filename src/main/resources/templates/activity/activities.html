@@ -24,12 +24,13 @@
 <div class="activitiesPage">
     <div class="activities">
         <article th:each="activity: ${activities}">
-            <a th:href="${'/activity/' + activity.id}">
+
                 <div class="card" style="width: 18rem;">
                     <img th:src="${'/img/' + activity.id + '.jpg'}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${activity.name}"></h5>
                         <p class="card-text" th:text="${activity.description}"></p>
+                        <a th:href="${'/activity/' + activity.id}" button type="submit" class="btn register registerbtn">View</a>
                     </div>
                 </div>
             </a>
