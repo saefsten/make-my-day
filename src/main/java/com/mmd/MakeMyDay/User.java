@@ -35,10 +35,6 @@ public class User {
     public void addFavouriteActivity(Activity activity) {
         userFavouriteActivities.add(activity);
         activity.getUsers().add(this);
-
-        System.out.println(userFavouriteActivities.size());
-        System.out.println(activity.getUsers().size());
-
     }
 
     public Long getId() {

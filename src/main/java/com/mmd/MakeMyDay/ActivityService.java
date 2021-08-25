@@ -28,4 +28,8 @@ public class ActivityService {
         return activities;
     }
 
+    public void saveActivity(Activity activity) {
+        activityRepository.save(activity);
+    }
+
 }

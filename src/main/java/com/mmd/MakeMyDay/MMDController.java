@@ -1,15 +1,13 @@
 package com.mmd.MakeMyDay;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
@@ -48,14 +46,33 @@ public class MMDController {
         return "activity/activities";
     }
 
+    @GetMapping("/activity/create")
+    String createActivity(Model model){
+        model.addAttribute("activity", new Activity());
+        return "activity/create";
+    }
+
+    @GetMapping("/activity/update")
+    String updateActivity(Model model, @ModelAttribute Activity activity){
+        model.addAttribute("activity", activity);
+        return "activity/create";
+    }
+
+
+    @PostMapping("/activity/create")
+    String saveActivity(Model model, @ModelAttribute Activity activity) {
+        activityService.saveActivity(activity);
+        String message = "Activity " + activity.getName() + " was saved!";
+        model.addAttribute("message", message);
+        return "activity/create";
+    }
+
     @GetMapping("/activity/{id}")
     String activity(Model model, @PathVariable Long id){
         Activity activity = (Activity) activityRepository.findById(id).orElse(null);
         model.addAttribute("activity", activity);
         return "activity/activityDetails";
     }
-
-
 
     @GetMapping("/createMyDay")
     String createMyDay(){
@@ -76,6 +93,9 @@ public class MMDController {
         User user = userRepository.findByUsername(currentUserName(request));
         user.addFavouriteActivity(activity);
         activity.addUser(user);
+        userRepository.save(user);
+        activityService.saveActivity(activity);
+        //activityRepository.save(activity);
         return "redirect:/activities";
     }
 

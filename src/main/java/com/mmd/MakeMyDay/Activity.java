@@ -17,7 +17,7 @@ public class Activity {
     @Column (name="PRICE")
     private Double price;
     @Column (name="DURATION")
-    private Duration approxDuration;
+    private int duration;
     @Column (name="DESCRIPTION")
     private String description;
     @Column (name="URL")
@@ -37,14 +37,19 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(String name, Set<Category> categories, Double price, Duration approxDuration, String description, String url, String address) {
+    public Activity(String name, Set<Category> categories, Double price, int duration, String description, String url, String address) {
         this.name = name;
         this.categories = categories;
         this.price = price;
-        this.approxDuration = approxDuration;
+        this.duration = duration;
         this.description = description;
         this.url = url;
         this.address = address;
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+        user.getUserFavouriteActivities().add(this);
     }
 
     public Long getId() {
@@ -79,12 +84,12 @@ public class Activity {
         this.price = price;
     }
 
-    public Duration getApproxDuration() {
-        return approxDuration;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setApproxDuration(Duration approxDuration) {
-        this.approxDuration = approxDuration;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public String getDescription() {
@@ -119,8 +124,4 @@ public class Activity {
         this.users = users;
     }
 
-    public void addUser(User user) {
-        users.add(user);
-        user.getUserFavouriteActivities().add(this);
-    }
 }
