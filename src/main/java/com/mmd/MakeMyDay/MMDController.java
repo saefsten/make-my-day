@@ -51,13 +51,6 @@ public class MMDController {
         return "activity/activityDetails";
     }
 
-    @GetMapping("/createMyDay")
-    String createMyDay(Model model){
-        List<Activity> activities = (List<Activity>) activityRepository.findAll();
-        model.addAttribute("activities", activities);
-        return "createMyDay/createMyDay";
-    }
-
 /*
     @PostMapping("/createMyDay")
     String createMyDayPost(Model model, @RequestParam String category){

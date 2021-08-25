@@ -81,10 +81,8 @@ function handleDrop(e) {
         // prevent default action (open as link for some elements)
         event.preventDefault();
         // move dragged elem to the selected drop target
-        console.log(dragged.id)
         if ( event.target.className == "row event-row" ) {
             if (dragged.id.includes("eventBox")) {
-                console.log(dragged)
                 dragged = addDraggableDiv(dragged)
             } else {
                 dragged.parentNode.removeChild( dragged );
@@ -101,6 +99,8 @@ function handleDrop(e) {
         newDraggable.classList.add("col")
         newDraggable.classList.add("event-section")
         newDraggable.setAttribute('draggable', true)
+        let timeStampId = "timeStamp" + dragged.id.substring(8)
+        newDraggable.setAttribute('id', timeStampId)
 
         const duration = parseInt(dragged.querySelector("small").innerText.substring(0, dragged.querySelector("small").innerText.indexOf(" ")))
 
@@ -164,4 +164,23 @@ function handleDrop(e) {
     function clickedDelete(button) {
         const element = button.parentElement.parentElement
         element.parentElement.removeChild(element)
+    }
+
+    function clickedSave() {
+        const elements = document.querySelectorAll("div.event-section")
+        if (elements.length === 0) {
+            return
+        }
+        let html = ""
+
+        for (element of elements) {
+            console.log(element)
+            const time = element.querySelector("h4").innerText
+            const id = element.id.substring(9)
+
+            html += `<input type="hidden" name="events" value="${time}-${id}">`
+        }
+
+        document.getElementById("eventForm").innerHTML += html
+        document.getElementById("eventForm").submit()
     }
