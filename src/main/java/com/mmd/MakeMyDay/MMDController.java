@@ -14,10 +14,6 @@ import java.util.Set;
 @Controller
 public class MMDController {
 
-
-    @Autowired
-    ActivityRepository activityRepository;
-
     @Autowired
     ActivityService activityService;
 
@@ -41,7 +37,7 @@ public class MMDController {
 
     @GetMapping("/activities")
     String activities(Model model){
-        List<Activity> activities = (List<Activity>) activityRepository.findAll();
+        List<Activity> activities = activityService.findAllActivities();
         model.addAttribute("activities", activities);
         return "activity/activities";
     }
@@ -69,7 +65,8 @@ public class MMDController {
 
     @GetMapping("/activity/{id}")
     String activity(Model model, @PathVariable Long id){
-        Activity activity = (Activity) activityRepository.findById(id).orElse(null);
+//        Activity activity = (Activity) activityRepository.findById(id).orElse(null);
+        Activity activity = activityService.findActivityById(id);
         model.addAttribute("activity", activity);
         return "activity/activityDetails";
     }
@@ -95,7 +92,6 @@ public class MMDController {
         activity.addUser(user);
         userRepository.save(user);
         activityService.saveActivity(activity);
-        //activityRepository.save(activity);
         return "redirect:/activities";
     }
 
