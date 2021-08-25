@@ -15,8 +15,8 @@ public class Activity {
     private String name;
     @Column (name="PRICE")
     private Double price;
-    @Column (name="DURATION")
-    private Duration approxDuration;
+    @Column (name="HOURS")
+    private int hours;
     @Column (name="DESCRIPTION")
     private String description;
     @Column (name="URL")
@@ -31,11 +31,11 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(String name, Set<Category> categories, Double price, Duration approxDuration, String description, String url, String address) {
+    public Activity(String name, Set<Category> categories, Double price, int hours, String description, String url, String address) {
         this.name = name;
         this.categories = categories;
         this.price = price;
-        this.approxDuration = approxDuration;
+        this.hours = hours;
         this.description = description;
         this.url = url;
         this.address = address;
@@ -73,12 +73,12 @@ public class Activity {
         this.price = price;
     }
 
-    public Duration getApproxDuration() {
-        return approxDuration;
+    public int getHours() {
+        return hours;
     }
 
-    public void setApproxDuration(Duration approxDuration) {
-        this.approxDuration = approxDuration;
+    public void setHours(int hours) {
+        this.hours = hours;
     }
 
     public String getDescription() {
