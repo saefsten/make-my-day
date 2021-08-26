@@ -24,6 +24,10 @@ public class Activity {
     @Column (name="ADDRESS")
     private String address;
 
+    @Column (name="ACTIVITIES_IN_PACKAGES")
+    @ManyToMany (mappedBy = "activities")
+    private Set<Package> packages;
+
     @Column (name="CATEGORIES_IN_ACTIVITY")
     @ManyToMany
     private Set<Category> categories;
@@ -31,7 +35,7 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(String name, Set<Category> categories, Double price, int hours, String description, String url, String address) {
+    public Activity(String name, Set<Category> categories, Double price, int hours, String description, String url, String address, Set<Package> packages) {
         this.name = name;
         this.categories = categories;
         this.price = price;
@@ -39,6 +43,7 @@ public class Activity {
         this.description = description;
         this.url = url;
         this.address = address;
+        this.packages = packages;
     }
 
     public Long getId() {
@@ -103,5 +108,13 @@ public class Activity {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Set<Package> getPackages() {
+        return packages;
+    }
+
+    public void setPackages(Set<Package> packages) {
+        this.packages = packages;
     }
 }

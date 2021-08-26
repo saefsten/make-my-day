@@ -5,3 +5,9 @@ background-color: #2A76C0;
 body {
 background-color: #F9F4F1;
 }
+
+.pageHeader {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}

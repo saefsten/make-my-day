@@ -1,11 +1,7 @@
 package com.mmd.MakeMyDay;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Package {
@@ -13,17 +9,22 @@ public class Package {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name="PACKAGE_NAME")
     private String packageName;
-    //private List<Activity> activities = new ArrayList<>();
+    @Column(name="DESCRIPTION")
     private String description;
+
+    @Column (name="PACKAGES_WITH_ACTIVITIES")
+    @ManyToMany
+    private Set<Activity> activities;
 
     public Package() {
     }
 
-    public Package(String packageName, /*List<Activity> activities,*/ String description) {
+    public Package(String packageName, String description, Set<Activity> activities) {
         this.packageName = packageName;
-        //this.activities = activities;
         this.description = description;
+        this.activities = activities;
     }
 
     public Long getId() {
@@ -42,19 +43,19 @@ public class Package {
         this.packageName = packageName;
     }
 
-   /* public List<Activity> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
-    }*/
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Set<Activity> activities) {
+        this.activities = activities;
     }
 }
