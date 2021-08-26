@@ -85,6 +85,12 @@ public class MMDController {
         return "activity/activityDetails";
     }
 
+    @GetMapping("/mydays")
+    String myDays(Model model) {
+
+        return "user/mydays";
+    }
+
     @GetMapping("/user/account")
     String account(HttpServletRequest request, Model model) {
         User user = userService.findUSerByUsername(currentUserName(request));
@@ -127,5 +133,7 @@ public class MMDController {
         }
         return userFavouritesActivityId;
     }
+
+
 
 }
