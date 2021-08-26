@@ -1,12 +1,12 @@
 .activitiesPage {
-    padding: 10px 20px;
-    margin: 30px;
+margin-bottom: 10px;
 }
 
 .activitiesDetailPage{
-display: flex;
-margin: 30px;
-padding: 10px 20px;
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 10px;
+
 }
 
 .activities {
