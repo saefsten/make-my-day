@@ -55,9 +55,62 @@ margin-left: 10px;
   margin: 5px;
   border: none;
   cursor: pointer;
+  margin-right: 165px;
 
 }
 
 .registerbtn:hover {
   opacity:1;
+}
+
+.viewandheart {
+    display:flex;
+}
+
+.flexbox {
+	display: contents;
+	height: 50px;
+	width: 50px;
+	justify-content: center;
+	align-items: center;
+}
+
+.fav-btn {
+	display:flex;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.favme:hover {
+    opacity: 0.5;
+    color: red;
+}
+
+.favmesaved:hover {
+    opacity: 0.5;
+    color: red;
+}
+
+.favme {
+	display:block;
+	font-size: ms(2);
+	width: auto;
+	height: auto;
+	cursor: pointer;
+	box-shadow: none;
+	color: #CBCDCE;
+	margin: 0;
+}
+
+.favmesaved {
+	display:block;
+	font-size: ms(2);
+	width: auto;
+	height: auto;
+	cursor: pointer;
+	box-shadow: none;
+	transition: all .2s ease;
+	color: #DC3232;
+	margin: 0;
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class MMDController {
     ActivityService activityService;
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @GetMapping("/")
     String index(){
@@ -35,9 +36,12 @@ public class MMDController {
     }
 
     @GetMapping("/activities")
-    String activities(Model model){
+    String activities(Model model, HttpServletRequest request){
         List<Activity> activities = activityService.findAllActivities();
         model.addAttribute("activities", activities);
+        User user = userService.findUSerByUsername(currentUserName(request));
+        List<Long> userFavouritesActivityId = getUserFavouritesId(user);
+        model.addAttribute("userFavourites", userFavouritesActivityId);
         return "activity/activities";
     }
 
@@ -48,7 +52,8 @@ public class MMDController {
     }
 
     @GetMapping("/activity/update")
-    String updateActivity(Model model, @ModelAttribute Activity activity){
+    String updateActivity(Model model, @RequestParam Long id){
+        Activity activity = activityService.findActivityById(id);
         model.addAttribute("activity", activity);
         return "activity/create";
     }
@@ -64,7 +69,6 @@ public class MMDController {
 
     @GetMapping("/activity/{id}")
     String activity(Model model, @PathVariable Long id){
-//        Activity activity = (Activity) activityRepository.findById(id).orElse(null);
         Activity activity = activityService.findActivityById(id);
         model.addAttribute("activity", activity);
         return "activity/activityDetails";
@@ -82,19 +86,27 @@ public class MMDController {
 
     @GetMapping("/user/account")
     String account(HttpServletRequest request, Model model) {
-        User user = userRepository.findByUsername(currentUserName(request));
+        User user = userService.findUSerByUsername(currentUserName(request));
         Set<Activity> userFavourites = user.getUserFavouriteActivities();
         model.addAttribute("favourites", userFavourites);
+        List<Long> userFavouritesActivityId = getUserFavouritesId(user);
+        model.addAttribute("userFavourites", userFavouritesActivityId);
         return "user/account";
     }
 
     @GetMapping("/user/addfavourite")
     String addFavourite(HttpServletRequest request, @RequestParam Long id) {
         Activity activity = activityService.findActivityById(id);
-        User user = userRepository.findByUsername(currentUserName(request));
-        user.addFavouriteActivity(activity);
-        activity.addUser(user);
-        userRepository.save(user);
+        User user = userService.findUSerByUsername(currentUserName(request));
+        Set<Activity> userFavActsId = user.getUserFavouriteActivities();
+        if (userFavActsId.contains(activity)) {
+            user.removeFavouriteActivity(activity);
+            activity.removeUser(user);
+        } else {
+            user.addFavouriteActivity(activity);
+            activity.addUser(user);
+        }
+        userService.saveUser(user);
         activityService.saveActivity(activity);
         return "redirect:/activities";
     }
@@ -104,6 +116,15 @@ public class MMDController {
     public String currentUserName(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
         return principal.getName();
+    }
+
+    public List<Long> getUserFavouritesId(User user) {
+        List<Activity> userFavourites = activityService.findActivityByUser(user.getUsername());
+        List<Long> userFavouritesActivityId = new ArrayList<>();
+        for (Activity activity : userFavourites) {
+            userFavouritesActivityId.add(activity.getId());
+        }
+        return userFavouritesActivityId;
     }
 
 }

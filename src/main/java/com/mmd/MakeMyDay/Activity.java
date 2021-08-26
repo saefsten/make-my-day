@@ -52,6 +52,11 @@ public class Activity {
         user.getUserFavouriteActivities().add(this);
     }
 
+    public void removeUser(User user) {
+        users.remove(user);
+        user.getUserFavouriteActivities().remove(this);
+    }
+
     public Long getId() {
         return id;
     }
