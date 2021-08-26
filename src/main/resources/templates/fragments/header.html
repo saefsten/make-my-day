@@ -2,6 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <div th:fragment="header">
@@ -33,12 +37,22 @@
                         <a class="nav-link navLinks" href="/user/account">My saved activities</a>
                     </li>
                 </ul>
-
                 <div class="d-flex">
-                    <a class="btn login" href="/login" role="button" aria-expanded="false" >
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="/img/loginicon.png" width="30" height="30">
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <a class="btn login" href="/login" role="button" aria-expanded="false">
                         Login
                     </a>
-                    <a class="btn register" href="/register" role="button" aria-expanded="false" >
+                    <a class="btn register" href="/register" role="button" aria-expanded="false">
                         Register
                     </a>
                 </div>

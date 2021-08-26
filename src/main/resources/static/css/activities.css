@@ -12,8 +12,9 @@ padding: 10px 20px;
 .activities {
     display: grid;
     grid-template-columns: repeat(auto-fit, 300px);
-    grid-column-gap:30px;
+    grid-column-gap:50px;
     grid-row-gap:30px;
+    justify-content: center;
 
 }
 
@@ -61,3 +62,5 @@ margin-left: 10px;
 .registerbtn:hover {
   opacity:1;
 }
+
+
