@@ -2,7 +2,9 @@ package com.mmd.MakeMyDay;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface CategoryRepository extends CrudRepository <Category, Long> {
+import java.util.List;
 
+public interface CategoryRepository extends CrudRepository <Category, Integer> {
+    List<Category> findByActivities_Id(Long id);
 
 }
