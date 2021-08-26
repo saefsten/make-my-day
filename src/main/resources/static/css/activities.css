@@ -114,3 +114,23 @@ margin-left: 10px;
 	color: #DC3232;
 	margin: 0;
 }
+
+.createForm {
+    width: 70%;
+    margin-top: 5%;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+.createFormSmall {
+    width: 350px;
+}
+
+.createFormTitle {
+    width: 120px;
+}
+
+.form-check-label {
+    margin-left: 4px;
+}
