@@ -3,12 +3,15 @@ package com.mmd.MakeMyDay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 @Controller
 public class CreateMyDayController {
@@ -32,9 +35,8 @@ public class CreateMyDayController {
         return "createMyDay/createMyDay";
     }
 
-
     @PostMapping("/createMyDay")
-    String onPost(HttpServletRequest request,@RequestParam List<String> events) {
+    String onPost(HttpServletRequest request,@RequestParam List<String> events, @RequestParam String date) {
         List <UserEvent> userEvents = new ArrayList<>();
         UserDay userDay = new UserDay();
 
@@ -53,5 +55,4 @@ public class CreateMyDayController {
 
         return "redirect:/createMyDay";
     }
-
 }
