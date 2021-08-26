@@ -29,6 +29,10 @@ div {
     min-height: 268px;
 }
 
+.event-5h {
+    min-height: 335px;
+}
+
 .event-time {
     background-color: #5050FF;
     border: solid #5050FF 1px;

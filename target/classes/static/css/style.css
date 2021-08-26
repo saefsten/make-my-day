@@ -7,10 +7,11 @@ body {
 }
 
 .btn-primary {
-    background-color: #332539;
-    border-color: #332539;
+    background-color: #C0D0DE;
+    color: #002660 !important;
+    border-color: #C0D0DE;
 }
 
 .btn-primary:hover {
-    background-color: #4b3554;
+    background-color: #F9F4F1;
 }

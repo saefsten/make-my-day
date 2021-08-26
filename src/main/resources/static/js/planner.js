@@ -117,6 +117,9 @@ function handleDrop(e) {
             case 4:
                 newDraggable.classList.add("event-4h")
                 break
+            case 5:
+                newDraggable.classList.add("event-5h")
+                break
             default:
                 newDraggable.classList.add("event-1h")
                 break
@@ -167,6 +170,8 @@ function handleDrop(e) {
     }
 
     function clickedSave() {
+        const date = document.getElementById("date").innerText
+        console.log("date", date)
         const elements = document.querySelectorAll("div.event-section")
         if (elements.length === 0) {
             return
@@ -174,7 +179,6 @@ function handleDrop(e) {
         let html = ""
 
         for (element of elements) {
-            console.log(element)
             const time = element.querySelector("h4").innerText
             const id = element.id.substring(9)
 
@@ -182,5 +186,6 @@ function handleDrop(e) {
         }
 
         document.getElementById("eventForm").innerHTML += html
-        document.getElementById("eventForm").submit()
+        document.getElementById("date").innerText = date
+        //document.getElementById("eventForm").submit()
     }
