@@ -7,11 +7,15 @@ body {
 }
 
 .btn-primary {
-    background-color: #C0D0DE;
-    color: #002660 !important;
-    border-color: #C0D0DE;
+    background-color: #332539;
+    border-color: #332539;
 }
 
 .btn-primary:hover {
-    background-color: #F9F4F1;
+    background-color: #4b3554;
+}
+.pageHeader {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }

@@ -7,26 +7,27 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
     <title>Make my day</title>
     <link rel="stylesheet" href="/css/start.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
-    <link rel="icon" href="/img/emoji.png">
+    <link rel="icon" href="/img/LOGO-R.png">
 </head>
 
-<body>
+<body id="startPage">
 <header th:insert="fragments/header :: header"></header>
 
 <div class="banner">
     <div class="input-group">
         <input type="search" class="form-control rounded" placeholder="search for activity" aria-label="Search"
-               aria-describedby="search-addon" />
+               aria-describedby="search-addon"/>
         <button type="button" class="btn btn-light" id="search-button">search</button>
     </div>
 </div>
 
-<div class="container-fluid" id="recommended">
+<div class="container" id="recommended">
     <div class="row">
         <div class="recommendations-title">Recommended activities</div>
         <div class="col-sm-3">
@@ -65,8 +66,6 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-
 
 
 <!--            <div class="card">-->

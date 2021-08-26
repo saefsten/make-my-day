@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/activities.css">
-    <link rel="stylesheet" href="/css/favourites.css">
     <link rel="icon" href="/img/emoji.png">
     <title>Make my day</title>
 </head>
@@ -26,31 +25,35 @@
 <div class="activitiesPage">
     <div class="activities">
         <article th:each="activity: ${activities}">
-            <a th:href="${'/activity/' + activity.id}">
-<!--                <div class="fflexbox">-->
-<!--                    <div class="fav-btn">-->
-<!--                        <span th:href="'/user/addfavourite?id=' + ${activity.id}" class="favme dashicons dashicons-heart"></span>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-                <div class="card" style="width: 18rem;">
-                    <img th:src="${'/img/' + activity.id + '.jpg'}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${activity.name}"></h5>
-                        <p class="card-text" th:text="${activity.description}"></p>
-                        <a th:href="'/user/addfavourite?id=' + ${activity.id}">Add to favourites</a>
+            <div class="card" style="width: 18rem;">
+                <img th:src="${'/img/' + activity.id + '.jpg'}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${activity.name}"></h5>
+                    <p class="card-text" th:text="${activity.description}"></p>
+                    <div class="viewandheart">
                         <a th:href="${'/activity/' + activity.id}" button type="submit" class="btn register registerbtn">View</a>
+                        <div class="flexbox">
+                            <a th:href="'/user/addfavourite?id=' + ${activity.id}">
+                                <div class="fav-btn">
+                                    <div th:if="${userFavourites.contains(activity.id)}">
+                                        <span  class="favmesaved dashicons dashicons-heart"></span>
+                                    </div>
+                                    <div th:if="${!userFavourites.contains(activity.id)}">
+                                        <span  class="favme dashicons dashicons-heart"></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
+                    <a th:href="'activity/update?id=' + ${activity.id}">Edit</a>
                 </div>
-            </a>
+            </div>
         </article>
     </div>
 </div>
 
 <div th:insert="fragments/footer :: footer"></div>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script th:src="'js/favourites.js'" src="../../static/js/favourites.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>

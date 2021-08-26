@@ -1,6 +1,9 @@
 package com.mmd.MakeMyDay;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -12,14 +15,16 @@ public class UserDay {
     private Long id;
     @ManyToOne
     private User user;
-    private Date date;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
     @OneToMany(mappedBy = "userDay", cascade = CascadeType.ALL)
     private List<UserEvent> userEvents;
 
     public UserDay() {
     }
 
-    public UserDay(User user, Date date, List<UserEvent> userEvents) {
+    public UserDay(User user, LocalDate date, List<UserEvent> userEvents) {
         this.user = user;
         this.date = date;
         this.userEvents = userEvents;
@@ -41,11 +46,11 @@ public class UserDay {
         this.user = user;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
