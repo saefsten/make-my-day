@@ -3,10 +3,11 @@ package com.mmd.MakeMyDay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -14,6 +15,11 @@ public class CreateMyDayController {
 
     @Autowired
     ActivityRepository activityRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    MMDController mmdController = new MMDController();
 
     @GetMapping("/createMyDay")
     String createMyDay(Model model){
@@ -26,13 +32,26 @@ public class CreateMyDayController {
         return "createMyDay/createMyDay";
     }
 
+
     @PostMapping("/createMyDay")
-    String onPost(@RequestParam List<String> events) {
-        System.out.println(events);
-        int h = Integer.parseInt(events.get(0).substring(0, 2));
-        Long id = Long.parseLong(events.get(0).substring(6));
-        System.out.println("Int value:" + h +" Id:" + id);
+    String onPost(HttpServletRequest request,@RequestParam List<String> events) {
+        List <UserEvent> userEvents = new ArrayList<>();
+        UserDay userDay = new UserDay();
+
+        for (int i=0; i<events.size(); i++) {
+            Integer startTime = Integer.parseInt(events.get(0).substring(0, 2));
+            Long activityId = Long.parseLong(events.get(0).substring(6));
+            Activity activity = (Activity) activityRepository.findById(activityId).orElse(null);
+            UserEvent userEvent = new UserEvent(userDay, activity, startTime);
+            userEvents.add(userEvent);
+        }
+
+        User user = userRepository.findByUsername(mmdController.currentUserName(request));
+        userDay.setUserEvents(userEvents);
+        userDay.setUser(user);
+
 
         return "redirect:/createMyDay";
     }
+
 }
