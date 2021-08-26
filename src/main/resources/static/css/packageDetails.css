@@ -22,6 +22,11 @@
     color: #002660;
 }
 
+.btn-primary a{
+    text-decoration: none;
+    color: #F9F4F1;
+}
+
 .card-img-top {
     width: 100%;
     height: 15vw;
