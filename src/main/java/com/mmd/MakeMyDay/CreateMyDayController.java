@@ -28,9 +28,9 @@ public class CreateMyDayController {
     }
 
     @PostMapping("/createMyDay")
-    String onPost(@RequestParam List<String> events, @RequestParam String date, @RequestParam String text) {
+    String onPost(@RequestParam List<String> events, @RequestParam String date) {
         System.out.println(events);
-        System.out.println(text);
+        System.out.println(date);
         int h = Integer.parseInt(events.get(0).substring(0, 2));
         Long id = Long.parseLong(events.get(0).substring(6));
         System.out.println("Int value:" + h +" Id:" + id);

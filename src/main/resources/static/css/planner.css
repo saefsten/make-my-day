@@ -2,6 +2,10 @@ div {
     //border: solid black 1px;
 }
 
+#submitButton {
+    //visibility: hidden;
+}
+
 .event-row {
     min-height: 67px;
 }

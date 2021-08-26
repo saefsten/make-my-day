@@ -170,22 +170,21 @@ function handleDrop(e) {
     }
 
     function clickedSave() {
-        const date = document.getElementById("date").innerText
-        console.log("date", date)
         const elements = document.querySelectorAll("div.event-section")
         if (elements.length === 0) {
             return
         }
-        let html = ""
 
         for (element of elements) {
             const time = element.querySelector("h4").innerText
             const id = element.id.substring(9)
 
-            html += `<input type="hidden" name="events" value="${time}-${id}">`
+            let el = document.createElement("input")
+            el.setAttribute('type', 'hidden')
+            el.setAttribute('name', 'events')
+            el.setAttribute('value', `${time}-${id}`)
+            document.getElementById("eventForm").appendChild(el)
         }
 
-        document.getElementById("eventForm").innerHTML += html
-        document.getElementById("date").innerText = date
-        //document.getElementById("eventForm").submit()
+        document.getElementById("eventForm").submit()
     }

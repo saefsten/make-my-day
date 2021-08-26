@@ -28,7 +28,6 @@
                     <div class="mb-3">
                         <label for="date" class="form-label">Date:</label>
                         <input type="date" class="form-control" id="date" name="date"/>
-                        <input type="text" name="text"/>
                     </div>
                 </form>
                 <div class="mb-3">
@@ -38,53 +37,6 @@
             <div class="row event-row" th:each="hour : ${hours}">
                 <div class="col-md-1 time-stamp" th:text="${hour}">--:--</div>
             </div>
-            <!--
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">06:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">07:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">08:00</div>
-                <div class="col event-section event-1h" draggable="true" id="timeStamp" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                    <div class="event-time">
-                        <div>
-                            <h4>08:00</h4>
-                        </div>
-                    </div>
-                    <div class="event-description">
-                        <button class="delete-btn" onclick="clickedDelete(this)">x</button>
-                        <strong>Description</strong>
-                        <p>Very interesting text with maybe links...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">09:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">10:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">11:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">12:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">13:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">14:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">15:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">16:00</div>
-            </div>
-        -->
         </div>
         <div class="col">
             <h4>Events:</h4>
