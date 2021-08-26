@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:display="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -43,6 +43,9 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="/img/loginicon.png" width="30" height="30">
+
+                                <!--<img th:src="${'/img/' + 'loginicon.png'}" th:if="${user.username == null}" width="30" height="30" style="display: none;">
+                                <img th:if="${user.username != null}" src="${'img/' + 'loginicon.png'}" width="30" height="30">-->
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
@@ -60,5 +63,6 @@
         </div>
     </nav>
 </div>
+<script th:src="'js/header.js'" src="../../static/js/header.js"></script>
 </body>
 </html>
