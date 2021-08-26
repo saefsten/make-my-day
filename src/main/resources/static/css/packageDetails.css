@@ -1,0 +1,38 @@
+#packageDetailsPage {
+    height: 100vh;
+}
+
+.packages {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-column-gap:30px;
+    grid-row-gap:30px;
+
+}
+
+.packages article {
+    position:relative;
+    font-size:15px;
+    max-width: 300px;
+}
+
+#packageDetailsPage .packages a{
+    text-decoration: none;
+    color: #002660;
+}
+
+.btn-primary a{
+    text-decoration: none;
+    color: #F9F4F1;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.packageDescription {
+    margin-bottom: 20px;
+}
