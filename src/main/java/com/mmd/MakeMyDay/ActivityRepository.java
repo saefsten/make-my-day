@@ -9,4 +9,5 @@ import java.util.List;
 public interface ActivityRepository extends CrudRepository <Activity, Long> {
     List<Activity> findByCategories_CategoryName(String categoryName);
     List<Activity> findByPackages_Id(Long id);
+    List<Activity> findByUsers_Username(String username);
 }

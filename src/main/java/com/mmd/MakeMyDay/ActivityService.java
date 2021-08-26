@@ -12,9 +12,6 @@ public class ActivityService {
     @Autowired
     ActivityRepository activityRepository;
 
-    @Autowired
-    UserRepository userRepository;
-
     public List<Activity> findAllActivities() {
         return (List<Activity>) activityRepository.findAll();
     }
@@ -33,8 +30,15 @@ public class ActivityService {
         return activities;
     }
 
+    public List<Activity> findActivityByUser(String username) {
+        List<Activity> activities = activityRepository.findByUsers_Username(username);
+        return activities;
+    }
+
     public void saveActivity(Activity activity) {
         activityRepository.save(activity);
     }
+
+    public void removeActivity(Activity activity) { activityRepository.delete(activity); }
 
 }
