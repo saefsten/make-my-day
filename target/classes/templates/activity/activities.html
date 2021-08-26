@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/activities.css">
+    <link rel="stylesheet" href="/css/favourites.css">
     <link rel="icon" href="/img/emoji.png">
     <title>Make my day</title>
 </head>
@@ -25,13 +26,6 @@
 <div class="activitiesPage">
     <div class="activities">
         <article th:each="activity: ${activities}">
-            <a th:href="${'/activity/' + activity.id}">
-<!--                <div class="fflexbox">-->
-<!--                    <div class="fav-btn">-->
-<!--                        <span th:href="'/user/addfavourite?id=' + ${activity.id}" class="favme dashicons dashicons-heart"></span>-->
-<!--                    </div>-->
-<!--                </div>-->
-
                 <div class="card" style="width: 18rem;">
                     <img th:src="${'/img/' + activity.id + '.jpg'}" class="card-img-top">
                     <div class="card-body">
@@ -41,8 +35,26 @@
                         <a th:href="'/user/addfavourite?id=' + ${activity.id}">Add to favourites</a>
                     </div>
                 </div>
-            </a>
+<!--            </a>-->
+                <div class="viewandheart">
+                    <a th:href="${'/activity/' + activity.id}" button type="submit" class="btn register registerbtn">View</a>
+                    <div class="flexbox">
+                        <a th:href="'/user/addfavourite?id=' + ${activity.id}">
+                        <div class="fav-btn">
+                            <div th:if="${userFavourites.contains(activity.id)}">
+                                <span  class="favmesaved dashicons dashicons-heart"></span>
+                            </div>
+                            <div th:if="${!userFavourites.contains(activity.id)}">
+                                <span  class="favme dashicons dashicons-heart"></span>
+                            </div>
+                        </div>
+                        </a>
+<!--                    </div>-->
+                    </div>
+                </div>
+                <a th:href="'activity/update?id=' + ${activity.id}">Edit</a>
         </article>
+</div>
     </div>
 </div>
 </div>
