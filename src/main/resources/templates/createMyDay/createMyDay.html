@@ -20,65 +20,28 @@
 
 <div class="container" style="margin-top: 10px">
     <h1>Create My Day</h1>
-    <button class="btn btn-primary" onclick="clickedSave()">Save</button>
     <div style="height: 50px;"></div>
     <div class="row">
         <div class="col-md-8">
+            <div class="col-md-3">
+                <form th:action="@{/createMyDay}" id="eventForm" method="POST" onkeydown="return event.key != 'Enter';">
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date:</label>
+                        <input type="date" class="form-control" id="date" name="date"/>
+                    </div>
+                </form>
+                <div class="mb-3">
+                    <button class="btn btn-primary" onclick="clickedSave()">Save</button>
+                </div>
+            </div>
             <div class="row event-row" th:each="hour : ${hours}">
                 <div class="col-md-1 time-stamp" th:text="${hour}">--:--</div>
             </div>
-            <!--
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">06:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">07:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">08:00</div>
-                <div class="col event-section event-1h" draggable="true" id="timeStamp" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                    <div class="event-time">
-                        <div>
-                            <h4>08:00</h4>
-                        </div>
-                    </div>
-                    <div class="event-description">
-                        <button class="delete-btn" onclick="clickedDelete(this)">x</button>
-                        <strong>Description</strong>
-                        <p>Very interesting text with maybe links...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">09:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">10:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">11:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">12:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">13:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">14:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">15:00</div>
-            </div>
-            <div class="row event-row">
-                <div class="col-md-1 time-stamp">16:00</div>
-            </div>
-        -->
         </div>
         <div class="col">
             <h4>Events:</h4>
             <div class="list-group">
-                <form id="search-activities" action="/createMyDay" method="post" class="d-flex">
+                <form id="search-activities" class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="Search">
                     <!--aria-label="Search" name="category">-->
                     <!--<button class="btn btn-outline-secondary" type="submit">Search</button>-->
@@ -96,7 +59,7 @@
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1" th:text="${activity.name}"></h5>
                                         <!--<h5 class="hidden" th:text="${activity.category}"></h5>-->
-                                        <small class="text-muted" th:text="${activity.hours}"></small>
+                                        <small class="text-muted" th:text="${activity.hours} + ' h'"></small>
                                     </div>
                                     <p class="mb-1" th:text="${activity.description}"></p>
                                     <small><a th:href="${activity.url}">Visit webpage</a></small>
@@ -110,8 +73,6 @@
         </div>
     </div>
 </div>
-
-<form th:action="@{/createMyDay}" id="eventForm" method="POST"></form>
 
 
 <footer th:insert="fragments/footer :: footer"></footer>

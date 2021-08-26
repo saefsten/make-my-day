@@ -12,6 +12,7 @@ function allEvents(){
 const searchBar = document.forms['search-activities'].querySelector('input');
 searchBar.addEventListener('keyup', function(e){
     const term = e.target.value.toLowerCase();
+    console.log("keyup")
     Array.from(activities).forEach((activity) => {
         const title = activity.firstElementChild.textContent;
         if(title.toLowerCase().indexOf(e.target.value) != -1) {

@@ -2,6 +2,10 @@ div {
     //border: solid black 1px;
 }
 
+#submitButton {
+    //visibility: hidden;
+}
+
 .event-row {
     min-height: 67px;
 }
@@ -27,6 +31,10 @@ div {
 
 .event-4h {
     min-height: 268px;
+}
+
+.event-5h {
+    min-height: 335px;
 }
 
 .event-time {
