@@ -35,15 +35,12 @@
 }
 
 #recommended {
-    background-color: rgba(212, 184, 165, 0.2);
+    padding-top: 20px;
     height: 55vh;
 }
 
-.container-fluid .row {
-    padding-top: 20px;
-    margin: auto;
-    width: 75%;
-    justify-content: center;
+body #startPage{
+    background-color: rgba(212, 184, 165, 0.2);
 }
 
 .card-img {
@@ -99,4 +96,8 @@
 
 .recommendations-title {
     text-align: center;
+}
+
+.row {
+    justify-content: center;
 }

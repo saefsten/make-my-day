@@ -13,7 +13,6 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    //private String email;
     private String username;
     @ManyToMany (
             fetch = FetchType.EAGER,
@@ -23,18 +22,22 @@ public class User {
     public User() {
     }
 
-    public User(String password, String firstName, String lastName, /*String email,*/ String username) {
+    public User(String password, String firstName, String lastName, String username) {
 
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        //this.email = email;
         this.username = username;
     }
 
     public void addFavouriteActivity(Activity activity) {
         userFavouriteActivities.add(activity);
         activity.getUsers().add(this);
+    }
+
+    public void removeFavouriteActivity(Activity activity) {
+        userFavouriteActivities.remove(activity);
+        activity.getUsers().remove(this);
     }
 
     public Long getId() {
@@ -68,14 +71,6 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    /*public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }*/
 
     public String getUsername() {
         return username;
