@@ -37,36 +37,37 @@
             <div class="row event-row" th:each="hour : ${hours}">
                 <div class="col-md-1 time-stamp" th:text="${hour}">--:--</div>
             </div>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <button class="btn btn-primary" onclick="clickedSave()">Save</button>
+                </div>
+            </div>
         </div>
         <div class="col">
-            <h4>Events:</h4>
-            <div class="list-group">
-                <form id="search-activities" class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Search">
-                    <!--aria-label="Search" name="category">-->
-                    <!--<button class="btn btn-outline-secondary" type="submit">Search</button>-->
-                </form>
-
-                <div>
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <h4>Events:</h4>
+                </div>
+                <div class="col-4">
                     <button class="btn btn-outline-secondary" onclick="allEvents()">All events</button>
                 </div>
-
+            </div>
+            <div class="d-flex">
+                <input class="form-control" id="searchBar" type="text" placeholder="Search">
+            </div>
+            <div class="list-group">
                 <div id="activity-list">
-                    <ul>
-                        <div class="list-group-item list-group-item-action" th:each="activity : ${activities}">
-                            <li>
-                                <div th:id="'eventBox' + ${activity.id}" draggable="true">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1" th:text="${activity.name}"></h5>
-                                        <!--<h5 class="hidden" th:text="${activity.category}"></h5>-->
-                                        <small class="text-muted" th:text="${activity.hours} + ' h'"></small>
-                                    </div>
-                                    <p class="mb-1" th:text="${activity.description}"></p>
-                                    <small><a th:href="${activity.url}">Visit webpage</a></small>
-                                </div>
-                            </li>
+                    <div class="list-group-item list-group-item-action" th:each="activity : ${activities}">
+                        <div th:id="'eventBox' + ${activity.id}" draggable="true">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1" th:text="${activity.name}"></h5>
+                                <!--<h5 class="hidden" th:text="${activity.category}"></h5>-->
+                                <small class="text-muted" th:text="${activity.hours} + ' h'"></small>
+                            </div>
+                            <p class="mb-1" th:text="${activity.description}"></p>
+                            <small><a th:href="${activity.url}">Visit webpage</a></small>
                         </div>
-                    </ul>
+                    </div>
                 </div>
 
             </div>
