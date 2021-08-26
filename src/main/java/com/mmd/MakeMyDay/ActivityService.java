@@ -28,6 +28,11 @@ public class ActivityService {
         return activities;
     }
 
+    public List<Activity> findByPackageId(Long id) {
+        List<Activity> activities = activityRepository.findByPackages_Id(id);
+        return activities;
+    }
+
     public void saveActivity(Activity activity) {
         activityRepository.save(activity);
     }

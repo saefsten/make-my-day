@@ -40,7 +40,7 @@ public class MMDController {
 
     @GetMapping("/package/{id}")
     String pacAct(Model model, @PathVariable Long id) {
-        List<Activity> pacAct = (List<Activity>) activityService.findByPackages_Id(id);
+        List<Activity> pacAct = (List<Activity>) activityService.findByPackageId(id);
         model.addAttribute("package", pacAct);
         return "package/packageDetails"; //redirect to create my day, which in turn will display the create my day schedule
     }
@@ -78,11 +78,6 @@ public class MMDController {
         Activity activity = activityService.findActivityById(id);
         model.addAttribute("activity", activity);
         return "activity/activityDetails";
-    }
-
-    @GetMapping("/createMyDay")
-    String createMyDay(){
-        return "createMyDay/createMyDay";
     }
 
     @GetMapping("/user/account")
