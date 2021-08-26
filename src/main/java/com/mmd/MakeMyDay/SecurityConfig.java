@@ -35,7 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/init",
                         "/start",
                         "/register",
-                        "/logout",
                         "/activity/**"
                 ).permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
