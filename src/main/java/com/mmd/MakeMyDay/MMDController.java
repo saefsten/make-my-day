@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
@@ -12,6 +11,9 @@ import java.util.Set;
 
 @Controller
 public class MMDController {
+
+    @Autowired
+    PackageService packageService;
 
     @Autowired
     ActivityService activityService;
@@ -30,8 +32,17 @@ public class MMDController {
     }
 
     @GetMapping("/packages")
-    String packages(){
+    String packages(Model model){
+        List<Package> packages = packageService.findAllPackages();
+        model.addAttribute("packages", packages);
         return "package/packages";
+    }
+
+    @GetMapping("/package/{id}")
+    String pacAct(Model model, @PathVariable Long id) {
+        List<Activity> pacAct = (List<Activity>) activityService.findByPackages_Id(id);
+        model.addAttribute("package", pacAct);
+        return "package/packageDetails"; //redirect to create my day, which in turn will display the create my day schedule
     }
 
     @GetMapping("/activities")
@@ -64,21 +75,15 @@ public class MMDController {
 
     @GetMapping("/activity/{id}")
     String activity(Model model, @PathVariable Long id){
-//        Activity activity = (Activity) activityRepository.findById(id).orElse(null);
         Activity activity = activityService.findActivityById(id);
         model.addAttribute("activity", activity);
         return "activity/activityDetails";
     }
 
-/*
-    @PostMapping("/createMyDay")
-    String createMyDayPost(Model model, @RequestParam String category){
-        System.out.println(category);
-        List<Activity> activities = (List<Activity>) activityRepository.findByCategories_Category(category.toUpperCase());
-        model.addAttribute("activities", activities);
+    @GetMapping("/createMyDay")
+    String createMyDay(){
         return "createMyDay/createMyDay";
     }
-*/
 
     @GetMapping("/user/account")
     String account(HttpServletRequest request, Model model) {
