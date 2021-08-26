@@ -39,6 +39,18 @@
             </div>
             <div class="row event-row" th:each="hour : ${hours}">
                 <div class="col-md-1 time-stamp" th:text="${hour}">--:--</div>
+                <div th:each="activity, itr : ${activitiesInPackage}" th:if="${times[itr.index] == hour}" class="col event-section" th:classappend="(${activity.hours == 1} ? event-1h : '') + (${activity.hours == 2} ? event-2h : '') + (${activity.hours == 3} ? event-3h : '') + (${activity.hours == 4} ? event-4h : '') + (${activity.hours == 5} ? event-5h : '')" draggable="true" th:id="'timeStamp' + ${activity.id}">
+                    <div class="event-time">
+                        <div>
+                            <h4 th:text="${hour}"></h4>
+                        </div>
+                    </div>
+                    <div class="event-description">
+                        <button class="delete-btn" onclick="clickedDelete(this)">x</button>
+                        <strong th:text="${activity.name}">Activity</strong>
+                        <p></p>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3">
                 <div class="mb-3">

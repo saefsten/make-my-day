@@ -43,6 +43,7 @@ public class MMDController {
     String pacAct(Model model, @PathVariable Long id) {
         List<Activity> pacAct = (List<Activity>) activityService.findByPackageId(id);
         model.addAttribute("package", pacAct);
+        model.addAttribute("packageId", id);
         return "package/packageDetails"; //redirect to create my day, which in turn will display the create my day schedule
     }
 
