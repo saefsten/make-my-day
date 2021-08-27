@@ -36,7 +36,7 @@ public class CreateMyDayController {
     ActivityService activityService;
 
     @Autowired
-    PackageService packageService;
+    PackageRepository packageRepository;
 
     @GetMapping("/createMyDay")
     String createMyDay(Model model, @RequestParam(required = false) Long packageId) {
@@ -44,26 +44,14 @@ public class CreateMyDayController {
         model.addAttribute("activities", activities);
 
         if (packageId != null) {
-            model.addAttribute("activitiesInPackage", activityService.findByPackageId(packageId));
-            List<Activity> some = activityService.findByPackageId(packageId);
-            List<Package> packages = packageService.findAllPackages();
-            for (Package p : packages) {
-                if (Objects.equals(p.getId(), packageId)) {
-                    String timeString = p.getStartTimes();
-                    List<String> times = new ArrayList<>();
-                    while (timeString.length() > 0) {
-                        if (timeString.contains(";")) {
-                            times.add(timeString.substring(0, 5));
-                            timeString = timeString.substring(6);
-                        }
-                    }
-                    model.addAttribute("times", times);
-                    break;
-                }
+            Package pkg = packageRepository.findById(packageId).orElse(null);
+            if (pkg != null) {
+                model.addAttribute("times", getStartTimesFromPackage(pkg));
+                model.addAttribute("activitiesInPackage", activityService.findByPackageId(packageId));
             }
         }
 
-        String hours[] = {"07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
+        String[] hours = {"07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
         model.addAttribute("hours", hours);
 
         return "createMyDay/createMyDay";
@@ -92,5 +80,18 @@ public class CreateMyDayController {
         userDayRepository.save(userDay);
 
         return "redirect:/createMyDay";
+    }
+
+    public static List<String> getStartTimesFromPackage(Package pkg) {
+        String timeString = pkg.getStartTimes();
+        List<String> times = new ArrayList<>();
+        while (timeString.length() > 0) {
+            if (timeString.contains(";")) {
+                times.add(timeString.substring(0, 5));
+                timeString = timeString.substring(6);
+            }
+        }
+
+        return times;
     }
 }

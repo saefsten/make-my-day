@@ -8,12 +8,33 @@ body {
 }
 
 .btn-primary {
+    background-color: #2A76CO;
+    border-color: #2A76CO;
+}
+
+.btn-primary:hover {
+    background-color: #81C4F0;
+    border-color: #81C4F0;
+}
+
+.btn-light {
+    background-color: #81C4F0;
+    border-color: #81C4F0;
+}
+
+.btn-light:hover {
+    background-color: #88c7f0;
+    border-color: #88c7f0;
+}
+
+.btn-dark {
     background-color: #332539;
     border-color: #332539;
 }
 
-.btn-primary:hover {
-    background-color: #4b3554;
+.btn-dark:hover {
+    background-color: #493552;
+    border-color: #493552;
 }
 
 .pageHeader {
