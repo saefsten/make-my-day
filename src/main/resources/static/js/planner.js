@@ -172,6 +172,12 @@ function handleDrop(e) {
     function clickedSave() {
         const elements = document.querySelectorAll("div.event-section")
         if (elements.length === 0) {
+            alert("You need to have at least one activity in order to save")
+            return
+        }
+        const date = document.getElementById("date").value
+        if (document.getElementById("date").value === "") {
+            alert("Please select a date before saving.")
             return
         }
 

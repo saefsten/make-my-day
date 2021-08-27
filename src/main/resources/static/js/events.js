@@ -1,5 +1,4 @@
-const list = document.querySelector('#activity-list ul')
-const activities = list.getElementsByTagName('li');
+const activities = document.querySelectorAll("div.list-group-item")
 
 //show all events
 function allEvents(){
@@ -9,7 +8,7 @@ function allEvents(){
 }
 
 //filter activities
-const searchBar = document.forms['search-activities'].querySelector('input');
+const searchBar = document.getElementById("searchBar")
 searchBar.addEventListener('keyup', function(e){
     const term = e.target.value.toLowerCase();
     console.log("keyup")

@@ -13,6 +13,8 @@ public class Package {
     private String packageName;
     @Column(name="DESCRIPTION")
     private String description;
+    @Column(name="START_TIMES")
+    private String startTimes;
 
     @Column (name="PACKAGES_WITH_ACTIVITIES")
     @ManyToMany
@@ -57,5 +59,13 @@ public class Package {
 
     public void setActivities(Set<Activity> activities) {
         this.activities = activities;
+    }
+
+    public String getStartTimes() {
+        return startTimes;
+    }
+
+    public void setStartTimes(String startTimes) {
+        this.startTimes = startTimes;
     }
 }

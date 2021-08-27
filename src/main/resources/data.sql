@@ -59,9 +59,9 @@ INSERT INTO ACTIVITY_CATEGORIES VALUES (19L, 1)
 INSERT INTO ACTIVITY_CATEGORIES VALUES (20L, 2)
 INSERT INTO ACTIVITY_CATEGORIES VALUES (20L, 4)
 
-INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION) VALUES (1, 'Morning Package', 'Description for morning package... Cykla runt Stockholm, Gröna Lund')
-INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION) VALUES (2, 'Afternoon Package', 'Description for afternoon package... Fotbollsmatch, Nordiska Kompaniet')
-INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION) VALUES (3, 'Evening Package', 'Description for evening package... Bar, restaurant, club')
+INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION, START_TIMES) VALUES (1, 'Morning Package', 'Description for morning package... Cykla runt Stockholm, Gröna Lund', '08:00;13:00;')
+INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION, START_TIMES) VALUES (2, 'Afternoon Package', 'Description for afternoon package... Fotbollsmatch, Nordiska Kompaniet', '16:00;20:00;')
+INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION, START_TIMES) VALUES (3, 'Evening Package', 'Description for evening package... Bar, restaurant, club', '18:00;20:00;23:00;')
 
 INSERT INTO PACKAGE_ACTIVITIES VALUES (2, 1L)
 INSERT INTO PACKAGE_ACTIVITIES VALUES (1, 3L)
