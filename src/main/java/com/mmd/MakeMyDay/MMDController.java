@@ -29,7 +29,7 @@ public class MMDController {
     CategoryService categoryService;
 
     @GetMapping("/")
-    String index(){
+    String index() {
         return "start";
     }
 
@@ -39,7 +39,7 @@ public class MMDController {
     }
 
     @GetMapping("/packages")
-    String packages(Model model){
+    String packages(Model model) {
         List<Package> packages = packageService.findAllPackages();
         model.addAttribute("packages", packages);
         return "package/packages";
@@ -54,7 +54,7 @@ public class MMDController {
     }
 
     @GetMapping("/activities")
-    String activities(Model model, HttpServletRequest request){
+    String activities(Model model, HttpServletRequest request) {
         List<Activity> activities = activityService.findAllActivities();
         model.addAttribute("activities", activities);
         try {

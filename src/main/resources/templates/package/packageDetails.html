@@ -40,7 +40,7 @@
             </a>
         </article>
     </div>
-    <button type=button class="btn btn-primary"><a th:href="${'/createMyDay?packageId=' + packageId}">Schedule</a></button>
+    <a class="btn btn-light" th:href="${'/createMyDay?packageId=' + packageId}">Create this day</a>
 </div>
 
 <div th:insert="fragments/footer :: footer"></div>
