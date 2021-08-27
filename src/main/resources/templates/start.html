@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <title>Make my day</title>
+    <link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/start.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header.css">
@@ -19,11 +20,21 @@
 <header th:insert="fragments/header :: header"></header>
 
 <div class="banner">
-    <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="search for activity" aria-label="Search"
-               aria-describedby="search-addon" />
-        <button type="button" class="btn btn-light" id="search-button">search</button>
-    </div>
+        <div class='input-group'>
+<!--            <form id="search-activities" action="/activities" method="post" class="d-flex">-->
+<!--                <input class="form-control me-2" type="text" placeholder="Search">-->
+<!--                <button type="button" class="btn btn-primary">-->
+<!--                    <span class="dashicons dashicons-search"></span>-->
+<!--                </button>-->
+<!--            </form>-->
+
+            <input class='form-control' type='text' name='search' placeholder='Search for activity'/>
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-primary">
+               <span class="dashicons dashicons-search"></span>
+              </button>
+            </span>
+        </div>
 </div>
 
 <div class="container" id="recommended">
@@ -31,7 +42,7 @@
         <div class="recommendations-title">Recommended activities</div>
         <div class="col-sm-3">
             <div class="card bg-light mb-3">
-                <img src="/img/card-img-food.jpg" class="card-img" alt="Food">
+                <img src="/img/7.jpg" class="card-img" alt="Food">
                 <div class="card-img-overlay">
                     <p class="card-text">Eat your way through Stockholm<br>Food tour</p>
                 </div>
@@ -40,7 +51,7 @@
 
         <div class="col-sm-3">
             <div class="card bg-light mb-3">
-                <img src="/img/card-img-bicycle.jpg" class="card-img" alt="Bicycle ride">
+                <img src="/img/6.jpg" class="card-img" alt="Bicycle ride">
                 <div class="card-img-overlay">
                     <p class="card-text">Get some wheels and explore Stockholm by bike<br>Bike ride</p>
                 </div>
@@ -49,7 +60,7 @@
 
         <div class="col-sm-3">
             <div class="card bg-light mb-3">
-                <img src="/img/card-img-gronalund.jpg" class="card-img" alt="Gröna Lund amusement park">
+                <img src="/img/3.jpg" class="card-img" alt="Gröna Lund amusement park">
                 <div class="card-img-overlay">
                     <p class="card-text">Visit Gröna Lund to get your adrenaline pumping<br>Amusement park</p>
                 </div>
@@ -65,8 +76,6 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-
 
 
 <!--            <div class="card">-->
