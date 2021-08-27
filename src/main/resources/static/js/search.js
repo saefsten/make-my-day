@@ -1,15 +1,15 @@
-const activities = document.querySelectorAll("div.list-group-item")
+const activities = document.querySelectorAll("div.lgi")
 
-//show all events
-function allEvents(){
-    Array.from(activities).forEach((activity) => {
-        activity.style.display = 'block';
-    })
-}
-
-//filter activities
 const searchBar = document.getElementById("searchBar")
 searchBar.addEventListener('keyup', function(e){
+    if (searchBar.value == "") {
+        Array.from(activities).forEach((activity) => {
+            activity.style.display = 'none';
+        })
+        return;
+    } else {
+        document.getElementById("lgi-id").classList.remove("hidden");
+    }
     const term = e.target.value.toLowerCase();
     Array.from(activities).forEach((activity) => {
         const title = activity.firstElementChild.textContent;

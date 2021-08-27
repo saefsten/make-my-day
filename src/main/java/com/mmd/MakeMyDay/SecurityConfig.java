@@ -28,14 +28,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/h2/**",
                         "/packages",
                         "/package/**",
-                        "/createMyDay",
+                        "/activities",
                         "/img/**",
                         "/css/**",
                         "/js/**",
                         "/init",
                         "/start",
                         "/register",
-                        "/activities",
                         "/activity/**"
                 ).permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")

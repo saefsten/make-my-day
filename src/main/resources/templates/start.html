@@ -23,12 +23,21 @@
 <div class="banner">
     <div class='input-group'>
         <div class="d-flex">
-            <input class="form-control" id="searchBar" type="text" placeholder="Search">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-primary">
-                    <span class="dashicons dashicons-search"></span>
-                </button>
-            </span>
+            <div>
+                <input class="form-control search-text" id="searchBar" type="text" placeholder="Search">
+                <!-- <span class="input-group-btn">
+                     <button type="button" class="btn btn-primary">
+                         <span class="dashicons dashicons-search"></span>
+                     </button>
+                 </span> -->
+
+                <div id="activity-list">
+                    <div class="lgi hidden" id="lgi-id" th:each="activity : ${activities}">
+                        <a th:href="'/activity/' + ${activity.id}" class="dropdown-item" th:text="${activity.name}"></a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
@@ -70,5 +79,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
+<script th:src="'js/search.js'" src="../../static/js/search.js"></script>
+
 </body>
 </html>

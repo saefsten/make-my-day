@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.*;
 
 @Controller
@@ -24,25 +25,28 @@ public class MMDController {
     UserService userService;
 
     @Autowired
+    UserDayService userDayService;
+
+    @Autowired
     CategoryService categoryService;
 
     @GetMapping("/")
-    String index() {
+    String index(Model model){
+        List <Activity> activities = activityService.findAllActivities();
+        model.addAttribute("activities", activities);
         return "start";
     }
 
-    @GetMapping("/admin")
-    String admin(){
-        return "admin";
-    }
 
     @GetMapping("/start")
-    String start(){
+    String start(Model model){
+        List <Activity> activities = activityService.findAllActivities();
+        model.addAttribute("activities", activities);
         return "start";
     }
 
     @GetMapping("/packages")
-    String packages(Model model) {
+    String packages(Model model){
         List<Package> packages = packageService.findAllPackages();
         model.addAttribute("packages", packages);
         return "package/packages";
@@ -59,18 +63,18 @@ public class MMDController {
     }
 
     @GetMapping("/activities")
-    String activities(Model model, HttpServletRequest request) {
+    String activities(Model model, HttpServletRequest request){
         List<Activity> activities = activityService.findAllActivities();
         model.addAttribute("activities", activities);
         try {
-            User user = userService.findUSerByUsername(currentUserName(request));
+            User user = userService.findUserByUsername(currentUserName(request));
         } catch (NullPointerException ne) {
             ne.getStackTrace();
             List<Long> userFavouritesActivityId = new ArrayList<>();
             model.addAttribute("userFavourites", userFavouritesActivityId);
             return "activity/activities";
         }
-        User user = userService.findUSerByUsername(currentUserName(request));
+        User user = userService.findUserByUsername(currentUserName(request));
         List<Long> userFavouritesActivityId = getUserFavouritesId(user);
         model.addAttribute("userFavourites", userFavouritesActivityId);
         return "activity/activities";
@@ -138,22 +142,50 @@ public class MMDController {
 //        List<Activity> activities = activityService.findAllActivities();
 //        model.addAttribute("activities", activities);
         try {
-            User user = userService.findUSerByUsername(currentUserName(request));
+            User user = userService.findUserByUsername(currentUserName(request));
         } catch (NullPointerException ne) {
             ne.getStackTrace();
             List<Long> userFavouritesActivityId = new ArrayList<>();
             model.addAttribute("userFavourites", userFavouritesActivityId);
             return "activity/activityDetails";
         }
-        User user = userService.findUSerByUsername(currentUserName(request));
+        User user = userService.findUserByUsername(currentUserName(request));
         List<Long> userFavouritesActivityId = getUserFavouritesId(user);
         model.addAttribute("userFavourites", userFavouritesActivityId);
         return "activity/activityDetails";
     }
 
+    @GetMapping("/mydays")
+    String myDays(HttpServletRequest request, Model model) {
+        User user = userService.findUserByUsername(currentUserName(request));
+        List <UserDay> userDays = userDayService.findUserDayByUser(user);
+        List <UserDay> pastUserDays = new ArrayList<>();
+        List <UserDay> comingUserDays = new ArrayList<>();
+        List <UserDay> ongoingUserDays = new ArrayList<>();
+
+        LocalDate currentDate = LocalDate.now();
+        int dateDiff;
+
+        for (UserDay userDay : userDays) {
+            dateDiff = currentDate.compareTo(userDay.getDate());
+            if (dateDiff > 0){
+                pastUserDays.add(userDay);
+            } else if (dateDiff < 0){
+                comingUserDays.add(userDay);
+            } else {
+                ongoingUserDays.add(userDay);
+            }
+        }
+        model.addAttribute("pastUserDays", pastUserDays);
+        model.addAttribute("comingUserDays", comingUserDays);
+        model.addAttribute("ongoingUserDays", ongoingUserDays);
+
+        return "user/mydays";
+    }
+
     @GetMapping("/user/account")
     String account(HttpServletRequest request, Model model) {
-        User user = userService.findUSerByUsername(currentUserName(request));
+        User user = userService.findUserByUsername(currentUserName(request));
         Set<Activity> userFavourites = user.getUserFavouriteActivities();
         model.addAttribute("favourites", userFavourites);
         List<Long> userFavouritesActivityId = getUserFavouritesId(user);
@@ -164,7 +196,7 @@ public class MMDController {
     @GetMapping("/user/addfavourite")
     String addFavourite(HttpServletRequest request, @RequestParam Long id, @RequestParam(required = false) String previousURL) {
         Activity activity = activityService.findActivityById(id);
-        User user = userService.findUSerByUsername(currentUserName(request));
+        User user = userService.findUserByUsername(currentUserName(request));
         Set<Activity> userFavActsId = user.getUserFavouriteActivities();
         if (userFavActsId.contains(activity)) {
             user.removeFavouriteActivity(activity);
@@ -195,5 +227,7 @@ public class MMDController {
         }
         return userFavouritesActivityId;
     }
+
+
 
 }
