@@ -24,6 +24,16 @@ public class Category {
         this.activities = activities;
     }
 
+    public void removeActivity(Activity activity) {
+        activities.remove(activity);
+        activity.getCategories().remove(this);
+    }
+
+    public void addActivity(Activity activity) {
+        activities.add(activity);
+        activity.getCategories().add(this);
+    }
+
     public int getId() {
         return id;
     }

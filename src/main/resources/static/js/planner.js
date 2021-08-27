@@ -117,6 +117,9 @@ function handleDrop(e) {
             case 4:
                 newDraggable.classList.add("event-4h")
                 break
+            case 5:
+                newDraggable.classList.add("event-5h")
+                break
             default:
                 newDraggable.classList.add("event-1h")
                 break
@@ -169,18 +172,25 @@ function handleDrop(e) {
     function clickedSave() {
         const elements = document.querySelectorAll("div.event-section")
         if (elements.length === 0) {
+            alert("You need to have at least one activity in order to save")
             return
         }
-        let html = ""
+        const date = document.getElementById("date").value
+        if (document.getElementById("date").value === "") {
+            alert("Please select a date before saving.")
+            return
+        }
 
         for (element of elements) {
-            console.log(element)
             const time = element.querySelector("h4").innerText
             const id = element.id.substring(9)
 
-            html += `<input type="hidden" name="events" value="${time}-${id}">`
+            let el = document.createElement("input")
+            el.setAttribute('type', 'hidden')
+            el.setAttribute('name', 'events')
+            el.setAttribute('value', `${time}-${id}`)
+            document.getElementById("eventForm").appendChild(el)
         }
 
-        document.getElementById("eventForm").innerHTML += html
         document.getElementById("eventForm").submit()
     }

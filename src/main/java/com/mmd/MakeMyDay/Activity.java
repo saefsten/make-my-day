@@ -62,6 +62,16 @@ public class Activity {
         user.getUserFavouriteActivities().remove(this);
     }
 
+    public void addCategory(Category category) {
+        categories.add(category);
+        category.getActivities().add(this);
+    }
+
+    public void removeCategory(Category category) {
+        categories.remove(category);
+        category.getActivities().remove(this);
+    }
+
     public Long getId() {
         return id;
     }
