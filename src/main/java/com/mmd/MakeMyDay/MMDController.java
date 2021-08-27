@@ -57,6 +57,14 @@ public class MMDController {
     String activities(Model model, HttpServletRequest request){
         List<Activity> activities = activityService.findAllActivities();
         model.addAttribute("activities", activities);
+        try {
+            User user = userService.findUSerByUsername(currentUserName(request));
+        } catch (NullPointerException ne) {
+            ne.getStackTrace();
+            List<Long> userFavouritesActivityId = new ArrayList<>();
+            model.addAttribute("userFavourites", userFavouritesActivityId);
+            return "activity/activities";
+        }
         User user = userService.findUSerByUsername(currentUserName(request));
         List<Long> userFavouritesActivityId = getUserFavouritesId(user);
         model.addAttribute("userFavourites", userFavouritesActivityId);
