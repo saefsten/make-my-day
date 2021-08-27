@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -29,7 +29,9 @@
         <p th:text="${#numbers.formatDecimal(activity.price,1,2)} + ' kr'"></p>
         <p th:text="${activity.url}"></p>
         <br>
+        <div sec:authorize="isAuthenticated()">
         <a th:href="'/user/addfavourite?id=' + ${activity.id}">Add to favourites</a>
+        </div>
     </div>
 </div>
 </div>

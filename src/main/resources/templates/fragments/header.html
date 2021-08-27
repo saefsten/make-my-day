@@ -39,24 +39,27 @@
                 </ul>
                 <div class="d-flex">
                     <div sec:authorize="isAuthenticated()">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img id="iconBtn" src="/img/loginicon.png" width="30" height="30">
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                        <ul class="navbar-nav ml-auto iconmargin">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="/img/loginicon.png" width="30" height="30">
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/user/account">My saved activities</a></li>
+                                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
-                    <a class="btn login" href="/login" role="button" aria-expanded="false" id="loginBtn">
-                        Login
-                    </a>
-                    <a class="btn register" href="/register" role="button" aria-expanded="false" id="registerBtn">
-                        Register
-                    </a>
+                    <div sec:authorize="isAnonymous()">
+                        <a class="btn login" href="/login" role="button" aria-expanded="false">
+                            Login
+                        </a>
+                        <a class="btn register" href="/register" role="button" aria-expanded="false">
+                            Register
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

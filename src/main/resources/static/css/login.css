@@ -22,19 +22,6 @@ input[type=password]{
   background: #d6d4d4;
 }
 
-.registerbtn {
-  background-color: #C0D0DE;
-  color: #002660 !important;
-  padding: 16px 20px;
-  margin: 5px;
-  border: none;
-  cursor: pointer;
-
-}
-
-.registerbtn:hover {
-  opacity:1;
-}
 
 
 
