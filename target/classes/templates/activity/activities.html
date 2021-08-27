@@ -33,7 +33,7 @@
                     <div class="viewandheart">
                         <a th:href="${'/activity/' + activity.id}" button type="submit" class="btn register registerbtn">View</a>
                         <div class="flexbox" sec:authorize="isAuthenticated()">
-                            <a th:href="'/user/addfavourite?id=' + ${activity.id}">
+                            <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=activities'">
                                 <div class="fav-btn">
                                     <div th:if="${userFavourites.contains(activity.id)}">
                                         <span  class="favmesaved dashicons dashicons-heart"></span>
@@ -45,7 +45,7 @@
                             </a>
                         </div>
                     </div>
-                    <a th:href="'activity/update?id=' + ${activity.id}">Edit</a>
+                    <a th:href="'updateActivity?id=' + ${activity.id}" sec:authorize="hasAuthority('ADMIN')" button type="submit" class="btn register registerbtn">Edit</a>
                 </div>
             </div>
         </article>

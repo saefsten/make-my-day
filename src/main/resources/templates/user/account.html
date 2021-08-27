@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
@@ -36,7 +37,7 @@
                     <div class="viewandheart">
                         <a th:href="${'/activity/' + activity.id}" button type="submit" class="btn register registerbtn">View</a>
                         <div class="flexbox">
-                            <a th:href="'/user/addfavourite?id=' + ${activity.id}">
+                            <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=user/account'">
                                 <div class="fav-btn">
                                     <div th:if="${userFavourites.contains(activity.id)}">
                                         <span  class="favmesaved dashicons dashicons-heart"></span>

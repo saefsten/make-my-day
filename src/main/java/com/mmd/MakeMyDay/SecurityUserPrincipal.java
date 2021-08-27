@@ -4,9 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class SecurityUserPrincipal implements UserDetails {
     private User user;
@@ -17,7 +15,11 @@ public class SecurityUserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("User"));
+        Set<Role> roleSet = user.getRoles();
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for (Role role : roleSet) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
         return authorities;
     }
 

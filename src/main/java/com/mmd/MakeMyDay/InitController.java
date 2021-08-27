@@ -2,13 +2,22 @@ package com.mmd.MakeMyDay;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.Set;
 
 @RestController
 public class InitController {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    ActivityService activityService;
 
     @Autowired
     PasswordEncoder encoder;
@@ -25,4 +34,6 @@ public class InitController {
 
         return "ok";
     }
+
+
 }

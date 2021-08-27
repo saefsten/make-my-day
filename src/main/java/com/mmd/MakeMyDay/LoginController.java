@@ -23,6 +23,9 @@ public class LoginController {
     UserRepository userRepository;
 
     @Autowired
+    RoleRepository roleRepository;
+
+    @Autowired
     PasswordEncoder encoder;
 
     @GetMapping("/login")
@@ -42,7 +45,11 @@ public class LoginController {
        model.addAttribute("username", username);
        if(newUser == null){
            User user = new User(encoder.encode(password), firstName, lastName, username);
+           Role role = roleRepository.findById(1L).get();
+           user.addRole(role);
+           role.addUser(user);
            userRepository.save(user);
+           roleRepository.save(role);
            return "start";
        }
         else{

@@ -19,6 +19,9 @@ public class User {
             cascade = CascadeType.PERSIST)
     private Set<Activity> userFavouriteActivities = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles = new HashSet<>();
+
     public User() {
     }
 
@@ -86,5 +89,17 @@ public class User {
 
     public void setUserFavouriteActivities(Set<Activity> userFavouriteActivities) {
         this.userFavouriteActivities = userFavouriteActivities;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Role role) {
+        this.roles.add(role);
     }
 }

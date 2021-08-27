@@ -28,7 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/h2/**",
                         "/packages",
                         "/package/**",
-                        "/activities",
                         "/createMyDay",
                         "/img/**",
                         "/css/**",
@@ -36,9 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/init",
                         "/start",
                         "/register",
+                        "/activities",
                         "/activity/**"
                 ).permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/admin", "/createActivity", "/updateActivity").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .logout()

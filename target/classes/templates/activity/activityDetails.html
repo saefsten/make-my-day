@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
@@ -29,8 +30,24 @@
         <p th:text="${#numbers.formatDecimal(activity.price,1,2)} + ' kr'"></p>
         <p th:text="${activity.url}"></p>
         <br>
-        <a th:href="'/user/addfavourite?id=' + ${activity.id}">Add to favourites</a>
     </div>
+    <p></p>
+    <div class="flexbox" sec:authorize="isAuthenticated()">
+        <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=activity/' + ${activity.id}">
+            <div class="fav-btn">
+                <div th:if="${userFavourites.contains(activity.id)}">
+                    <span  class="favmesaved dashicons dashicons-heart"></span>
+                </div>
+                <div th:if="${!userFavourites.contains(activity.id)}">
+                    <span  class="favme dashicons dashicons-heart"></span>
+                </div>
+            </div>
+        </a>
+    </div>
+
+
+    <a th:href="'updateActivity?id=' + ${activity.id}" sec:authorize="hasAuthority('ADMIN')" button type="submit" class="btn register registerbtn">Edit</a>
+
 </div>
 </div>
 <div th:insert="fragments/footer :: footer"></div>
