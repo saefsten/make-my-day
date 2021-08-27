@@ -22,37 +22,33 @@
 <div class="container" style="margin-top: 10px">
     <h1>Activities</h1>
 
-    <div class="activitiesPage">
-        <div class="activities">
-            <article th:each="activity: ${activities}">
-                <div class="card" style="width: 18rem;">
-                    <img th:src="${'/img/' + activity.id + '.jpg'}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${activity.name}"></h5>
-                        <p class="card-text" th:text="${activity.description}"></p>
-                        <div class="viewandheart">
-                            <a th:href="${'/activity/' + activity.id}" button type="submit"
-                               class="btn btn-light">View</a>
-                            <div class="flexbox" sec:authorize="isAuthenticated()">
-                                <a th:href="'/user/addfavourite?id=' + ${activity.id}">
-                                    <div class="fav-btn">
-                                        <div th:if="${userFavourites.contains(activity.id)}">
-                                            <span class="favmesaved dashicons dashicons-heart"></span>
-                                        </div>
-                                        <div th:if="${!userFavourites.contains(activity.id)}">
-                                            <span class="favme dashicons dashicons-heart"></span>
-                                        </div>
+<div class="activitiesPage">
+    <div class="activities">
+        <article th:each="activity: ${activities}">
+            <div class="card" style="width: 18rem;">
+                <img th:src="${'/img/' + activity.id + '.jpg'}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${activity.name}"></h5>
+                    <p class="card-text" th:text="${activity.description}"></p>
+                    <div class="viewandheart">
+                        <a th:href="${'/activity/' + activity.id}" button type="submit" class="btn register registerbtn">View</a>
+                        <div class="flexbox" sec:authorize="isAuthenticated()">
+                            <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=activities'">
+                                <div class="fav-btn">
+                                    <div th:if="${userFavourites.contains(activity.id)}">
+                                        <span  class="favmesaved dashicons dashicons-heart"></span>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div sec:authorize="isAuthenticated()">
-                            <a th:href="'activity/update?id=' + ${activity.id}" button type="submit"
-                               class="btn btn-light">Edit</a>
+                                    <div th:if="${!userFavourites.contains(activity.id)}">
+                                        <span  class="favme dashicons dashicons-heart"></span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
+                    <a th:href="'updateActivity?id=' + ${activity.id}" sec:authorize="hasAuthority('ADMIN')" button type="submit" class="btn register registerbtn">Edit</a>
                 </div>
-            </article>
+            </div>
+        </article>
         </div>
     </div>
 </div>

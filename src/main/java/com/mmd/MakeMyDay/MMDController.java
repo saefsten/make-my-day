@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.availability.AvailabilityChangeEvent;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,11 @@ public class MMDController {
     @GetMapping("/")
     String index() {
         return "start";
+    }
+
+    @GetMapping("/admin")
+    String admin(){
+        return "admin";
     }
 
     @GetMapping("/start")
@@ -70,7 +76,7 @@ public class MMDController {
         return "activity/activities";
     }
 
-    @GetMapping("/activity/create")
+    @GetMapping("/createActivity")
     String createActivity(Model model){
         model.addAttribute("activity", new Activity());
         List<String> catIds = new ArrayList<>();
@@ -78,7 +84,7 @@ public class MMDController {
         return "activity/create";
     }
 
-    @GetMapping("/activity/update")
+    @GetMapping("/updateActivity")
     String updateActivity(Model model, @RequestParam Long id){
         Activity activity = activityService.findActivityById(id);
         List<Category> categories = categoryService.findAllCategoriesByActivity(id);
@@ -91,7 +97,7 @@ public class MMDController {
         return "activity/create";
     }
 
-    @PostMapping("/activity/create")
+    @PostMapping("/createActivity")
     String saveActivity(Model model, @ModelAttribute Activity activity, @RequestParam("category") List<Integer> categories) {
         Set<Category> currentCategoriesInActivity = activity.getCategories();
         Set<Category> categoriesInActivity = new HashSet<>();
@@ -125,9 +131,23 @@ public class MMDController {
     }
 
     @GetMapping("/activity/{id}")
-    String activity(Model model, @PathVariable Long id){
+    String activity(Model model, HttpServletRequest request, @PathVariable Long id){
         Activity activity = activityService.findActivityById(id);
         model.addAttribute("activity", activity);
+
+//        List<Activity> activities = activityService.findAllActivities();
+//        model.addAttribute("activities", activities);
+        try {
+            User user = userService.findUSerByUsername(currentUserName(request));
+        } catch (NullPointerException ne) {
+            ne.getStackTrace();
+            List<Long> userFavouritesActivityId = new ArrayList<>();
+            model.addAttribute("userFavourites", userFavouritesActivityId);
+            return "activity/activityDetails";
+        }
+        User user = userService.findUSerByUsername(currentUserName(request));
+        List<Long> userFavouritesActivityId = getUserFavouritesId(user);
+        model.addAttribute("userFavourites", userFavouritesActivityId);
         return "activity/activityDetails";
     }
 
@@ -142,7 +162,7 @@ public class MMDController {
     }
 
     @GetMapping("/user/addfavourite")
-    String addFavourite(HttpServletRequest request, @RequestParam Long id) {
+    String addFavourite(HttpServletRequest request, @RequestParam Long id, @RequestParam(required = false) String previousURL) {
         Activity activity = activityService.findActivityById(id);
         User user = userService.findUSerByUsername(currentUserName(request));
         Set<Activity> userFavActsId = user.getUserFavouriteActivities();
@@ -155,7 +175,9 @@ public class MMDController {
         }
         userService.saveUser(user);
         activityService.saveActivity(activity);
-        return "redirect:/activities";
+//        return "redirect:/activities";
+        return "redirect:/"+previousURL;
+
     }
 
     @RequestMapping(value = "/username", method = RequestMethod.GET)
