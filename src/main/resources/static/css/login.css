@@ -1,7 +1,5 @@
 * {box-sizing: border-box}
-#pageHeight{
-    height: 80vh;
-}
+
 
 input[type=text] {
   width: 100%;

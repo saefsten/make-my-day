@@ -31,7 +31,7 @@
                     <h5 class="card-title" th:text="${activity.name}"></h5>
                     <p class="card-text" th:text="${activity.description}"></p>
                     <div class="viewandheart">
-                        <a th:href="${'/activity/' + activity.id}" button type="submit" class="btn register registerbtn">View</a>
+                        <a th:href="${'/activity/' + activity.id}" button type="submit" class="btn btn-light">View</a>
                         <div class="flexbox" sec:authorize="isAuthenticated()">
                             <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=activities'">
                                 <div class="fav-btn">
@@ -49,6 +49,7 @@
                 </div>
             </div>
         </article>
+        </div>
     </div>
 </div>
 <div th:insert="fragments/footer :: footer"></div>

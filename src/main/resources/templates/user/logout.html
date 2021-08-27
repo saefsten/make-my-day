@@ -19,15 +19,13 @@
 
 <body>
 <header th:insert="fragments/header :: header"></header>
-<div class="container" style="margin-top: 10px">
+<div class="container" id="pageHeight" style="margin-top: 10px">
 
 <h3>You have successfully signed out from Make My Day</h3>
-  <br>
-  <ul>
-    <h5><li><a href="/start">Home</a></li></h5>
-    <h5><li><a href="/user/login">Login again</a></li></h5>
-  </ul>
-
+<div style="display: flex;">
+  <a style="margin: 20px;" href="/start" button type="submit" class="btn btn-light">Home</a>
+  <a style="margin: 20px;" href="/user/login" button type="submit" class="btn btn-light">Log in again</a>
+</div>
 </div>
 <div th:insert="fragments/footer :: footer"></div>
 
