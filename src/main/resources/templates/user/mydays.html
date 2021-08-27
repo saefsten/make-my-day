@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <title>Make my day</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/header.css">
-  <link rel="stylesheet" href="/css/footer.css">
-  <link rel="icon" href="/img/LOGO-R.png">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Make my day</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="icon" href="/img/LOGO-R.png">
 </head>
 <body>
 <header th:insert="fragments/header :: header"></header>
@@ -20,8 +20,36 @@
 
 <div class="activitiesPage">
 
+    <div th:if="${ongoingUserDays.size()>0}">
+        <h2>Today</h2>
+        <div th:each="ongoingUserDay : ${ongoingUserDays}">
+            <a th:href="#" th:text="${ongoingUserDay.getDate()}"></a>
+        </div>
+    </div>
 
+    <h2>Upcoming days</h2>
+    <div th:if="${comingUserDays.size()>0}">
+        <div th:each="comingUserDay : ${comingUserDays}">
+            <a th:href="#" th:text="${comingUserDay.getDate()}"></a>
+        </div>
+    </div>
+    <div th:unless="${comingUserDays.size()>0}">
+        <div>
+            <h6>You have no upcoming days saved</h6>
+        </div>
+    </div>
 
+    <h2>Past days</h2>
+    <div th:if="${pastUserDays.size()>0}">
+        <div th:each="pastUserDay : ${pastUserDays}">
+            <a th:href="#" th:text="${pastUserDay.getDate()}"></a>
+        </div>
+    </div>
+    <div th:unless="${pastUserDays.size()>0}">
+        <div>
+            <h6>You have no previous days saved</h6>
+        </div>
+    </div>
 
 </div>
 

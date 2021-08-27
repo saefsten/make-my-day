@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
+
     @Autowired
     UserRepository userRepository;
 
@@ -13,7 +14,7 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
-    public User findUSerByUsername(String username) {
+    public User findUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
