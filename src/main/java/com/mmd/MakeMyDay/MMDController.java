@@ -8,10 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class MMDController {
@@ -48,8 +45,10 @@ public class MMDController {
     @GetMapping("/package/{id}")
     String pacAct(Model model, @PathVariable Long id) {
         List<Activity> pacAct = (List<Activity>) activityService.findByPackageId(id);
+        Package pack = packageService.findPackageById(id);
         model.addAttribute("package", pacAct);
         model.addAttribute("packageId", id);
+        model.addAttribute("pack", pack);
         return "package/packageDetails"; //redirect to create my day, which in turn will display the create my day schedule
     }
 

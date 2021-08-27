@@ -21,27 +21,22 @@
 <header th:insert="fragments/header :: header"></header>
 
 <div class="banner">
-        <div class='input-group'>
-<!--            <form id="search-activities" action="/activities" method="post" class="d-flex">-->
-<!--                <input class="form-control me-2" type="text" placeholder="Search">-->
-<!--                <button type="button" class="btn btn-primary">-->
-<!--                    <span class="dashicons dashicons-search"></span>-->
-<!--                </button>-->
-<!--            </form>-->
-
-            <input class='form-control' type='text' name='search' placeholder='Search for activity'/>
+    <div class='input-group'>
+        <div class="d-flex">
+            <input class="form-control" id="searchBar" type="text" placeholder="Search">
             <span class="input-group-btn">
-              <button type="button" class="btn btn-primary">
-               <span class="dashicons dashicons-search"></span>
-              </button>
+                <button type="button" class="btn btn-primary">
+                    <span class="dashicons dashicons-search"></span>
+                </button>
             </span>
         </div>
+    </div>
 </div>
 
 <div class="container" id="recommended">
     <div class="row">
         <div class="recommendations-title">Recommended activities</div>
-        <div class="col-sm-3">
+        <div class="col-sm-3 text-truncate">
             <div class="card bg-light mb-3">
                 <img src="/img/7.jpg" class="card-img" alt="Food">
                 <div class="card-img-overlay">
@@ -51,7 +46,7 @@
         </div>
 
         <div class="col-sm-3">
-            <div class="card bg-light mb-3">
+            <div class="card bg-light mb-3 text-truncate">
                 <img src="/img/6.jpg" class="card-img" alt="Bicycle ride">
                 <div class="card-img-overlay">
                     <p class="card-text">Get some wheels and explore Stockholm by bike<br>Bike ride</p>
@@ -60,7 +55,7 @@
         </div>
 
         <div class="col-sm-3">
-            <div class="card bg-light mb-3">
+            <div class="card bg-light mb-3 text-truncate">
                 <img src="/img/3.jpg" class="card-img" alt="Gröna Lund amusement park">
                 <div class="card-img-overlay">
                     <p class="card-text">Visit Gröna Lund to get your adrenaline pumping<br>Amusement park</p>
@@ -77,36 +72,3 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-<!--            <div class="card">-->
-<!--                <img src="../static/img/card-img-food" class="card-img-top" alt="Food">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Recommended #1</h5>-->
-<!--                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--                    <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-sm-3">-->
-<!--            <div class="card">-->
-<!--                <img src="../static/img/card-img-bicycle" class="card-img-top" alt="Bicycle ride">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Recommended #2</h5>-->
-<!--                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--                    <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-sm-3">-->
-<!--            <div class="card">-->
-<!--                <img src="../static/img/card-img-gronalund" class="card-img-top" alt="Gröna Lund amusement park">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Recommended #3</h5>-->
-<!--                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--                    <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->

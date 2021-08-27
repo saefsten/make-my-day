@@ -41,47 +41,13 @@ body #startPage{
 }
 
 .card-text {
-    font-size: 1vw;
     color: #F9F4F1;
     background-color: rgba(99, 99, 99, 0.5);
 }
 
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-    .recommendations-title   {
-    font-size: 28px;
-    }
-  }
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-    .recommendations-title  {
-    font-size: 29px;
-    }
-  }
-
-// Large devices (desktops, 992px and up) {
-    .recommendations-title   {
-    font-size: 30px;
-    }
-  }
-
-@media (min-width: 992px) {
-    .recommendations-title  {
-    font-size: 31px;
-    }
-  }
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-    .recommendations-title  {
-    font-size: 32px;
-    }
-  }
-
 .recommendations-title {
     text-align: center;
+    font-size: 35px;
 }
 
 .row {

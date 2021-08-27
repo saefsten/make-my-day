@@ -15,6 +15,8 @@ public class Package {
     private String description;
     @Column(name="START_TIMES")
     private String startTimes;
+    @Column(name="LONG_DESCRIPTION")
+    private String longDescription;
 
     @Column (name="PACKAGES_WITH_ACTIVITIES")
     @ManyToMany
@@ -23,10 +25,11 @@ public class Package {
     public Package() {
     }
 
-    public Package(String packageName, String description, Set<Activity> activities) {
+    public Package(String packageName, String description, Set<Activity> activities, String longDescription) {
         this.packageName = packageName;
         this.description = description;
         this.activities = activities;
+        this.longDescription = longDescription;
     }
 
     public Long getId() {
@@ -67,5 +70,13 @@ public class Package {
 
     public void setStartTimes(String startTimes) {
         this.startTimes = startTimes;
+    }
+
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
     }
 }

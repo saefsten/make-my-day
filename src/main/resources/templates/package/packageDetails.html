@@ -21,11 +21,8 @@
 <header th:insert="fragments/header :: header"></header>
 
 <div class="container" id="packageDetailsPage">
-    <h1 class="pageHeader">Package Information</h1> <!--add th:ref to packagename-->
-    <div class="packageDescription">I'm baby succulents fashion axe messenger bag, tilde biodiesel tumblr taiyaki
-        hammock. Pour-over franzen pork belly forage sartorial asymmetrical raclette scenester XOXO gastropub mlkshk air
-        plant copper mug thundercats. Shoreditch deep v cliche lo-fi. Tbh try-hard meggings kale chips enamel pin
-        selvage mumblecore, swag 3 wolf moon truffaut snackwave vice polaroid gastropub.
+    <h1 class="pageHeader" th:text="${pack.packageName}"></h1>
+    <div class="packageDescription" th:text="${pack.longDescription}">
     </div> <!--add th:ref to package description-->
     <div class="packages">
         <article th:each="activity: ${package}">
