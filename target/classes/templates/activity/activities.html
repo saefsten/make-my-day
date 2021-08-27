@@ -32,7 +32,7 @@
                         <p class="card-text" th:text="${activity.description}"></p>
                         <div class="viewandheart">
                             <a th:href="${'/activity/' + activity.id}" button type="submit"
-                               class="btn register registerbtn">View</a>
+                               class="btn btn-light">View</a>
                             <div class="flexbox" sec:authorize="isAuthenticated()">
                                 <a th:href="'/user/addfavourite?id=' + ${activity.id}">
                                     <div class="fav-btn">
@@ -48,7 +48,7 @@
                         </div>
                         <div sec:authorize="isAuthenticated()">
                             <a th:href="'activity/update?id=' + ${activity.id}" button type="submit"
-                               class="btn register registerbtn">Edit</a>
+                               class="btn btn-light">Edit</a>
                         </div>
                     </div>
                 </div>
