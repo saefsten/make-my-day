@@ -33,12 +33,16 @@ public class MMDController {
     CategoryService categoryService;
 
     @GetMapping("/")
-    String index(){
+    String index(Model model){
+        List <Activity> activities = activityService.findAllActivities();
+        model.addAttribute("activities", activities);
         return "start";
     }
 
     @GetMapping("/start")
-    String start(){
+    String start(Model model){
+        List <Activity> activities = activityService.findAllActivities();
+        model.addAttribute("activities", activities);
         return "start";
     }
 

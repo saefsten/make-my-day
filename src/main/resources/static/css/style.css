@@ -4,6 +4,7 @@
 
 body {
     background-color: #F9F4F1;
+    height: 100vh;
 }
 
 .btn-primary {
@@ -14,8 +15,17 @@ body {
 .btn-primary:hover {
     background-color: #4b3554;
 }
+
 .pageHeader {
     text-align: center;
     margin-top: 40px;
     margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+a {
+    text-decoration: none;
 }
