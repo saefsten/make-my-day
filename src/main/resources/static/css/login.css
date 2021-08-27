@@ -1,7 +1,6 @@
 * {box-sizing: border-box}
-
-.container {
-  padding: 16px;
+#pageHeight{
+    height: 80vh;
 }
 
 input[type=text] {

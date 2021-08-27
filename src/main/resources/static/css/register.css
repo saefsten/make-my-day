@@ -1,8 +1,5 @@
 * {box-sizing: border-box}
 
-.container {
-  padding: 16px;
-}
 
 input[type=text] {
   width: 100%;
