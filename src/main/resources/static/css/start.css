@@ -11,7 +11,6 @@
 }
 
 .banner .input-group {
-    margin: auto;
     width: 25vw;
     justify-content: center;
     margin: 0;
@@ -19,19 +18,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-#search-button {
-    width: 7vw;
-    font-size: 0.9vw;
-    color: #F9F4F1;
-    background-color: #2A76C0;
-    border-color: #2A76C0;
-}
-
-#search-button:hover {
-    background-color: #81C4F0;
-    border-color: #81C4F0;
 }
 
 #recommended {
@@ -55,47 +41,13 @@ body #startPage{
 }
 
 .card-text {
-    font-size: 1vw;
     color: #F9F4F1;
     background-color: rgba(99, 99, 99, 0.5);
 }
 
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-    .recommendations-title   {
-    font-size: 24px;
-    }
-  }
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-    .recommendations-title  {
-    font-size: 26px;
-    }
-  }
-
-// Large devices (desktops, 992px and up) {
-    .recommendations-title   {
-    font-size: 28px;
-    }
-  }
-
-@media (min-width: 992px) {
-    .recommendations-title  {
-    font-size: 30px;
-    }
-  }
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-    .recommendations-title  {
-    font-size: 32px;
-    }
-  }
-
 .recommendations-title {
     text-align: center;
+    font-size: 35px;
 }
 
 .row {

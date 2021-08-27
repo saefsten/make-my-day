@@ -9,6 +9,7 @@
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <title>Make my day</title>
+    <link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/start.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header.css">
@@ -20,19 +21,24 @@
 <header th:insert="fragments/header :: header"></header>
 
 <div class="banner">
-    <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="search for activity" aria-label="Search"
-               aria-describedby="search-addon"/>
-        <button type="button" class="btn btn-light" id="search-button">search <img src="/img/search_icon.png" width="15" height="15"></button>
+    <div class='input-group'>
+        <div class="d-flex">
+            <input class="form-control" id="searchBar" type="text" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-primary">
+                    <span class="dashicons dashicons-search"></span>
+                </button>
+            </span>
+        </div>
     </div>
 </div>
 
 <div class="container" id="recommended">
     <div class="row">
         <div class="recommendations-title">Recommended activities</div>
-        <div class="col-sm-3">
+        <div class="col-sm-3 text-truncate">
             <div class="card bg-light mb-3">
-                <img src="/img/card-img-food.jpg" class="card-img" alt="Food">
+                <img src="/img/7.jpg" class="card-img" alt="Food">
                 <div class="card-img-overlay">
                     <p class="card-text">Eat your way through Stockholm<br>Food tour</p>
                 </div>
@@ -40,8 +46,8 @@
         </div>
 
         <div class="col-sm-3">
-            <div class="card bg-light mb-3">
-                <img src="/img/card-img-bicycle.jpg" class="card-img" alt="Bicycle ride">
+            <div class="card bg-light mb-3 text-truncate">
+                <img src="/img/6.jpg" class="card-img" alt="Bicycle ride">
                 <div class="card-img-overlay">
                     <p class="card-text">Get some wheels and explore Stockholm by bike<br>Bike ride</p>
                 </div>
@@ -49,8 +55,8 @@
         </div>
 
         <div class="col-sm-3">
-            <div class="card bg-light mb-3">
-                <img src="/img/card-img-gronalund.jpg" class="card-img" alt="Gröna Lund amusement park">
+            <div class="card bg-light mb-3 text-truncate">
+                <img src="/img/3.jpg" class="card-img" alt="Gröna Lund amusement park">
                 <div class="card-img-overlay">
                     <p class="card-text">Visit Gröna Lund to get your adrenaline pumping<br>Amusement park</p>
                 </div>
@@ -66,36 +72,3 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-<!--            <div class="card">-->
-<!--                <img src="../static/img/card-img-food" class="card-img-top" alt="Food">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Recommended #1</h5>-->
-<!--                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--                    <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-sm-3">-->
-<!--            <div class="card">-->
-<!--                <img src="../static/img/card-img-bicycle" class="card-img-top" alt="Bicycle ride">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Recommended #2</h5>-->
-<!--                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--                    <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-sm-3">-->
-<!--            <div class="card">-->
-<!--                <img src="../static/img/card-img-gronalund" class="card-img-top" alt="Gröna Lund amusement park">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">Recommended #3</h5>-->
-<!--                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--                    <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
