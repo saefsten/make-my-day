@@ -30,18 +30,20 @@
         Browse activities
     </a>
     <div class='input-group'>
-        <div class="d-flex">
-            <div>
-                <input class="form-control search-text" id="searchBar" type="text" placeholder="Search">
+        <!--<div class="d-flex">-->
+        <div class="search-element">
+            <input class="form-control search-text" id="searchBar" type="text" placeholder="Search activity">
+            <!-- <span class="input-group-btn">
+                 <button type="button" class="btn btn-primary">
+                     <span class="dashicons dashicons-search"></span>
+                 </button>
+             </span> -->
 
-                <div id="activity-list">
-                    <div class="lgi hidden" id="lgi-id" th:each="activity : ${activities}">
-                        <a th:href="'/activity/' + ${activity.id}" class="dropdown-item" th:text="${activity.name}"></a>
-                    </div>
-                </div>
-
+            <div class="search-dropdown hidden" id="dropdown-id" th:each="activity : ${activities}">
+                <a th:href="'/activity/' + ${activity.id}" class="dropdown-item" th:text="${activity.name}"></a>
             </div>
         </div>
+        <!--</div>-->
     </div>
 </div>
 
