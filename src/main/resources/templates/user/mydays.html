@@ -30,7 +30,7 @@
     <h2>Upcoming days</h2>
     <div th:if="${comingUserDays.size()>0}">
         <div th:each="comingUserDay : ${comingUserDays}">
-            <a href="#" th:text="${comingUserDay.getDate()}"></a>
+            <a th:text="${comingUserDay.getDate()}"></a>
         </div>
     </div>
     <div th:unless="${comingUserDays.size()>0}">
