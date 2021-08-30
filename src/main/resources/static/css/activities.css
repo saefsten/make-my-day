@@ -1,19 +1,21 @@
 .activitiesPage {
-margin-bottom: 10px;
+    padding-bottom: 30px;
 }
 
 .activitiesDetailPage{
     display: flex;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    justify-content: center;
 
 }
 
 .activities {
     display: grid;
     grid-template-columns: repeat(auto-fit, 300px);
-    grid-column-gap:30px;
-    grid-row-gap:30px;
+    grid-column-gap:20px;
+    grid-row-gap:20px;
+    justify-content: center;
 
 }
 
@@ -39,14 +41,24 @@ html, body {
 }
 
 .activity-img{
-    width:  400px;
-    height: 400px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
     object-fit: cover;
 }
 
 .activity-txt{
-margin-left: 10px;
+    margin-left: 25px;
+    border: solid 0.5px #332539;
+    padding: 15px;
+}
 
+.activitiesDetailPage #externalUrl {
+    color: #66b8ed;
+}
+
+.activitiesDetailPage #externalUrl:hover {
+    color: #88c7f0;
 }
 
 .registerbtn {

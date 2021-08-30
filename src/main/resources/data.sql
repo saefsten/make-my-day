@@ -28,7 +28,7 @@ INSERT INTO ACTIVITY (ID, NAME, HOURS, PRICE, DESCRIPTION, URL, ADDRESS) VALUES 
 INSERT INTO ACTIVITY (ID, NAME, HOURS, PRICE, DESCRIPTION, URL, ADDRESS) VALUES (17L, 'Eriksdalsbadet', 1, 100.00, 'Simma och lek med hela familjen', 'www.eriksdalsbadet.se', 'Södermalm')
 INSERT INTO ACTIVITY (ID, NAME, HOURS, PRICE, DESCRIPTION, URL, ADDRESS) VALUES (18L, 'Åhléns', 1, 500.00, 'Shopping för alla', 'www.ahlens.se', 'City')
 INSERT INTO ACTIVITY (ID, NAME, HOURS, PRICE, DESCRIPTION, URL, ADDRESS) VALUES (19L, 'Padel Zenter Årsta', 1, 500.00, 'Rolig racketsport', 'www.padelzenter.se', 'Årsta')
-INSERT INTO ACTIVITY (ID, NAME, HOURS, PRICE, DESCRIPTION, URL, ADDRESS) VALUES (20L, 'Kungliga operan', 1, 1000.00, 'Njut till vackra toner', 'www.kungligaoperan.se', 'City')
+INSERT INTO ACTIVITY (ID, NAME, HOURS, PRICE, DESCRIPTION, URL, ADDRESS) VALUES (20L, 'Kungliga Operan', 1, 1000.00, 'Njut till vackra toner', 'www.kungligaoperan.se', 'City')
 
 
 INSERT INTO ACTIVITY_CATEGORIES VALUES (1L, 1)

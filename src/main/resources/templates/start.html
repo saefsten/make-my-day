@@ -25,11 +25,6 @@
         <div class="d-flex">
             <div>
                 <input class="form-control search-text" id="searchBar" type="text" placeholder="Search">
-                <!-- <span class="input-group-btn">
-                     <button type="button" class="btn btn-primary">
-                         <span class="dashicons dashicons-search"></span>
-                     </button>
-                 </span> -->
 
                 <div id="activity-list">
                     <div class="lgi hidden" id="lgi-id" th:each="activity : ${activities}">
@@ -44,31 +39,37 @@
 
 <div class="container" id="recommended">
     <div class="row">
-        <div class="recommendations-title">Recommended activities</div>
-        <div class="col-sm-3 text-truncate">
+        <h1 class="pageHeader" style="font-weight: normal">Recommended activities</h1>
+        <div class="col-sm-3">
             <div class="card bg-light mb-3">
+                <a th:href="${'/activity/' + 7}">
                 <img src="/img/7.jpg" class="card-img" alt="Food">
                 <div class="card-img-overlay">
-                    <p class="card-text">Eat your way through Stockholm<br>Food tour</p>
+                    <p class="card-text">Visit Beirut Bistro and explore the Lebanese cuisine<br>CUISINE</p>
                 </div>
+                </a>
             </div>
         </div>
 
         <div class="col-sm-3">
-            <div class="card bg-light mb-3 text-truncate">
+            <div class="card bg-light mb-3">
+                <a th:href="${'/activity/' + 6}">
                 <img src="/img/6.jpg" class="card-img" alt="Bicycle ride">
                 <div class="card-img-overlay">
-                    <p class="card-text">Get some wheels and explore Stockholm by bike<br>Bike ride</p>
+                    <p class="card-text">Switch it up and explore what Stockholm has to offer by bike<br>SPORT | RELAXATION</p>
                 </div>
+                </a>
             </div>
         </div>
 
         <div class="col-sm-3">
-            <div class="card bg-light mb-3 text-truncate">
+            <div class="card bg-light mb-3">
+                <a th:href="${'/activity/' + 3}">
                 <img src="/img/3.jpg" class="card-img" alt="Gröna Lund amusement park">
                 <div class="card-img-overlay">
-                    <p class="card-text">Visit Gröna Lund to get your adrenaline pumping<br>Amusement park</p>
+                    <p class="card-text">Visit Gröna Lund and get your adrenaline pumping<br>ADVENTURE | FAMILY</p>
                 </div>
+                </a>
             </div>
         </div>
     </div>

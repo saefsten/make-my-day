@@ -45,11 +45,6 @@ body #startPage{
     background-color: rgba(99, 99, 99, 0.5);
 }
 
-.recommendations-title {
-    text-align: center;
-    font-size: 35px;
-}
-
 .row {
     justify-content: center;
 }
