@@ -22,8 +22,19 @@ public class Activity {
     private String description;
     @Column (name="URL")
     private String url;
-    @Column (name="ADDRESS")
-    private String address;
+    @Column (name="STREETNAME")
+    private String streetName;
+    @Column (name="STREETNUMBER")
+    private String streetNumber;
+    @Column (name="POSTALCODE")
+    private String postalCode;
+    @Column (name="CITY")
+    private String city;
+    @Column (name="LATITUDE")
+    private String latitude;
+    @Column (name="LONGITUDE")
+    private String longitude;
+
 
     @Column (name="ACTIVITIES_IN_PACKAGES")
     @ManyToMany (mappedBy = "activities")
@@ -41,14 +52,19 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(String name, Set<Category> categories, Double price, int hours, String description, String url, String address, Set<Package> packages) {
+    public Activity(String name, Set<Category> categories, Double price, int hours, String description, String url, String streetName, String streetNumber, String postalCode, String city, String latitude, String longitude, Set<Package> packages) {
         this.name = name;
         this.categories = categories;
         this.price = price;
         this.hours = hours;
         this.description = description;
         this.url = url;
-        this.address = address;
+        this.streetName = streetName;
+        this.streetNumber = streetNumber;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.packages = packages;
     }
 
@@ -128,14 +144,6 @@ public class Activity {
         this.url = url;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public Set<User> getUsers() {
         return users;
     }
@@ -151,5 +159,53 @@ public class Activity {
 
     public void setPackages(Set<Package> packages) {
         this.packages = packages;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 }
