@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="get">
+
+    <p>Origin</p>
+        <div id="origin">
+        <label>Street<input type="text" id="street1" name="street1" value="Hornsgatan"></label><br>
+        <label>Nr<input type="text" id="nr1" name="nr1" value="54"></label><br>
+        <label>Postal code<input type="text" id="postal1" name="postal1" value="11821"></label><br>
+        <label>City<input type="text" id="city1" name="city1" value="Stockholm"></label><br>
+    </div>
+    <div id="destination">
+        <p>Destination</p>
+        <label>Street<input type="text" id="street2" name="street2" value="Bondegatan"></label><br>
+        <label>Nr<input type="text" id="nr2" name="nr2" value="30"></label><br>
+        <label>Postal code<input type="text" id="postal2" name="postal2" value="11633"></label><br>
+        <label>City<input type="text" id="city2" name="city2" value="Stockholm"></label><br>
+    </div>
+    <input type="submit">
+
+
+
+
+</form>
+
+
+<script th:src="'js/maps.js'" src="../../static/js/maps.js"></script>
+</body>
+</html>

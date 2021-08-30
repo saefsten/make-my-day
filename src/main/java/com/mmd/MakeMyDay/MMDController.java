@@ -1,5 +1,7 @@
 package com.mmd.MakeMyDay;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.availability.AvailabilityChangeEvent;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -7,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.time.LocalDate;
