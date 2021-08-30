@@ -1,4 +1,4 @@
-const activities = document.querySelectorAll("div.lgi")
+const activities = document.querySelectorAll("div.search-dropdown")
 
 const searchBar = document.getElementById("searchBar")
 searchBar.addEventListener('keyup', function(e){
@@ -8,7 +8,7 @@ searchBar.addEventListener('keyup', function(e){
         })
         return;
     } else {
-        document.getElementById("lgi-id").classList.remove("hidden");
+        document.getElementById("dropdown-id").classList.remove("hidden");
     }
     const term = e.target.value.toLowerCase();
     Array.from(activities).forEach((activity) => {

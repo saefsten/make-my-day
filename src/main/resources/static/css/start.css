@@ -15,7 +15,7 @@
     justify-content: center;
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -54,6 +54,48 @@ body #startPage{
     justify-content: center;
 }
 
+.banner .search-element {
+    position: absolute;
+    top: 70%;
+    left: 20%;
+}
+
 .search-text {
     background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+}
+
+.search-dropdown {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    border: solid 1px rgb(233, 236, 239, 0.8);
+}
+
+.dropdown-item:hover {
+    border-radius: 5px !important;
+}
+
+
+.headline{
+    text-align: left;
+    font-size: 40px;
+    padding: 60px 0px 0px 60px;
+    color: #332539;
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+.description{
+    text-align: left;
+    font-size: 20px;
+    padding: 10px 60px 10px 60px;
+    color: #332539;
+    font-weight: 500;
+    opacity: 0.7;
+
+}
+
+.activityBtn{
+    text-align: left;
+    margin: 10px 60px 60px 60px;
 }
