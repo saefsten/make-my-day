@@ -88,6 +88,8 @@
                             </div>
                             <p class="mb-1" th:text="${activity.description}"></p>
                             <small><a th:href="${activity.url}">Visit webpage</a></small>
+                            <div class="latitude" th:classappend="${activity.latitude}"></div>
+                            <div class="longitude" th:classappend="${activity.longitude}"></div>
                         </div>
                     </div>
                 </div>
