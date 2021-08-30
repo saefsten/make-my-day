@@ -65,6 +65,8 @@ public class MMDController {
 
     @GetMapping("/activities")
     String activities(Model model, HttpServletRequest request){
+        List<Category> categories = categoryService.findAllCategories();
+        model.addAttribute("categories", categories);
         List<Activity> activities = activityService.findAllActivities();
         model.addAttribute("activities", activities);
         try {
@@ -80,6 +82,7 @@ public class MMDController {
         model.addAttribute("userFavourites", userFavouritesActivityId);
         return "activity/activities";
     }
+
 
     @GetMapping("/createActivity")
     String createActivity(Model model){

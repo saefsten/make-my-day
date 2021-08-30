@@ -20,6 +20,11 @@
 
 <div class="container">
     <h1 class="pageHeader">Create My Day</h1>
+    <div class="card-text">Put together your own special day here. You can either select a ready-made package of
+        activities or search and select from the activities in the menu to the right. Once you've found your favorites,
+        drag and drop them over to the calendar.
+        When you're done, simply hit Save at the bottom of the screen.
+    </div>
     <div class="row">
         <div class="col-md-8">
             <div class="col-md-4" style="margin-left: -12px;">
@@ -79,7 +84,8 @@
                 <div id="activity-list">
                     <div class="list-group-item list-group-item-action" th:each="activity : ${activities}">
                         <div th:id="'eventBox' + ${activity.id}" draggable="true">
-                            <div th:each="category : ${activity.categories}" th:classappend="${category.categoryName}"></div>
+                            <div th:each="category : ${activity.categories}"
+                                 th:classappend="${category.categoryName}"></div>
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1" th:text="${activity.name}"></h5>
                                 <!--<h5 class="hidden" th:text="${activity.category}"></h5>-->

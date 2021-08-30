@@ -150,3 +150,16 @@ html, body {
 .form-check-label {
     margin-left: 4px;
 }
+
+.description{
+    text-align: left;
+    font-size: 15px;
+    color: #332539;
+    font-weight: 500;
+}
+
+.search{
+    width: 25%
+    margin-bottom: 2px;
+
+}

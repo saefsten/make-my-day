@@ -22,6 +22,8 @@
 
 <div class="container" id="packagesPage">
     <h1 class="pageHeader">Packages</h1>
+    <div class="card-text">Learn more about our different packages here. They are filled with exciting and interesting activities to fill you day with. </div>
+    <br>
     <div class="packages">
         <article th:each="package: ${packages}">
             <a th:href="${'/package/' + package.id}">
