@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/packages.css">
-    <link rel="icon" href="/img/emoji.png">
+    <link rel="icon" href="/img/LOGO-R.png">
     <title>Make my day</title>
 </head>
 
@@ -22,6 +22,8 @@
 
 <div class="container" id="packagesPage">
     <h1 class="pageHeader">Packages</h1>
+    <div class="card-text">Learn more about our different packages here. They are filled with exciting and interesting activities to fill you day with. </div>
+    <br>
     <div class="packages">
         <article th:each="package: ${packages}">
             <a th:href="${'/package/' + package.id}">

@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Controller
@@ -68,6 +69,8 @@ public class MMDController {
 
     @GetMapping("/activities")
     String activities(Model model, HttpServletRequest request){
+        List<Category> categories = categoryService.findAllCategories();
+        model.addAttribute("categories", categories);
         List<Activity> activities = activityService.findAllActivities();
         model.addAttribute("activities", activities);
         try {
@@ -83,6 +86,7 @@ public class MMDController {
         model.addAttribute("userFavourites", userFavouritesActivityId);
         return "activity/activities";
     }
+
 
     @GetMapping("/createActivity")
     String createActivity(Model model){
@@ -185,7 +189,7 @@ public class MMDController {
     }
 
     @GetMapping("/mydays")
-    String myDays(HttpServletRequest request, Model model) {
+    String myDays(HttpServletRequest request, Model model, @RequestParam (required=false) Long userDayId) {
         User user = userService.findUserByUsername(currentUserName(request));
         List <UserDay> userDays = userDayService.findUserDayByUser(user);
         List <UserDay> pastUserDays = new ArrayList<>();
@@ -208,6 +212,19 @@ public class MMDController {
         model.addAttribute("pastUserDays", pastUserDays);
         model.addAttribute("comingUserDays", comingUserDays);
         model.addAttribute("ongoingUserDays", ongoingUserDays);
+
+        if (userDayId != null) {
+            UserDay chosenUserDay = userDayService.findUserDayById(userDayId);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String dateString = chosenUserDay.getDate().format(formatter);
+            String[] hours = {"07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
+
+            model.addAttribute("chosenUserDay", chosenUserDay);
+            model.addAttribute("chosenDate", dateString);
+            model.addAttribute("hours", hours);
+            model.addAttribute("userEvents", chosenUserDay.getUserEvents());
+            model.addAttribute("startTimes", getUserDayStartTimes(chosenUserDay));
+        }
 
         return "user/mydays";
     }
@@ -257,6 +274,13 @@ public class MMDController {
         return userFavouritesActivityId;
     }
 
-
+    public List <String> getUserDayStartTimes (UserDay userDay) {
+        List <UserEvent> userEvents = userDay.getUserEvents();
+        List <String> startTimes = new ArrayList<>();
+        for (UserEvent userEvent : userEvents) {
+            startTimes.add(userEvent.getStartTime());
+        }
+        return startTimes;
+    }
 
 }

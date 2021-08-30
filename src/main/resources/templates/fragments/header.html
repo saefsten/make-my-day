@@ -37,12 +37,14 @@
                 <div class="d-flex">
                     <div sec:authorize="isAuthenticated()">
                         <ul class="navbar-nav ml-auto iconmargin">
+                            <p th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="/img/loginicon.png" width="30" height="30">
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/mydays">My days</a></li>
                                     <li><a class="dropdown-item" href="/user/account">My saved activities</a></li>
                                     <li><a class="dropdown-item" href="/createActivity" sec:authorize="hasAuthority('ADMIN')">Create activity</a></li>
                                     <li><a class="dropdown-item" href="/logout">Logout</a></li>

@@ -38,6 +38,9 @@ public class CreateMyDayController {
     @Autowired
     PackageRepository packageRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
     @GetMapping("/createMyDay")
     String createMyDay(Model model, @RequestParam(required = false) Long packageId) {
         List<Activity> activities = (List<Activity>) activityRepository.findAll();
@@ -50,6 +53,9 @@ public class CreateMyDayController {
                 model.addAttribute("activitiesInPackage", activityService.findByPackageId(packageId));
             }
         }
+
+        List<Category> categories = (List<Category>) categoryRepository.findAll();
+        model.addAttribute("categories", categories);
 
         String[] hours = {"07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
         model.addAttribute("hours", hours);
@@ -66,7 +72,8 @@ public class CreateMyDayController {
         userDayRepository.save(userDay);
 
         for (int i=0; i<events.size(); i++) {
-            Integer startTime = Integer.parseInt(events.get(0).substring(0, 2));
+            //Integer startTime = Integer.parseInt(events.get(0).substring(0, 2));
+            String startTime = events.get(0).substring(0, 5);
             Long activityId = Long.parseLong(events.get(0).substring(6));
             Activity activity = (Activity) activityRepository.findById(activityId).orElse(null);
             UserEvent userEvent = new UserEvent(userDay, activity, startTime);

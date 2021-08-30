@@ -88,8 +88,11 @@ function handleDrop(e) {
                 dragged.parentNode.removeChild( dragged );
             }
             event.target.style.background = "";
+
             event.target.appendChild( dragged );
             event.target.querySelector(".event-time h4").innerText = event.target.querySelector(".time-stamp").innerText
+
+            updateDistances()
         }
 
     }, false);
@@ -167,6 +170,7 @@ function handleDrop(e) {
     function clickedDelete(button) {
         const element = button.parentElement.parentElement
         element.parentElement.removeChild(element)
+        updateDistances()
     }
 
     function clickedSave() {
@@ -193,4 +197,104 @@ function handleDrop(e) {
         }
 
         document.getElementById("eventForm").submit()
+    }
+
+    function changeCategoryFilter() {
+        const cat = document.getElementById("categoryFilter").value
+        Array.from(activities).forEach((activity) => {
+            if(activity.querySelector("." + cat) !== null || cat === "All categories") {
+                activity.style.display = 'block';
+            } else {
+                activity.style.display = 'none';
+            }
+        });
+    }
+
+    function getDistanceFromLatLonInMeters(lat1, lon1, lat2, lon2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2-lat1);  // deg2rad below
+        var dLon = deg2rad(lon2-lon1);
+        var a =
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon/2) * Math.sin(dLon/2)
+        ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var d = R * c; // Distance in km
+        return Math.round(d * 1000); // Return distance in whole meters round up
+        //return d * 1000
+    }
+
+    function deg2rad(deg) {
+        return deg * (Math.PI/180)
+    }
+
+    function updateDistances() {
+        const eventParagraphs = document.querySelectorAll(".event-section")
+        const originLatLong = getActivityLatLong(eventParagraphs[0].id)
+        // If there is only one event, the list should be sorted accordingly
+        if (eventParagraphs.length === 1) {
+            sortEventListByDistance(originLatLong[0], originLatLong[1])
+        }
+
+        // Distances should be calculated only if more than one event exists
+        if (eventParagraphs.length > 1) {
+            let shortestDistanceFromOrigin = -1
+            let closestEvent
+            for (let i = 1; i < eventParagraphs.length; i++) {
+                const prevLatLong = getActivityLatLong(eventParagraphs[i-1].id)
+                const curLatLong = getActivityLatLong(eventParagraphs[i].id)
+
+                const meters = getDistanceFromLatLonInMeters(prevLatLong[0], prevLatLong[1], curLatLong[0], curLatLong[1])
+                eventParagraphs[i].querySelector("p").innerText = "From " + eventParagraphs[i-1].querySelector("strong").innerText + ": " + meters + " m"
+
+                const fromOrigin = getDistanceFromLatLonInMeters(originLatLong[0], originLatLong[1], curLatLong[0], curLatLong[1])
+                if (fromOrigin < shortestDistanceFromOrigin || shortestDistanceFromOrigin === -1) {
+                    shortestDistanceFromOrigin = fromOrigin
+                    closestEvent = eventParagraphs[i].querySelector("strong").innerText
+                }
+            }
+            eventParagraphs[0].querySelector("p").innerText = "Closest following event: " + closestEvent
+
+            const lastLatLong = getActivityLatLong(eventParagraphs[eventParagraphs.length-1].id)
+            sortEventListByDistance(lastLatLong[0], lastLatLong[1])
+        }
+    }
+
+    function getActivityLatLong(eventId) {
+        const id = eventId.substring(9)
+        const lat = document.getElementById("eventBox" + id).querySelector(".latitude").classList[1]
+        const long = document.getElementById("eventBox" + id).querySelector(".longitude").classList[1]
+        return [parseFloat(lat), parseFloat(long)]
+    }
+
+    function sortEventListByDistance(lat, long) {
+        const list = document.querySelectorAll(".list-group-item")
+        var listArr = []
+        for (item of list) {
+            listArr.push(item)
+        }
+        listArr.sort(function(a, b) {
+            const aLat = parseFloat(a.querySelector(".latitude").classList[1])
+            const aLong = parseFloat(a.querySelector(".longitude").classList[1])
+            const bLat = parseFloat(b.querySelector(".latitude").classList[1])
+            const bLong = parseFloat(b.querySelector(".longitude").classList[1])
+
+            const aDist = getDistanceFromLatLonInMeters(lat, long, aLat, aLong)
+            const bDist = getDistanceFromLatLonInMeters(lat, long, bLat, bLong)
+
+            return aDist-bDist
+        });
+        document.getElementById("activity-list").innerHTML = ""
+        for (let i = 0; i < listArr.length; i++) {
+            document.getElementById("activity-list").appendChild(listArr[i])
+        }
+
+        /*Array.from(activities).forEach((activity) => {
+            if(activity.querySelector("." + cat) !== null || cat === "All categories") {
+                activity.style.display = 'block'
+            } else {
+                activity.style.display = 'none'
+            }
+        });*/
     }

@@ -12,12 +12,12 @@ public class UserEvent {
     private UserDay userDay;
     @ManyToOne
     private Activity activity;
-    private Integer startTime;
+    private String startTime;
 
     public UserEvent() {
     }
 
-    public UserEvent(UserDay userDay, Activity activity, Integer startTime) {
+    public UserEvent(UserDay userDay, Activity activity, String startTime) {
         this.userDay = userDay;
         this.activity = activity;
         this.startTime = startTime;
@@ -47,11 +47,11 @@ public class UserEvent {
         this.activity = activity;
     }
 
-    public Integer getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Integer startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 }

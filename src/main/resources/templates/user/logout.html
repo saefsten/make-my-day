@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/footer.css">
-  <link rel="icon" href="/img/emoji.png">
+  <link rel="icon" href="/img/LOGO-R.png">
   <link rel="stylesheet" href="/css/logout.css">
 </head>
 
@@ -21,10 +21,10 @@
 <header th:insert="fragments/header :: header"></header>
 <div class="container" id="pageHeight" style="margin-top: 10px">
 
-<h3>You have successfully signed out from Make My Day</h3>
+<h2 class="pageHeader" style="text-align: left;">You have successfully signed out</h2>
 <div style="display: flex;">
-  <a style="margin: 20px;" href="/start" button type="submit" class="btn btn-light">Home</a>
-  <a style="margin: 20px;" href="/user/login" button type="submit" class="btn btn-light">Log in again</a>
+  <a style="margin-right: 20px;" href="/start" button type="submit" class="btn btn-light">Home</a>
+  <a href="/user/login" button type="submit" class="btn btn-light">Log in again</a>
 </div>
 </div>
 <div th:insert="fragments/footer :: footer"></div>

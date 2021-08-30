@@ -13,20 +13,17 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
-    <link rel="icon" href="/img/emoji.png">
+    <link rel="icon" href="/img/LOGO-R.png">
     <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body>
 <header th:insert="fragments/header :: header"></header>
-<div class="container" style="margin-top: 10px">
-
-
     <div class="container" id="pageHeight">
         <div class="row">
             <div class="col-md-3">
                 <form th:action="@{/login}" method="POST">
-                    <h2>Login</h2>
+                    <h1 class="pageHeader" style="text-align: left; padding-top: 10px;">Login</h1>
                     <div class="mb-3">
                         <input type="text" class="form-control" placeholder="Email" name="username"/>
                     </div>

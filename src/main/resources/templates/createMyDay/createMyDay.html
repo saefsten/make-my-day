@@ -11,19 +11,23 @@
     <link rel="stylesheet" href="../../static/css/header.css" th:href="'css/header.css'">
     <link rel="stylesheet" href="../../static/css/footer.css" th:href="'css/footer.css'">
     <link rel="stylesheet" href="../../static/css/planner.css" th:href="'css/planner.css'">
-    <link rel="icon" href="/img/emoji.png">
+    <link rel="icon" href="/img/LOGO-R.png">
     <title>Make my day</title>
 </head>
 
 <body>
 <header th:insert="fragments/header :: header"></header>
 
-<div class="container" style="margin-top: 10px;">
-    <h1>Create My Day</h1>
-    <div style="height: 50px;"></div>
+<div class="container">
+    <h1 class="pageHeader">Create My Day</h1>
+    <div class="card-text">Put together your own special day here. You can either select a ready-made package of
+        activities or search and select from the activities in the menu to the right. Once you've found your favorites,
+        drag and drop them over to the calendar.
+        When you're done, simply hit Save at the bottom of the screen.
+    </div>
     <div class="row">
         <div class="col-md-8">
-            <div class="col-md-4">
+            <div class="col-md-4" style="margin-left: -12px;">
                 <div class="mb-3">
                     <label for="date" class="form-label">Date:</label>
                     <div class="d-flex">
@@ -31,7 +35,7 @@
                               onkeydown="return event.key != 'Enter';">
                             <input type="date" class="form-control" id="date" name="date"/>
                         </form>
-                        <button class="btn btn-light" style="margin-left: 5px;" onclick="clickedSave()">Save</button>
+                        <button class="btn btn-light" onclick="clickedSave()" style="margin-left: 5px;">Save</button>
                     </div>
 
                 </div>
@@ -53,12 +57,12 @@
             </div>
             <div class="col-md-3">
                 <div class="mb-3">
-                    <button class="btn btn-light" onclick="clickedSave()">Save</button>
+                    <button class="btn btn-light" onclick="clickedSave()" style="margin-left: -12px; margin-top: 10px;">Save</button>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="row justify-content-between" style="margin-bottom: 5px;">
+            <div class="row justify-content-between" style="margin-bottom: 10px;">
                 <div class="col-4">
                     <h4>Events:</h4>
                 </div>
@@ -70,10 +74,18 @@
             <div class="d-flex">
                 <input class="form-control" id="searchBar" type="text" placeholder="Search">
             </div>
+            <div class="d-flex">
+                <select class="form-select" id="categoryFilter" onchange="changeCategoryFilter()">
+                    <option selected>All categories</option>
+                    <option th:each="category : ${categories}" th:text="${category.categoryName}"></option>
+                </select>
+            </div>
             <div class="list-group scroll">
                 <div id="activity-list">
                     <div class="list-group-item list-group-item-action" th:each="activity : ${activities}">
                         <div th:id="'eventBox' + ${activity.id}" draggable="true">
+                            <div th:each="category : ${activity.categories}"
+                                 th:classappend="${category.categoryName}"></div>
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1" th:text="${activity.name}"></h5>
                                 <!--<h5 class="hidden" th:text="${activity.category}"></h5>-->
@@ -81,6 +93,8 @@
                             </div>
                             <p class="mb-1" th:text="${activity.description}"></p>
                             <small><a th:href="${activity.url}">Visit webpage</a></small>
+                            <div class="latitude" th:classappend="${activity.latitude}"></div>
+                            <div class="longitude" th:classappend="${activity.longitude}"></div>
                         </div>
                     </div>
                 </div>
