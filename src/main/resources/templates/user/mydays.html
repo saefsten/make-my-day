@@ -13,44 +13,57 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="icon" href="/img/LOGO-R.png">
 </head>
-<body>
+<body id="pageHeight">
 <header th:insert="fragments/header :: header"></header>
 
 <h1 style="margin-top: 40px; margin-left:60px">My Days</h1>
 
-<div class="activitiesPage">
+<div class="activitiesPage" style="margin-left:20px">
 
-    <div th:if="${ongoingUserDays.size()>0}">
-        <h2>Today</h2>
-        <div th:each="ongoingUserDay : ${ongoingUserDays}">
-            <a href="#" th:text="${ongoingUserDay.getDate()}"></a>
-        </div>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div th:if="${ongoingUserDays.size()>0}">
+                    <h2>Today</h2>
+                    <div th:each="ongoingUserDay : ${ongoingUserDays}">
+                        <a href="#" th:text="${ongoingUserDay.getDate()}"></a>
+                    </div>
+                </div>
 
-    <h2>Upcoming days</h2>
-    <div th:if="${comingUserDays.size()>0}">
-        <div th:each="comingUserDay : ${comingUserDays}">
-            <a href="#" th:text="${comingUserDay.getDate()}"></a>
-        </div>
-    </div>
-    <div th:unless="${comingUserDays.size()>0}">
-        <div>
-            <h6>You have no upcoming days saved</h6>
-        </div>
-    </div>
+                <h2>Upcoming days</h2>
+                <div th:if="${comingUserDays.size()>0}">
+                    <div th:each="comingUserDay : ${comingUserDays}">
+                        <a href="#" th:text="${comingUserDay.getDate()}"></a>
+                    </div>
+                </div>
+                <div th:unless="${comingUserDays.size()>0}">
+                    <div>
+                        <h6>You have no upcoming days saved</h6>
+                    </div>
+                </div>
 
-    <h2>Past days</h2>
-    <div th:if="${pastUserDays.size()>0}">
-        <div th:each="pastUserDay : ${pastUserDays}">
-            <a href="#" th:text="${pastUserDay.getDate()}"></a>
-        </div>
-    </div>
-    <div th:unless="${pastUserDays.size()>0}">
-        <div>
-            <h6>You have no previous days saved</h6>
-        </div>
-    </div>
+                <h2>Past days</h2>
+                <div th:if="${pastUserDays.size()>0}">
+                    <div th:each="pastUserDay : ${pastUserDays}">
+                        <a href="#" th:text="${pastUserDay.getDate()}"></a>
+                    </div>
+                </div>
+                <div th:unless="${pastUserDays.size()>0}">
+                    <div>
+                        <h6>You have no previous days saved</h6>
+                    </div>
+                </div>
+            </div>
 
+
+            <div class="col">
+                <h2>Day</h2>
+
+
+                Column
+            </div>
+        </div>
+    </div>
 </div>
 
 <div th:insert="fragments/footer :: footer"></div>
