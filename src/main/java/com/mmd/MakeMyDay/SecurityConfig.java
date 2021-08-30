@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/activity/**"
                 ).permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/admin", "/createActivity", "/updateActivity").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .logout()

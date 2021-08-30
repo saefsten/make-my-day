@@ -68,11 +68,15 @@ margin-left: 10px;
 }
 
 .flexbox {
-	display: contents;
+	display: flex;
 	height: 50px;
 	width: 50px;
 	justify-content: center;
 	align-items: center;
+}
+
+.flexbox a {
+	text-decoration: none;
 }
 
 .fav-btn {

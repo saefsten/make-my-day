@@ -23,22 +23,34 @@
 <div class="container" style="margin-top: 10px">
 
 </div>
-<div class="form">
-
-    <form action="/register" method="POST">
-        <div class="container">
-            <h2>Register</h2>
-            <label> First Name: <input type="text" name="firstName"/> </label>
-            <label> Last name: <input type="text" name="lastName"/> </label>
-            <label> Email: <input type="text" name="username"/> </label>
-            <label> Password: <input type="password" name="password"/> </label>
-            <button type="submit" class="btn register">Register</button>
-            <br>
-            <div th:if="${message!=null}" th:text="${message}"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <form action="/register" method="POST">
+                <h2>Register</h2>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="First Name" name="firstName"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Last Name" name="lastName"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Email" name="username"/>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="Password" name="password"/>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-light">Register</button>
+                </div>
+                <div th:if="${message!=null}" th:text="${message}"></div>
+            </form>
         </div>
 
-    </form>
+
+    </div>
 </div>
+
 </div>
 
 <div th:insert="fragments/footer :: footer"></div>

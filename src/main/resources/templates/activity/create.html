@@ -23,7 +23,7 @@
 
   <h1 style="margin-top: 20px; margin-bottom:10px;">Create new or update activity</h1>
 
-  <form method="post" action="/activity/create" th:object="${activity}">
+  <form method="post" action="/createActivity" th:object="${activity}">
     <input type="hidden" th:field="*{id}">
     <div class="input-group mb-3">
       <span class="input-group-text createFormTitle">Name</span>
@@ -66,7 +66,7 @@
       <input class="form check-input" type="checkbox" th:name="category" value="10" th:checked="${catIds.contains('10')}"><label class="form-check-label">Family</label><br>
     </div>
     <p></p>
-    <input type="submit" value="Save" class="btn register">
+    <input type="submit" value="Save" class="btn btn-light">
   </form>
 
   <p th:if="${message != null}" th:text="${message}"></p>

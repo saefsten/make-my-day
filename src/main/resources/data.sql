@@ -59,9 +59,9 @@ INSERT INTO ACTIVITY_CATEGORIES VALUES (19L, 1)
 INSERT INTO ACTIVITY_CATEGORIES VALUES (20L, 2)
 INSERT INTO ACTIVITY_CATEGORIES VALUES (20L, 4)
 
-INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION, START_TIMES) VALUES (1, 'Morning Package', 'Description for morning package... Cykla runt Stockholm, Gröna Lund', '08:00;13:00;')
-INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION, START_TIMES) VALUES (2, 'Afternoon Package', 'Description for afternoon package... Fotbollsmatch, Nordiska Kompaniet', '16:00;20:00;')
-INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION, START_TIMES) VALUES (3, 'Evening Package', 'Description for evening package... Bar, restaurant, club', '18:00;20:00;23:00;')
+INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION, START_TIMES, LONG_DESCRIPTION) VALUES (1, 'Morning Package', 'Description for morning package... Cykla runt Stockholm, Gröna Lund', '08:00;13:00;', 'I´m baby succulents fashion axe messenger bag, tilde biodiesel tumblr taiyaki hammock. Pour-over franzen pork belly forage sartorial asymmetrical raclette scenester XOXO gastropub mlkshk air plant copper mug thundercats. Shoreditch deep v cliche lo-fi.')
+INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION, START_TIMES, LONG_DESCRIPTION) VALUES (2, 'Afternoon Package', 'Description for afternoon package... Fotbollsmatch, Nordiska Kompaniet', '16:00;20:00;', 'Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow´s nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.')
+INSERT INTO PACKAGE (ID, PACKAGE_NAME, DESCRIPTION, START_TIMES, LONG_DESCRIPTION) VALUES (3, 'Evening Package', 'Description for evening package... Bar, restaurant, club', '18:00;20:00;23:00;', 'I love cheese, especially dolcelatte swiss. Cheeseburger cream cheese smelly cheese cheesy feet monterey jack port-salut monterey jack emmental. Cheesy grin stilton cheesy feet cheesy grin hard cheese cow brie cheese and wine.')
 
 INSERT INTO PACKAGE_ACTIVITIES VALUES (2, 1L)
 INSERT INTO PACKAGE_ACTIVITIES VALUES (1, 3L)
@@ -72,3 +72,11 @@ INSERT INTO PACKAGE_ACTIVITIES VALUES (3, 10L)
 INSERT INTO PACKAGE_ACTIVITIES VALUES (2, 11L)
 
 INSERT INTO USERS (FIRST_NAME, LAST_NAME, PASSWORD, USERNAME) VALUES ('Student', 'Duktig', '$2a$11$lVnw9DS4d6fcB17R/OwIwujo8xgk6iuHpmZMeRcKe7.rT1Xp3gaAq', 'aw@aw.com')
+INSERT INTO USERS (FIRST_NAME, LAST_NAME, PASSWORD, USERNAME) VALUES ('Admin', 'Adminsson', '$2a$11$lVnw9DS4d6fcB17R/OwIwujo8xgk6iuHpmZMeRcKe7.rT1Xp3gaAq', 'admin@mmd.com')
+
+INSERT INTO ROLE (NAME) VALUES ('USER')
+INSERT INTO ROLE (NAME) VALUES ('ADMIN')
+
+INSERT INTO USERS_ROLES VALUES (1L, 1L)
+INSERT INTO USERS_ROLES VALUES (2L, 1L)
+INSERT INTO USERS_ROLES VALUES (2L, 2L)
