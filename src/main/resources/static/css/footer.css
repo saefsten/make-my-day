@@ -1,9 +1,7 @@
 .footer-main {
-
    left: 0;
    bottom: 0;
    width: 100%;
-
 }
 
 .footer {
@@ -23,6 +21,10 @@
 }
 
 .icon {
-padding: 4px !important;
-margin-bottom: 3px;
+    padding: 4px !important;
+    margin-bottom: 3px;
+}
+
+.mb-0 {
+    background-color: #2A76C0;
 }

@@ -23,7 +23,7 @@
 <div class="container" id="packageDetailsPage">
     <h1 class="pageHeader" th:text="${pack.packageName}"></h1>
     <div class="packageDescription" th:text="${pack.longDescription}">
-    </div> <!--add th:ref to package description-->
+    </div>
     <div class="packages">
         <article th:each="activity: ${package}">
             <a th:href="${'/activity/' + activity.id}">
@@ -37,7 +37,7 @@
             </a>
         </article>
     </div>
-    <a class="btn btn-light" th:href="${'/createMyDay?packageId=' + packageId}">Create this day</a>
+    <a class="btn btn-light" id="createThisDayButton" th:href="${'/createMyDay?packageId=' + packageId}">Create this day</a>
 </div>
 
 <div th:insert="fragments/footer :: footer"></div>

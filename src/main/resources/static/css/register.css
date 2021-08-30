@@ -19,6 +19,17 @@ input[type=password]{
   background: #d6d4d4;
 }
 
+.col-md-3 {
+    border: solid 0.5px #332539;
+    padding: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.row {
+    justify-content: center;
+}
+
 
 
 

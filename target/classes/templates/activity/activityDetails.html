@@ -19,16 +19,17 @@
 
 <body>
 <header th:insert="fragments/header :: header"></header>
-<div class="container" style="margin-top: 10px" id="pageHeight">
 
+<div class="container" id="pageHeight">
 <div class="activitiesDetailPage">
     <img th:src="${'/img/' + activity.id + '.jpg'}" class="activity-img"/>
     <div class="activity-txt">
-        <h1 th:text="${activity.name}"></h1>
+        <h2 th:text="${activity.name}"></h2>
         <p th:text="${activity.description}"></p>
             <p th:text="${activity.streetName +' '+ activity.streetNumber}"></p>
             <p th:text="${activity.city}"></p>
             <p th:text="${#numbers.formatDecimal(activity.price,1,2)} + ' kr'"></p>
+            <p id="externalUrl" th:text="${activity.url}"></p>
             <p th:text="${activity.url}"></p>
         <a class="btn btn-dark activityBtn" href="/activities" role="button" aria-expanded="false">
             Back to activities

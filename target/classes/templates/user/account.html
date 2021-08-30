@@ -19,12 +19,13 @@
 <body>
 
 <header th:insert="fragments/header :: header"></header>
-<div class="container" style="margin-top: 10px">
+
+<div class="container" id="pageHeight">
 <div class="activitiesPage">
-    <h2>My saved activities</h2>
+    <h1 class="pageHeader">My saved activities</h1>
     <div th:if="${favourites.isEmpty()}">
         <h3>No activities saved yet</h3>
-        <a href="/activities">Find something here</a>
+        <a href="/activities">Browse activities</a>
     </div>
 
     <div class="activities" th:if="${!favourites.isEmpty()}">

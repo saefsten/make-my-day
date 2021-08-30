@@ -38,8 +38,8 @@ body {
 
 .pageHeader {
     text-align: center;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .hidden {
@@ -52,5 +52,10 @@ a {
 
 #pageHeight{
     min-height: 100vh;
+}
 
+.container {
+    background-color: #f6eee9;
+    padding-left: 20px;
+    padding-right: 20px;
 }
