@@ -14,4 +14,8 @@ public class UserDayService {
     public List<UserDay> findUserDayByUser (User user) {
         return userDayRepository.findByUser_Id(user.getId());
     }
+
+    public UserDay findUserDayById (Long id) {
+        return userDayRepository.findById(id).get();
+    }
 }
