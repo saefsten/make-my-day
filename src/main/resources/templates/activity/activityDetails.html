@@ -26,9 +26,13 @@
     <div class="activity-txt">
         <h1 th:text="${activity.name}"></h1>
         <p th:text="${activity.description}"></p>
-            <p th:text="${activity.address}"></p>
+            <p th:text="${activity.streetName +' '+ activity.streetNumber}"></p>
+            <p th:text="${activity.city}"></p>
             <p th:text="${#numbers.formatDecimal(activity.price,1,2)} + ' kr'"></p>
             <p th:text="${activity.url}"></p>
+        <a class="btn btn-dark activityBtn" href="/activities" role="button" aria-expanded="false">
+            Back to activities
+        </a>
 
         <div class="flexbox" sec:authorize="isAuthenticated()">
             <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=activity/' + ${activity.id}">
