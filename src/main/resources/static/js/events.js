@@ -2,6 +2,7 @@ const activities = document.querySelectorAll("div.list-group-item")
 
 //show all events
 function allEvents(){
+    document.getElementById("categoryFilter").value = 'All categories'
     Array.from(activities).forEach((activity) => {
         activity.style.display = 'block';
     })

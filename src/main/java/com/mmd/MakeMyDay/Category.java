@@ -57,4 +57,12 @@ public class Category {
     public void setActivities(Set<Activity> activities) {
         this.activities = activities;
     }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 }

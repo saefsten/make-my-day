@@ -70,10 +70,17 @@
             <div class="d-flex">
                 <input class="form-control" id="searchBar" type="text" placeholder="Search">
             </div>
+            <div class="d-flex">
+                <select class="form-select" id="categoryFilter" onchange="changeCategoryFilter()">
+                    <option selected>All categories</option>
+                    <option th:each="category : ${categories}" th:text="${category.categoryName}"></option>
+                </select>
+            </div>
             <div class="list-group scroll">
                 <div id="activity-list">
                     <div class="list-group-item list-group-item-action" th:each="activity : ${activities}">
                         <div th:id="'eventBox' + ${activity.id}" draggable="true">
+                            <div th:each="category : ${activity.categories}" th:classappend="${category.categoryName}"></div>
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1" th:text="${activity.name}"></h5>
                                 <!--<h5 class="hidden" th:text="${activity.category}"></h5>-->
