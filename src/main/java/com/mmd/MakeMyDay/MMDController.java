@@ -134,8 +134,33 @@ public class MMDController {
             }
             activity.setCategories(currentCategoriesInActivity);
         }
+//        Map<String, Double> coordinates = location(activity.g)
         activityService.saveActivity(activity);
         return "redirect:/activity/"+activity.getId();
+    }
+
+    public Map location(RestTemplate restTemplate, String street, String nr, String postal, String city) {
+        String url = "https://maps.googleapis.com/maps/api/geocode/json?address="+street+"+"+nr+"+"+postal+"+"+city+"&key=AIzaSyDeJB3i-GWRq8X5zGKea6mLtFnthe8uc2M";
+        String loc = restTemplate.getForObject(url, String.class);
+//        String loc = restTemplate.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address=Hornsgatan+54+11821+Stockholm&key=AIzaSyDeJB3i-GWRq8X5zGKea6mLtFnthe8uc2M", String.class);
+        Map<String, Object> map = new Gson()
+                .fromJson(loc, new TypeToken<HashMap<String, Object>>() {
+                }.getType());
+        List<Map> results = getNestedValue(map,"results");
+        Map map1 = results.get(0);
+        Map<String, Object> geometry = getNestedValue(map1, "geometry");
+        Map<String, Double> coordinates = (Map)geometry.get("location");
+        return coordinates;
+    }
+
+    public static <T> T getNestedValue(Map map, String... keys) {
+        Object value = map;
+
+        for (String key : keys) {
+            value = ((Map) value).get(key);
+        }
+
+        return (T) value;
     }
 
     @GetMapping("/activity/{id}")

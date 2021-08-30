@@ -15,8 +15,7 @@ public class MapsController {
 
     @GetMapping("/maps")
     public Map maps(RestTemplate restTemplate){
-        String directions = restTemplate.getForObject("https://maps.googleapis.com/maps/api/directions/json?origin=Hornsgatan+54+11821+Stockholm&destination=Bondegatan+30+11633+Stockholm&key=AIzaSyAEBZaeUpV59xV1vHJhmT8UIKnw8S1GO50", String.class);
-
+        String directions = restTemplate.getForObject("https://maps.googleapis.com/maps/api/directions/json?origin=Hornsgatan+54+11821+Stockholm&destination=Bondegatan+30+11633+Stockholm&key=AIzaSyDeJB3i-GWRq8X5zGKea6mLtFnthe8uc2M", String.class);
         Map<String, Object> map = new Gson()
                 .fromJson(directions, new TypeToken<HashMap<String, Object>>() {
                 }.getType());
@@ -38,6 +37,21 @@ public class MapsController {
         results.put("longitude_end", end_location.get("lng").toString());
         return results;
     }
+
+
+    @GetMapping("/location")
+    public Map location(RestTemplate restTemplate) {
+        String loc = restTemplate.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address=Hornsgatan+54+11821+Stockholm&key=AIzaSyDeJB3i-GWRq8X5zGKea6mLtFnthe8uc2M", String.class);
+        Map<String, Object> map = new Gson()
+                .fromJson(loc, new TypeToken<HashMap<String, Object>>() {
+                }.getType());
+        List<Map> results = getNestedValue(map,"results");
+        Map map1 = results.get(0);
+        Map<String, Object> geometry = getNestedValue(map1, "geometry");
+        Map<String, Double> coordinates = (Map)geometry.get("location");
+        return coordinates;
+    }
+
 
     public static <T> T getNestedValue(Map map, String... keys) {
         Object value = map;
