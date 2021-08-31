@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #F9F4F1;
+    background-color: #f6eee9;
 }
 
 .btn-primary {
@@ -55,7 +55,11 @@ a {
 }
 
 .container {
-    background-color: #f6eee9;
+    background-color: #F9F4F1;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.pageDescription {
+    padding: 0px 20px 20px 20px;
 }

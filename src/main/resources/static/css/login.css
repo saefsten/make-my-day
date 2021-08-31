@@ -1,26 +1,43 @@
-* {box-sizing: border-box}
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #2A76C0;
 
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #332539, #2a76c0, #00d4ff);
 
-input[type=text], input[type=email], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: flex;
-  border: solid #d6d4d4 1px;
-  background: #d6d4d4;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #020024, #2a76c0, #00d4ff);
 }
 
-.col-md-3 {
-    border: solid 0.5px #332539;
-    padding: 15px;
-    margin-top: 20px;
-    justify-content: center;
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 105vh !important;
+  }
+}
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
 }
 
-.row {
-    justify-content: center;
+.mb-0 {
+    background-color: transparent;
 }
 
+.mb-4 {
+    margin-bottom: 1rem!important;
+}
 
+.mb-5 {
+    margin-bottom: 1rem!important;
+}
 
+.py-5 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
 
+.registerLink {
+    color: #81C4F0;
+}

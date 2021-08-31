@@ -15,6 +15,7 @@ input[type=text], input[type=email], input[type=password] {
     padding: 15px;
     margin-top: 20px;
     justify-content: center;
+    background-color: #f6eee9
 }
 
 .row {

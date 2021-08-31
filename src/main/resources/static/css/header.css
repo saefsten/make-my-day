@@ -10,10 +10,11 @@
     margin: 5px;
 }
 
-.iconmargin{
-    margin-right: 100px;
+#loggedInAs {
+    color: #F9F4F1;
+    margin: auto;
 }
 
-.loggedIn{
-    margin-right: 100px;
+.iconmargin {
+    margin-right: 95px;
 }
