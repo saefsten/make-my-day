@@ -27,16 +27,14 @@
     </div>
     <br>
     <div class="activitiesPage">
-        <form>
-            <div class="search">
+        <div class="row">
+            <div class="col-md-3">
                 <select class="form-control" id="category" name="category">
                     <option th:each="category : ${categories}"
                             th:text="${category.categoryName}"/>
                 </select>
-                <button type="submit" class="btn btn-dark mb-2">Search</button>
             </div>
-        </form>
-
+        </div>
         <br>
         <div class="activities">
             <article th:each="activity: ${activities}">
