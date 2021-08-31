@@ -42,7 +42,7 @@ public class CreateMyDayController {
     CategoryRepository categoryRepository;
 
     @GetMapping("/createMyDay")
-    String createMyDay(Model model, @RequestParam(required = false) Long packageId) {
+    String createMyDay(Model model, @RequestParam(required = false) Long packageId, @RequestParam(required = false, defaultValue = "false") boolean hasSaved) {
         List<Activity> activities = (List<Activity>) activityRepository.findAll();
         model.addAttribute("activities", activities);
 
@@ -60,11 +60,13 @@ public class CreateMyDayController {
         String[] hours = {"07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
         model.addAttribute("hours", hours);
 
+        model.addAttribute("hasSaved", hasSaved);
+
         return "createMyDay/createMyDay";
     }
 
     @PostMapping("/createMyDay")
-    String onPost(HttpServletRequest request,@RequestParam List<String> events, @RequestParam String date) throws ParseException {
+    String onPost(HttpServletRequest request, @RequestParam String dayName, @RequestParam List<String> events, @RequestParam String date) throws ParseException {
         List <UserEvent> userEvents = new ArrayList<>();
         User user = userRepository.findByUsername(mmdController.currentUserName(request));
         LocalDate parsedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -75,7 +77,7 @@ public class CreateMyDayController {
             //Integer startTime = Integer.parseInt(events.get(0).substring(0, 2));
             String startTime = events.get(0).substring(0, 5);
             Long activityId = Long.parseLong(events.get(0).substring(6));
-            Activity activity = (Activity) activityRepository.findById(activityId).orElse(null);
+            Activity activity = activityRepository.findById(activityId).orElse(null);
             UserEvent userEvent = new UserEvent(userDay, activity, startTime);
             userEventRepository.save(userEvent);
             userEvents.add(userEvent);
@@ -84,9 +86,10 @@ public class CreateMyDayController {
         userDay.setUserEvents(userEvents);
         userDay.setUser(user);
         userDay.setDate(parsedDate);
+        userDay.setName(dayName);
         userDayRepository.save(userDay);
 
-        return "redirect:/createMyDay";
+        return "redirect:/createMyDay?hasSaved=true";
     }
 
     public static List<String> getStartTimesFromPackage(Package pkg) {

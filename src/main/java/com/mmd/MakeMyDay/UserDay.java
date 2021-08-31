@@ -18,6 +18,9 @@ public class UserDay {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
+
+    private String name;
+
     @OneToMany(mappedBy = "userDay", cascade = CascadeType.ALL)
     private List<UserEvent> userEvents;
 
@@ -52,6 +55,14 @@ public class UserDay {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<UserEvent> getUserEvents() {

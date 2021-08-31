@@ -20,45 +20,58 @@
 <div class="container" id="pageHeight">
     <div class="row">
         <div class="col">
-            <h1>My Days</h1>
-            <br>
-            <div th:if="${ongoingUserDays.size()>0}">
-                <h2>Today</h2>
-                <div th:each="ongoingUserDay : ${ongoingUserDays}">
-                    <a th:href="'/mydays?userDayId=' + ${ongoingUserDay.id}"
-                       th:text="${ongoingUserDay.getDate()}"></a>
+            <div class="row mt-5">
+                <h1>My Days</h1>
+            </div>
+            <div class="row mt-5">
+                <div th:if="${ongoingUserDays.size()>0}">
+                    <h2>Today</h2>
+                    <div th:each="ongoingUserDay : ${ongoingUserDays}">
+                        <strong>
+                            <a th:href="'/mydays?userDayId=' + ${ongoingUserDay.id}"
+                               th:text="${ongoingUserDay.getName()}"></a>
+                        </strong>
+                    </div>
                 </div>
             </div>
-
-            <h2>Upcoming days</h2>
-            <div th:if="${comingUserDays.size()>0}">
-                <div th:each="comingUserDay : ${comingUserDays}">
-                    <a th:href="'/mydays?userDayId=' + ${comingUserDay.id}"
-                       th:text="${comingUserDay.getDate()}"></a>
+            <div class="row mt-5">
+                <h2>Upcoming days</h2>
+                <div th:if="${comingUserDays.size()>0}">
+                    <div th:each="comingUserDay : ${comingUserDays}">
+                        <strong>
+                            <a th:href="'/mydays?userDayId=' + ${comingUserDay.id}"
+                               th:text="${comingUserDay.getName()}"></a>
+                        </strong>
+                        <small th:text="' (' + ${comingUserDay.getDate()} + ')'"></small>
+                    </div>
+                </div>
+                <div th:unless="${comingUserDays.size()>0}">
+                    <div>
+                        <h6>You have no upcoming days saved</h6>
+                    </div>
                 </div>
             </div>
-            <div th:unless="${comingUserDays.size()>0}">
-                <div>
-                    <h6>You have no upcoming days saved</h6>
+            <div class="row mt-5">
+                <h2>Past days</h2>
+                <div th:if="${pastUserDays.size()>0}">
+                    <div th:each="pastUserDay : ${pastUserDays}">
+                        <strong>
+                            <a th:href="'/mydays?userDayId=' + ${pastUserDay.id}"
+                               th:text="${pastUserDay.getName()}"></a>
+                        </strong>
+                        <small th:text="' (' + ${pastUserDay.getDate()} + ')'"></small>
+                    </div>
                 </div>
-            </div>
-
-            <h2>Past days</h2>
-            <div th:if="${pastUserDays.size()>0}">
-                <div th:each="pastUserDay : ${pastUserDays}">
-                    <a th:href="'/mydays?userDayId=' + ${pastUserDay.id}" th:text="${pastUserDay.getDate()}"></a>
-                </div>
-            </div>
-            <div th:unless="${pastUserDays.size()>0}">
-                <div>
-                    <h6>You have no previous days saved</h6>
+                <div th:unless="${pastUserDays.size()>0}">
+                    <div>
+                        <h6>You have no previous days saved</h6>
+                    </div>
                 </div>
             </div>
         </div>
 
-
         <div class="col">
-            <h2 th:text="${chosenDate}">Day</h2>
+            <h2 th:text="${chosenTitle}">Day</h2>
             <br>
 
             <div class="row event-row" th:each="hour : ${hours}">
