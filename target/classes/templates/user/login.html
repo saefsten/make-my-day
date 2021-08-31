@@ -38,26 +38,25 @@
                                     <p>Login to start planning your day</p>
 
                                     <div class="form-outline mb-4">
-                                        <input type="email" id="form2Example11" class="form-control" placeholder="Email"/>
-                                        <label class="form-label" for="form2Example11"></label>
+                                        <input type="text" id="form2Example11" class="form-control" placeholder="Email" name="username"/>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="form2Example22" class="form-control" placeholder="Password" />
-                                        <label class="form-label" for="form2Example22"></label>
+                                        <input type="password" id="form2Example22" class="form-control" placeholder="Password" name="password"/>
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log in</button>
-                                    </div>
-
-                                    <div class="d-flex align-items-center justify-content-center pb-4">
-                                        <p class="mb-0 me-2">Don't have an account? <a href="/register" class="link-danger">Register here!</a></p>
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log in</button>
                                     </div>
 
                                     <div th:if="${param.error}" class="alert alert-danger">
                                         Invalid username or password.
                                     </div>
+
+                                    <div class="d-flex align-items-center justify-content-center pb-4">
+                                        <p class="mb-0 me-2">Don't have an account? <a href="/register" class="registerLink">Register here!</a></p>
+                                    </div>
+
                                 </form>
 
                             </div>
@@ -73,7 +72,7 @@
             </div>
         </div>
     </div>
-
+</section>
 
 <footer th:insert="fragments/footer :: footer"></footer>
 
