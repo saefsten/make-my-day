@@ -42,14 +42,26 @@
       <input type="text" class="form-control" placeholder="www.example.com"  th:field="*{url}">
     </div>
     <div class="input-group mb-3">
-      <span class="input-group-text createFormTitle">Address</span>
-      <input type="text" class="form-control" placeholder="Street 1, 123 45 City" th:field="*{address}">
+      <span class="input-group-text createFormTitle">Street name</span>
+      <input type="text" class="form-control" placeholder="Street" name="streetName" th:field="*{streetName}">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text createFormTitle">Number</span>
+      <input type="text" class="form-control" placeholder="123" th:name="streetNumber" th:field="*{streetNumber}">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text createFormTitle">Postal code</span>
+      <input type="text" class="form-control" placeholder="12345" name="postalCode" th:field="*{postalCode}">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text createFormTitle">City</span>
+      <input type="text" class="form-control" placeholder="City" name="city" th:field="*{city}">
     </div>
     <div class="input-group">
       <span class="input-group-text createFormTitle">Description</span>
       <textarea class="form-control" placeholder="Describe the activity" th:field="*{description}"></textarea>
     </div>
-  <p></p>
+
 
   <span>Choose categories</span>
 
