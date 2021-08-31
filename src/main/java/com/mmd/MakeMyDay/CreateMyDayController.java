@@ -72,9 +72,8 @@ public class CreateMyDayController {
         userDayRepository.save(userDay);
 
         for (int i=0; i<events.size(); i++) {
-            //Integer startTime = Integer.parseInt(events.get(0).substring(0, 2));
-            String startTime = events.get(0).substring(0, 5);
-            Long activityId = Long.parseLong(events.get(0).substring(6));
+            String startTime = events.get(i).substring(0, 5);
+            Long activityId = Long.parseLong(events.get(i).substring(6));
             Activity activity = (Activity) activityRepository.findById(activityId).orElse(null);
             UserEvent userEvent = new UserEvent(userDay, activity, startTime);
             userEventRepository.save(userEvent);
