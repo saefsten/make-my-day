@@ -1,42 +1,4 @@
-/*function handleDragStart(e) {
-    this.style.opacity = '0.4';
-    dragged = event.target;
-    console.log(dragged)
-}
-
-function handleDragEnd(e) {
-    this.style.opacity = '1';
-    console.log('Drag ended')
-    event.preventDefault();
-    // move dragged elem to the selected drop target
-    if ( event.target.className == "row" ) {
-        event.target.style.background = "";
-        dragged.parentNode.removeChild( dragged );
-        event.target.appendChild( dragged );
-    }
-}
-
-let items = document.querySelectorAll('.row');
 var dragged;
-items.forEach(function(item) {
-    item.addEventListener('dragstart', handleDragStart, false);
-    item.addEventListener('dragend', handleDragEnd, false);
-    item.addEventListener('drop', handleDrop, false);
-});
-
-function handleDrop(e) {
-    console.log('Dropped')
-      // prevent default action (open as link for some elements)
-      event.preventDefault();
-      // move dragged elem to the selected drop target
-      if ( event.target.className == "row" ) {
-          event.target.style.background = "";
-          dragged.parentNode.removeChild( dragged );
-          event.target.appendChild( dragged );
-      }
-  }*/
-
-  var dragged;
 
     /* events fired on the draggable target */
     document.addEventListener("drag", function( event ) {
@@ -289,12 +251,4 @@ function handleDrop(e) {
         for (let i = 0; i < listArr.length; i++) {
             document.getElementById("activity-list").appendChild(listArr[i])
         }
-
-        /*Array.from(activities).forEach((activity) => {
-            if(activity.querySelector("." + cat) !== null || cat === "All categories") {
-                activity.style.display = 'block'
-            } else {
-                activity.style.display = 'none'
-            }
-        });*/
     }
