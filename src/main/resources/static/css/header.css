@@ -11,7 +11,7 @@
 }
 
 #loggedInAs {
-    color: #F9F4F1;
+    color: rgba(249, 244, 241, 0.6) !important;
     margin: auto;
 }
 
