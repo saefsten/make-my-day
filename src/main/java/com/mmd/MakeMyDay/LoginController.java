@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -40,7 +41,7 @@ public class LoginController {
     }
 
    @PostMapping("/register")
-    public String registerNewUser(Model model, HttpSession session, @RequestParam String firstName, @RequestParam  String lastName, @RequestParam String password, @RequestParam String username){
+    public String registerNewUser(HttpServletRequest request, Model model, HttpSession session, @RequestParam String firstName, @RequestParam  String lastName, @RequestParam String password, @RequestParam String username){
        User newUser = userRepository.findByUsername(username);
        model.addAttribute("username", username);
        if(newUser == null){
@@ -50,7 +51,14 @@ public class LoginController {
            role.addUser(user);
            userRepository.save(user);
            roleRepository.save(role);
-           return "start";
+
+           try {
+               request.login(username, password);
+           } catch (ServletException e) {
+               e.printStackTrace();
+           }
+
+           return "redirect:/";
        }
         else{
             model.addAttribute("message", "You already have an account.");
