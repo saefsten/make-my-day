@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/register",
                         "/activity/**",
                         "/maps",
-                        "/mapsResult"
+                        "/location"
                 ).permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/admin", "/createActivity", "/updateActivity").hasAuthority("ADMIN")

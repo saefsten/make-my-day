@@ -3,6 +3,7 @@ package com.mmd.MakeMyDay;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,8 +16,7 @@ public class MapsController {
 
     @GetMapping("/maps")
     public Map maps(RestTemplate restTemplate){
-        String directions = restTemplate.getForObject("https://maps.googleapis.com/maps/api/directions/json?origin=Hornsgatan+54+11821+Stockholm&destination=Bondegatan+30+11633+Stockholm&key=AIzaSyAEBZaeUpV59xV1vHJhmT8UIKnw8S1GO50", String.class);
-
+        String directions = restTemplate.getForObject("https://maps.googleapis.com/maps/api/directions/json?origin=Hornsgatan+54+11821+Stockholm&destination=Bondegatan+30+11633+Stockholm&key=AIzaSyDeJB3i-GWRq8X5zGKea6mLtFnthe8uc2M", String.class);
         Map<String, Object> map = new Gson()
                 .fromJson(directions, new TypeToken<HashMap<String, Object>>() {
                 }.getType());
@@ -38,6 +38,7 @@ public class MapsController {
         results.put("longitude_end", end_location.get("lng").toString());
         return results;
     }
+
 
     public static <T> T getNestedValue(Map map, String... keys) {
         Object value = map;
