@@ -49,6 +49,10 @@ public class Activity {
             cascade = CascadeType.PERSIST)
     private Set<User> users = new HashSet<>();
 
+    @OneToMany(mappedBy = "activity") // one activity can have many reviews, review only for one activity
+    private Set<Review> reviews;
+
+
     public Activity() {
     }
 
@@ -71,6 +75,10 @@ public class Activity {
     public void addUser(User user) {
         users.add(user);
         user.getUserFavouriteActivities().add(this);
+    }
+
+    public void addReview(Review review) {
+        reviews.add(review);
     }
 
     public void removeUser(User user) {
@@ -207,5 +215,13 @@ public class Activity {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
     }
 }

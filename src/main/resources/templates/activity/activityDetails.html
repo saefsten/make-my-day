@@ -31,9 +31,7 @@
             <p th:text="${activity.city}"></p>
             <p th:text="${#numbers.formatDecimal(activity.price,1,2)} + ' kr'"></p>
             <p id="externalUrl" th:text="${activity.url}"></p>
-        <a class="btn btn-dark activityBtn" href="/activities" role="button" aria-expanded="false">
-            Back to activities
-        </a>
+
         <div class="flexbox" sec:authorize="isAuthenticated()">
             <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=activity/' + ${activity.id}">
                 <div class="fav-btn">
@@ -48,8 +46,23 @@
         </div>
 
         <a th:href="'/updateActivity?id=' + ${activity.id}" sec:authorize="hasAuthority('ADMIN')" button type="submit" class="btn btn-light">Edit</a>
+        <a th:href="'/review/' + ${activity.id}" sec:authorize="isAuthenticated()" button type="submit" class="btn btn-light">Review</a>
+        <a class="btn btn-dark activityBtn" href="/activities" role="button" aria-expanded="false">
+            Back to activities
+        </a>
     </div>
 </div>
+
+<div th:each="review : ${reviews}">
+    <div class="card" style="width: 40rem;">
+        <h6 class="card-title" th:text="${review.date}"></h6>
+        <h6 class="card-subtitle mb-2 text-muted" th:text="${review.user.firstName}"></h6>
+        <p class="card-text" th:text="'Rating: ' + ${review.rating}"></p>
+        <p class="card-text" th:text="${review.reviewText}"></p>
+    </div>
+</div>
+
+
 </div>
 <div th:insert="fragments/footer :: footer"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"

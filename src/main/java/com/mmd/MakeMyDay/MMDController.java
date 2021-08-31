@@ -4,6 +4,7 @@ package com.mmd.MakeMyDay;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 */
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.availability.AvailabilityChangeEvent;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -37,13 +38,15 @@ public class MMDController {
     @Autowired
     CategoryService categoryService;
 
+    @Autowired
+    ReviewService reviewService;
+
     @GetMapping("/")
     String index(Model model){
         List <Activity> activities = activityService.findAllActivities();
         model.addAttribute("activities", activities);
         return "start";
     }
-
 
     @GetMapping("/start")
     String start(Model model){
@@ -93,9 +96,6 @@ public class MMDController {
     String activity(Model model, HttpServletRequest request, @PathVariable Long id){
         Activity activity = activityService.findActivityById(id);
         model.addAttribute("activity", activity);
-
-//        List<Activity> activities = activityService.findAllActivities();
-//        model.addAttribute("activities", activities);
         try {
             User user = userService.findUserByUsername(currentUserName(request));
         } catch (NullPointerException ne) {
@@ -107,7 +107,38 @@ public class MMDController {
         User user = userService.findUserByUsername(currentUserName(request));
         List<Long> userFavouritesActivityId = getUserFavouritesId(user);
         model.addAttribute("userFavourites", userFavouritesActivityId);
+        Set<Review> reviews = activity.getReviews();
+        model.addAttribute("reviews", reviews);
         return "activity/activityDetails";
+    }
+
+
+    @GetMapping("/review/{id}")
+    public String writeReview(HttpServletRequest request, Model model, @PathVariable Long id) {
+        Activity activity = activityService.findActivityById(id);
+        User user = userService.findUserByUsername(currentUserName(request));
+        Set<Review> reviewsForActivity =  activity.getReviews();
+        for (Review rew : reviewsForActivity) {
+            if (rew.getUser().getId() == user.getId()) {
+                return "redirect:/activity/"+id;
+            }
+        }
+        model.addAttribute("activityName", activity.getName());
+        model.addAttribute("activityId", id);
+        Review review = new Review();
+        model.addAttribute("review", review);
+        return "activity/review";
+    }
+
+    @PostMapping("saveReview")
+    public String saveReview(HttpServletRequest request, Model model, @ModelAttribute Review review, @RequestParam Long activityId) {
+        Activity activity = activityService.findActivityById(activityId);
+        User user = userService.findUserByUsername(currentUserName(request));
+        review.setUser(user);
+        review.setActivity(activity);
+        review.setDate(LocalDate.now());
+        reviewService.saveReview(review);
+        return "redirect:/activity/"+activityId;
     }
 
     @GetMapping("/mydays")
@@ -175,7 +206,6 @@ public class MMDController {
         }
         userService.saveUser(user);
         activityService.saveActivity(activity);
-//        return "redirect:/activities";
         return "redirect:/"+previousURL;
 
     }

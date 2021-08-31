@@ -22,6 +22,9 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user") // one user can write many reviews, but one review is by only one user
+    private Set<Review> reviews;
+
     public User() {
     }
 
@@ -31,6 +34,10 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
+    }
+
+    public void addReview(Review review) {
+        reviews.add(review);
     }
 
     public void addFavouriteActivity(Activity activity) {
@@ -101,5 +108,13 @@ public class User {
 
     public void addRole(Role role) {
         this.roles.add(role);
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
     }
 }
