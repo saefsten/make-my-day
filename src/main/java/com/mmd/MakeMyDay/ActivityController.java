@@ -98,8 +98,6 @@ public class ActivityController {
 
     public Map location(String streetName, String streetNumber, String postalCode, String city) {
         String loc = restTemplate.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address="+streetName+"+"+streetNumber+"+"+postalCode+"+"+city+"&key="+google.API_KEY, String.class);
-//        String loc = restTemplate.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address="+streetName+"+"+streetNumber+"+"+postalCode+"+"+city+"&key=AIzaSyDeJB3i-GWRq8X5zGKea6mLtFnthe8uc2M", String.class);
-
         Map<String, Object> map = new Gson()
                 .fromJson(loc, new TypeToken<HashMap<String, Object>>() {
                 }.getType());
