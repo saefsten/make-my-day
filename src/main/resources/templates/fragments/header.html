@@ -37,11 +37,11 @@
                 <div class="d-flex">
                     <div sec:authorize="isAuthenticated()">
                         <ul class="navbar-nav ml-auto">
-                            <p style="margin: auto;" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
+                            <p id="loggedInAs" style="margin: auto;" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle navLinks" href="#" id="navbarDropdown" role="button"
                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="/img/loginicon.png" width="30" height="30">
+                                    <img src="/img/loginicon-white.png" width="30" height="30">
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/mydays">My days</a></li>

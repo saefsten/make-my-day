@@ -1,7 +1,11 @@
 package com.mmd.MakeMyDay;
 
+/*
+
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,3 +67,6 @@ public class MapsController {
 
     // https://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood&key=AIzaSyAEBZaeUpV59xV1vHJhmT8UIKnw8S1GO50
 }
+
+
+*/
