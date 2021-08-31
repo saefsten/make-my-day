@@ -58,7 +58,7 @@ public class LoginController {
                e.printStackTrace();
            }
 
-           return "start";
+           return "redirect:/";
        }
         else{
             model.addAttribute("message", "You already have an account.");
