@@ -1,4 +1,5 @@
 var dragged;
+updateDistances()
 
     /* events fired on the draggable target */
     document.addEventListener("drag", function( event ) {
@@ -193,6 +194,9 @@ var dragged;
 
     function updateDistances() {
         const eventParagraphs = document.querySelectorAll(".event-section")
+        if (eventParagraphs.length === 0) {
+            return
+        }
         const originLatLong = getActivityLatLong(eventParagraphs[0].id)
         // If there is only one event, the list should be sorted accordingly
         if (eventParagraphs.length === 1) {
