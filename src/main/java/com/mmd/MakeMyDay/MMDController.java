@@ -174,6 +174,8 @@ public class MMDController {
 
             model.addAttribute("chosenUserDay", chosenUserDay);
             model.addAttribute("chosenDate", dateString);
+            model.addAttribute("chosenName", chosenUserDay.getName());
+            model.addAttribute("chosenTitle", chosenUserDay.getName() + " (" + dateString + ")");
             model.addAttribute("hours", hours);
             model.addAttribute("userEvents", chosenUserDay.getUserEvents());
             model.addAttribute("startTimes", getUserDayStartTimes(chosenUserDay));

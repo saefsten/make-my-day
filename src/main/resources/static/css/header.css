@@ -18,3 +18,7 @@
 .iconmargin {
     margin-right: 95px;
 }
+
+.navbar-brand {
+    padding-top: .156rem;
+}
