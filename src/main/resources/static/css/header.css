@@ -17,3 +17,20 @@
 .loggedIn{
     margin-right: 100px;
 }
+
+.logged-in-as{
+    color: rgba(249, 244, 241, 0.6) !important;
+    margin-bottom: 0px !important;
+    position: absolute;
+    right: 75px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.max-width {
+    max-width: 60px;
+}

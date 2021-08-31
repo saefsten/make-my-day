@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
@@ -19,27 +20,41 @@
 <header th:insert="fragments/header :: header"></header>
 
 
-
 <div class="container" id="packagesPage">
     <h1 class="pageHeader">Packages</h1>
-    <div class="card-text">Learn more about our different packages here. They are filled with exciting and interesting activities to fill you day with. </div>
+    <div class="card-text">Learn more about our different packages here. They are filled with exciting and interesting
+        activities to fill you day with.
+    </div>
     <br>
-    <div class="packages">
-        <article th:each="package: ${packages}">
-            <a th:href="${'/package/' + package.id}">
-                <div class="card" style="width: 18rem;">
-                    <img th:src="${'/img/' + package.packageName + '.jpg'}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${package.packageName}"></h5>
-                        <p class="card-text" th:text="${package.description}"></p>
+    <div>
+        <div class="search-element">
+            <input class="form-control search-text" id="searchBar" type="text" placeholder="Search package">
+        </div>
+
+        <br>
+
+        <div class="packages">
+            <article class="package-list" th:each="package: ${packages}">
+                <a th:href="${'/package/' + package.id}">
+                    <div class="card" style="width: 18rem;">
+                        <img th:src="${'/img/' + package.packageName + '.jpg'}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title" id="package-name" th:text="${package.packageName}"></h5>
+                            <p class="card-text" th:text="${package.description}"></p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </article>
+                </a>
+            </article>
+        </div>
+
     </div>
 </div>
 
-<div th:insert="fragments/footer :: footer"></div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<footer th:insert="fragments/footer :: footer"></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+<script th:src="'js/packages.js'" src="../../static/js/packages.js"></script>
+
 </body>
 </html>

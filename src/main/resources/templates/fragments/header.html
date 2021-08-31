@@ -35,18 +35,23 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <div sec:authorize="isAuthenticated()">
+                    <div class="max-width" sec:authorize="isAuthenticated()">
                         <ul class="navbar-nav ml-auto iconmargin">
-                            <p th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
+                            <div class="center">
+                                <span class="logged-in-as"
+                                      th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></span>
+                            </div>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle navLinks" href="#" id="navbarDropdown"
+                                   role="button"
                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="/img/loginicon.png" width="30" height="30">
+                                    <img src="/img/loginicon-white.png" width="30" height="30">
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/mydays">My days</a></li>
                                     <li><a class="dropdown-item" href="/user/account">My saved activities</a></li>
-                                    <li><a class="dropdown-item" href="/createActivity" sec:authorize="hasAuthority('ADMIN')">Create activity</a></li>
+                                    <li><a class="dropdown-item" href="/createActivity"
+                                           sec:authorize="hasAuthority('ADMIN')">Create activity</a></li>
                                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
                                 </ul>
                             </li>

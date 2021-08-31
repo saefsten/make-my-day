@@ -13,6 +13,7 @@ searchBar.addEventListener('keyup', function(e){
     const term = e.target.value.toLowerCase();
     Array.from(activities).forEach((activity) => {
         const title = activity.firstElementChild.textContent;
+
         if(title.toLowerCase().indexOf(e.target.value) != -1) {
             activity.style.display = 'block';
         } else {
