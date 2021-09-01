@@ -96,6 +96,8 @@ public class MMDController {
     String activity(Model model, HttpServletRequest request, @PathVariable Long id){
         Activity activity = activityService.findActivityById(id);
         model.addAttribute("activity", activity);
+        Set<Review> reviews = activity.getReviews();
+        model.addAttribute("reviews", reviews);
         try {
             User user = userService.findUserByUsername(currentUserName(request));
         } catch (NullPointerException ne) {
@@ -107,8 +109,6 @@ public class MMDController {
         User user = userService.findUserByUsername(currentUserName(request));
         List<Long> userFavouritesActivityId = getUserFavouritesId(user);
         model.addAttribute("userFavourites", userFavouritesActivityId);
-        Set<Review> reviews = activity.getReviews();
-        model.addAttribute("reviews", reviews);
         return "activity/activityDetails";
     }
 

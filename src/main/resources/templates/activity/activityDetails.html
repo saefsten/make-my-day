@@ -1,80 +1,82 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/activities.css">
-    <link rel="icon" href="/img/LOGO-R.png">
-    <title>Make my day</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/activities.css">
+<link rel="icon" href="/img/LOGO-R.png">
+<title>Make my day</title>
 </head>
 
 <body>
 <header th:insert="fragments/header :: header"></header>
 
 <div class="container" id="pageHeight">
-<div class="activitiesDetailPage">
-    <img th:if="${activity.id > 20}" src="/img/Activity_icon.png" class="card-img-top">
-    <img th:if="${activity.id <= 20}" th:src="${'/img/' + activity.id + '.jpg'}" class="card-img-top">
-    <div class="activity-txt">
-        <h2 th:text="${activity.name}"></h2>
-        <p th:text="${activity.description}"></p>
+    <div class="activitiesDetailPage">
+        <img th:if="${activity.id > 20}" src="/img/Activity_icon.png" class="card-img-top">
+        <img th:if="${activity.id <= 20}" th:src="${'/img/' + activity.id + '.jpg'}" style="min-height: 356px;" class="card-img-top">
+        <div class="activity-txt">
+            <h2 th:text="${activity.name}"></h2>
+            <p th:text="${activity.description}"></p>
             <p th:text="${activity.streetName +' '+ activity.streetNumber}"></p>
             <p th:text="${activity.city}"></p>
             <p th:text="${#numbers.formatDecimal(activity.price,1,2)} + ' kr'"></p>
             <p id="externalUrl" th:text="${activity.url}"></p>
-
-        <div class="flexbox" sec:authorize="isAuthenticated()">
-            <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=activity/' + ${activity.id}">
-                <div class="fav-btn">
-                    <div th:if="${userFavourites.contains(activity.id)}">
-                        <span  class="favmesaved dashicons dashicons-heart"></span>
+            
+            <div class="flexbox" sec:authorize="isAuthenticated()">
+                <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=activity/' + ${activity.id}">
+                    <div class="fav-btn">
+                        <div th:if="${userFavourites.contains(activity.id)}">
+                            <span class="favmesaved dashicons dashicons-heart"></span>
+                        </div>
+                        <div th:if="${!userFavourites.contains(activity.id)}">
+                            <span class="favme dashicons dashicons-heart"></span>
+                        </div>
                     </div>
-                    <div th:if="${!userFavourites.contains(activity.id)}">
-                        <span  class="favme dashicons dashicons-heart"></span>
-                    </div>
-                </div>
+                </a>
+            </div>
+            
+            <a th:href="'/updateActivity?id=' + ${activity.id}" sec:authorize="hasAuthority('ADMIN')" button
+               type="submit" class="btn btn-light">Edit</a>
+            <a th:href="'/review/' + ${activity.id}" sec:authorize="isAuthenticated()" button type="submit"
+               class="btn btn-light">Review</a>
+            <p></p>
+            <a class="btn btn-dark activityBtn" href="/activities" role="button" aria-expanded="false">
+                Back to activities
             </a>
         </div>
-
-        <a th:href="'/updateActivity?id=' + ${activity.id}" sec:authorize="hasAuthority('ADMIN')" button type="submit" class="btn btn-light">Edit</a>
-        <a th:href="'/review/' + ${activity.id}" sec:authorize="isAuthenticated()" button type="submit" class="btn btn-light">Review</a>
-        <p></p>
-        <a class="btn btn-dark activityBtn" href="/activities" role="button" aria-expanded="false">
-            Back to activities
-        </a>
     </div>
-</div>
-
-<div th:each="review : ${reviews}">
-    <div class="card reviewBox" style="width: 40rem;">
-
-        <div id="ratingStars">
-            <span class="fa fa-star"></span>
-            <span th:if="${review.rating > 1}" class="fa fa-star"></span>
-            <span th:if="${review.rating > 2}" class="fa fa-star"></span>
-            <span th:if="${review.rating > 3}" class="fa fa-star"></span>
-            <span th:if="${review.rating > 4}" class="fa fa-star"></span>
+    
+    <div class="row">
+        <div th:each="review : ${reviews}" class="col-md-3">
+            <div class="card reviewBox">
+                <div class="card-body">
+                    <div id="ratingStars">
+                        <span class="fa fa-star"></span>
+                        <span th:if="${review.rating > 1}" class="fa fa-star"></span>
+                        <span th:if="${review.rating > 2}" class="fa fa-star"></span>
+                        <span th:if="${review.rating > 3}" class="fa fa-star"></span>
+                        <span th:if="${review.rating > 4}" class="fa fa-star"></span>
+                    </div>
+                    <h6 class="card-title" th:text="${review.date}"></h6>
+                    <h6 class="card-subtitle mb-2 text-muted" th:text="${review.user.firstName}"></h6>
+                    <p class="card-text" th:text="${review.reviewText}"></p>
+                </div>
+            </div>
         </div>
-
-        <h6 class="card-title" th:text="${review.date}"></h6>
-        <h6 class="card-subtitle mb-2 text-muted" th:text="${review.user.firstName}"></h6>
-        <p class="card-text" th:text="${review.reviewText}"></p>
     </div>
 </div>
-
-
-</div>
-<div th:insert="fragments/footer :: footer"></div>
+<footer th:insert="fragments/footer :: footer"></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>

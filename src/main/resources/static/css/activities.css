@@ -49,8 +49,11 @@ html, body {
 
 .activity-txt{
     margin-left: 25px;
-    border: solid 0.5px #332539;
+    /*border: solid 1px #332539;*/
+    border: solid 1px rgba(0,0,0,.125);
     padding: 15px;
+    border-radius: 0.25rem;
+    background-color: #FFFFFF;
 }
 
 .activitiesDetailPage #externalUrl {
@@ -179,5 +182,6 @@ html, body {
 }
 
 .reviewBox {
-    margin: 5px;
+    margin: 5px 5px 5px 0px;
+    //border: solid #332539 1px;
 }
