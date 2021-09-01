@@ -26,7 +26,7 @@
         and add the activities in your own calendar.
     </div>
     <div class="activitiesPage">
-        <div class="row">
+        <div class="row" id="categoryList">
             <div class="col-md-3">
                 <select class="form-select" id="category" onchange="activitiesFilter()">
                     <option selected>All categories</option>
@@ -34,7 +34,6 @@
                 </select>
             </div>
         </div>
-        <br>
         <div class="activities">
             <article th:each="activity: ${activities}">
                 <div class="card" style="width: 18rem;">

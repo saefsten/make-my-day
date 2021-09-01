@@ -50,38 +50,55 @@
 <div class="container" id="recommended">
     <div class="row">
         <h1 class="pageHeader" style="font-weight: normal">Recommended activities</h1>
-        <div class="col-sm-3">
-            <div class="card bg-light mb-3">
-                <a th:href="${'/activity/' + 7}">
-                <img src="/img/7.jpg" class="card-img" alt="Food">
-                <div class="card-img-overlay">
-                    <p class="card-text">Visit Beirut Bistro and explore the Lebanese cuisine<br>CUISINE</p>
-                </div>
-                </a>
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="/activity/7"/>
+                    <img src="/img/7.jpg" class="d-block w-100" alt="First Slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <article class="card-text" th:each="activity: ${activities}">
+                            <h5 th:if="${activity.id == 7}" th:text="${activity.name}"></h5>
+                            <p th:if="${activity.id == 7}" th:text="${activity.description}"></p>
+                        </article>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <a href="/activity/6"/>
+                    <img src="/img/6.jpg" class="d-block w-100" alt="Second Slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <article class="card-text" th:each="activity: ${activities}">
+                            <h5 th:if="${activity.id == 6}" th:text="${activity.name}"></h5>
+                            <p th:if="${activity.id == 6}" th:text="${activity.description}"></p>
+                        </article>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <a href="/activity/3"/>
+                    <img src="/img/3.jpg" class="d-block w-100" alt="Third Slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <article class="card-text" th:each="activity: ${activities}">
+                            <h5 th:if="${activity.id == 3}" th:text="${activity.name}"></h5>
+                            <p th:if="${activity.id == 3}" th:text="${activity.description}"></p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
 
-        <div class="col-sm-3">
-            <div class="card bg-light mb-3">
-                <a th:href="${'/activity/' + 6}">
-                <img src="/img/6.jpg" class="card-img" alt="Bicycle ride">
-                <div class="card-img-overlay">
-                    <p class="card-text">Switch it up and explore what Stockholm has to offer by bike<br>SPORT | RELAXATION</p>
-                </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-sm-3">
-            <div class="card bg-light mb-3">
-                <a th:href="${'/activity/' + 3}">
-                <img src="/img/3.jpg" class="card-img" alt="Gröna Lund amusement park">
-                <div class="card-img-overlay">
-                    <p class="card-text">Visit Gröna Lund and get your adrenaline pumping<br>ADVENTURE | FAMILY</p>
-                </div>
-                </a>
-            </div>
-        </div>
     </div>
 </div>
 

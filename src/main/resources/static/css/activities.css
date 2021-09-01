@@ -161,5 +161,9 @@ html, body {
 .search{
     width: 25%
     margin-bottom: 2px;
+}
 
+#categoryList {
+    justify-content: center;
+    padding-bottom: 20px;
 }

@@ -23,14 +23,10 @@
 <div class="container" id="packagesPage">
     <h1 class="pageHeader">Packages</h1>
     <div class="pageDescription">Learn more about our different packages here. They are filled with exciting and interesting activities to fill you day with. </div>
-    <br>
     <div>
         <div class="search-element">
             <input class="form-control search-text" id="searchBar" type="text" placeholder="Search package">
         </div>
-
-        <br>
-
         <div class="packages">
             <article class="package-list" th:each="package: ${packages}">
                 <a th:href="${'/package/' + package.id}">

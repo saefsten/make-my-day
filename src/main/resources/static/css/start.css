@@ -22,7 +22,7 @@
 
 #recommended {
     padding-top: 20px;
-    height: 55vh;
+    height: 85vh;
 }
 
 body #startPage{
@@ -42,7 +42,9 @@ body #startPage{
 
 .card-text {
     color: #F9F4F1;
-    background-color: rgba(99, 99, 99, 0.5);
+    background-color: rgba(99, 99, 99, 0.6);
+    width: 35%;
+    margin: auto;
 }
 
 .row {
@@ -70,7 +72,6 @@ body #startPage{
     border-radius: 5px !important;
 }
 
-
 .headline{
     text-align: left;
     font-size: 30px;
@@ -93,4 +94,12 @@ body #startPage{
 .activityBtn{
     text-align: left;
     margin: 10px 60px 60px 60px;
+}
+
+.carousel-item {
+    height: 26rem;
+}
+
+.carousel {
+    width: 75%;
 }
