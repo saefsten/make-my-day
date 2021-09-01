@@ -48,7 +48,7 @@
             
             <a th:href="'/updateActivity?id=' + ${activity.id}" sec:authorize="hasAuthority('ADMIN')" button
                type="submit" class="btn btn-light">Edit</a>
-            <a th:href="'/review/' + ${activity.id}" sec:authorize="isAuthenticated()" button type="submit"
+            <a th:if="${!activityReviewedByUser}" th:href="'/review/' + ${activity.id}" sec:authorize="isAuthenticated()" button type="submit"
                class="btn btn-light">Review</a>
             <p></p>
             <a class="btn btn-dark activityBtn" href="/activities" role="button" aria-expanded="false">

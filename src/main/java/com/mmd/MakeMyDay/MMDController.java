@@ -109,6 +109,13 @@ public class MMDController {
         User user = userService.findUserByUsername(currentUserName(request));
         List<Long> userFavouritesActivityId = getUserFavouritesId(user);
         model.addAttribute("userFavourites", userFavouritesActivityId);
+        boolean userReviewed = false;
+        for (Review review : reviews) {
+            if (review.getUser().getId() == user.getId()) {
+                userReviewed = true;
+            }
+        }
+        model.addAttribute("activityReviewedByUser", userReviewed);
         return "activity/activityDetails";
     }
 
