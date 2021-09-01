@@ -109,6 +109,13 @@ public class MMDController {
         model.addAttribute("userFavourites", userFavouritesActivityId);
         Set<Review> reviews = activity.getReviews();
         model.addAttribute("reviews", reviews);
+        boolean userReviewed = false;
+        for (Review review : reviews) {
+            if (review.getUser().getId() == user.getId()) {
+                userReviewed = true;
+            }
+        }
+        model.addAttribute("activityReviewedByUser", userReviewed);
         return "activity/activityDetails";
     }
 
