@@ -143,6 +143,10 @@ html, body {
     width: 350px;
 }
 
+.createFormSmallest {
+    width: 150px;
+}
+
 .createFormTitle {
     width: 120px;
 }
@@ -162,4 +166,18 @@ html, body {
     width: 25%
     margin-bottom: 2px;
 
+}
+
+.fa-star {
+  color: orange;
+}
+
+
+#ratingStarts {
+    display: flex;
+    color: orange;
+}
+
+.reviewBox {
+    margin: 5px;
 }
