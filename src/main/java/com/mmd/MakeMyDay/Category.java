@@ -18,6 +18,10 @@ public class Category {
 
     }
 
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public Category(int id, String categoryName, Set<Activity> activities) {
         this.id = id;
         this.categoryName = categoryName;

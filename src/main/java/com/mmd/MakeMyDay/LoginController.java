@@ -46,7 +46,7 @@ public class LoginController {
        model.addAttribute("username", username);
        if(newUser == null){
            User user = new User(encoder.encode(password), firstName, lastName, username);
-           Role role = roleRepository.findById(1L).get();
+           Role role = roleRepository.findById(2L).get();
            user.addRole(role);
            role.addUser(user);
            userRepository.save(user);
