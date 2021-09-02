@@ -56,32 +56,32 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <a href="/activity/7"/>
+                    <a th:href="${'/activity/' + activity1.id}"/>
                     <img src="/img/7.jpg" class="d-block w-100" alt="First Slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <article class="card-text" th:each="activity: ${activities}">
-                            <h5 class="acticityTitle" th:if="${activity.id == 7}" th:text="${activity.name}"></h5>
-                            <p class="acticityText" th:if="${activity.id == 7}" th:text="${activity.description}"></p>
+                        <article class="card-text">
+                            <h5 class="activityTitle" th:text="${activity1.name}"></h5>
+                            <p class="activityText" th:text="${activity1.description}"></p>
                         </article>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <a href="/activity/6"/>
+                    <a th:href="${'/activity/' + activity2.id}"/>
                     <img src="/img/6.jpg" class="d-block w-100" alt="Second Slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <article class="card-text" th:each="activity: ${activities}">
-                            <h5 class="acticityTitle" th:if="${activity.id == 6}" th:text="${activity.name}"></h5>
-                            <p class="acticityText" th:if="${activity.id == 6}" th:text="${activity.description}"></p>
+                        <article class="card-text">
+                            <h5 class="activityTitle" th:text="${activity2.name}"></h5>
+                            <p class="activityText" th:text="${activity2.description}"></p>
                         </article>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <a href="/activity/3"/>
+                    <a th:href="${'/activity/' + activity3.id}"/>
                     <img src="/img/3.jpg" class="d-block w-100" alt="Third Slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <article class="card-text" th:each="activity: ${activities}">
-                            <h5 class="acticityTitle" th:if="${activity.id == 3}" th:text="${activity.name}"></h5>
-                            <p class="acticityText" th:if="${activity.id == 3}" th:text="${activity.description}"></p>
+                        <article class="card-text">
+                            <h5 class="activityTitle" th:text="${activity3.name}"></h5>
+                            <p class="activityText" th:text="${activity3.description}"></p>
                         </article>
                     </div>
                 </div>
