@@ -49,7 +49,6 @@ html, body {
 
 .activity-txt{
     margin-left: 25px;
-    /*border: solid 1px #332539;*/
     border: solid 1px rgba(0,0,0,.125);
     padding: 15px;
     border-radius: 0.25rem;
@@ -168,7 +167,11 @@ html, body {
 .search{
     width: 25%
     margin-bottom: 2px;
+}
 
+#categoryList {
+    justify-content: center;
+    padding-bottom: 20px;
 }
 
 .fa-star {

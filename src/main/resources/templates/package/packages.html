@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/packages.css">
     <link rel="icon" href="/img/LOGO-R.png">
+    <!--Font links-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
     <title>Make my day</title>
 </head>
 
@@ -23,14 +27,10 @@
 <div class="container" id="packagesPage">
     <h1 class="pageHeader">Packages</h1>
     <div class="pageDescription">Learn more about our different packages here. They are filled with exciting and interesting activities to fill you day with. </div>
-    <br>
     <div>
         <div class="search-element">
             <input class="form-control search-text" id="searchBar" type="text" placeholder="Search package">
         </div>
-
-        <br>
-
         <div class="packages">
             <article class="package-list" th:each="package: ${packages}">
                 <a th:href="${'/package/' + package.id}">

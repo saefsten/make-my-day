@@ -8,8 +8,7 @@
     grid-template-columns: repeat(auto-fit, 300px);
     grid-column-gap:30px;
     grid-row-gap:30px;
-    margin-bottom: 20px;
-
+    padding-bottom: 20px;
 }
 
 .packages article {
@@ -36,4 +35,9 @@
 
 #createThisDayButton {
     margin: 10px;
+    width: 25%;
+}
+
+#cmdBtn {
+     justify-content: center;
 }

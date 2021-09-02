@@ -15,6 +15,10 @@
 <link rel="stylesheet" href="/css/footer.css">
 <link rel="stylesheet" href="/css/activities.css">
 <link rel="icon" href="/img/LOGO-R.png">
+<!--Font links-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
 <title>Make my day</title>
 </head>
 
@@ -32,7 +36,7 @@
             <p th:text="${activity.city}"></p>
             <p th:text="${#numbers.formatDecimal(activity.price,1,2)} + ' kr'"></p>
             <p id="externalUrl" th:text="${activity.url}"></p>
-            
+
             <div class="flexbox" sec:authorize="isAuthenticated()">
                 <a th:href="'/user/addfavourite?id=' + ${activity.id} + '&previousURL=activity/' + ${activity.id}">
                     <div class="fav-btn">
@@ -45,7 +49,7 @@
                     </div>
                 </a>
             </div>
-            
+
             <a th:href="'/updateActivity?id=' + ${activity.id}" sec:authorize="hasAuthority('ADMIN')" button
                type="submit" class="btn btn-light">Edit</a>
             <a th:if="${!activityReviewedByUser}" th:href="'/review/' + ${activity.id}" sec:authorize="isAuthenticated()" button type="submit"
@@ -56,7 +60,7 @@
             </a>
         </div>
     </div>
-    
+
     <div class="row">
         <div th:each="review : ${reviews}" class="col-md-3">
             <div class="card reviewBox">

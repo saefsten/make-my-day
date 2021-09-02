@@ -7,6 +7,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
+    <!--Font links-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 <div th:fragment="header">
@@ -37,7 +41,7 @@
                 <div class="d-flex">
                     <div sec:authorize="isAuthenticated()">
                         <ul class="navbar-nav ml-auto">
-                            <p id="loggedInAs" style="margin: auto;" th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
+                            <p id="loggedInAs" style="margin: auto;" th:text="${'Logged in as ' + #httpServletRequest.remoteUser}"></p>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle navLinks" href="#" id="navbarDropdown" role="button"
                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -29,14 +29,11 @@
 
 .search-element {
     margin: auto;
-    width: 50%;
-    padding: 10px;
+    width: 25%;
+    padding-top: 0px;
+    padding-bottom: 20px;
 }
 
 ::placeholder {
-    text-align: center;
-}
-
-input {
     text-align: center;
 }

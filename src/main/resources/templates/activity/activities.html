@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/activities.css">
     <link rel="icon" href="/img/LOGO-R.png">
+    <!--Font links-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
     <title>Make my day</title>
 </head>
 
@@ -26,7 +30,7 @@
         and add the activities in your own calendar.
     </div>
     <div class="activitiesPage">
-        <div class="row">
+        <div class="row" id="categoryList">
             <div class="col-md-3">
                 <select class="form-select" id="category" onchange="activitiesFilter()">
                     <option selected>All categories</option>
@@ -34,7 +38,6 @@
                 </select>
             </div>
         </div>
-        <br>
         <div class="activities">
             <article th:each="activity: ${activities}">
                 <div class="card" style="width: 18rem;">
