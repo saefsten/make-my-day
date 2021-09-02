@@ -38,6 +38,9 @@ public class DatabaseEditController {
     @Autowired
     UserEventRepository userEventRepository;
 
+    @Autowired
+    ReviewRepository reviewRepository;
+
     @GetMapping("/dbedit")
     public String dbedit(Model model) {
         populateModel(model);
@@ -70,6 +73,7 @@ public class DatabaseEditController {
         model.addAttribute("roles", (List<Role>) roleRepository.findAll());
         model.addAttribute("userDays", (List<UserDay>) userDayRepository.findAll());
         model.addAttribute("userEvents", (List<UserEvent>) userEventRepository.findAll());
+        model.addAttribute("reviews", (List<Review>) reviewRepository.findAll());
 
         List<String[]> activityCategories = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();

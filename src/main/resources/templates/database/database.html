@@ -28,7 +28,7 @@
         </div>
         <form th:action="@{/dbedit}" method="post">
             <div class="mb-3 mt-4">
-                <input type="text" name="query" placeholder="SQL query string" style="width: 600px;">
+                <input type="text" name="query" placeholder="SQL query string" style="min-width: 1000px;">
             </div>
             <div class="mb-3">
                 <input class="btn btn-light" type="submit">
@@ -243,11 +243,32 @@
             </tbody>
         </table>
     </div>
+    <div class="row">
+        <h2>REVIEW</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">RATING</th>
+                <th scope="col">REVIEWTEXT</th>
+                <th scope="col">DATE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="review : ${reviews}">
+                <td scope="row" th:text="${review.id}"></td>
+                <td th:text="${review.rating}"></td>
+                <td th:text="${review.reviewText}"></td>
+                <td th:text="${review.date}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     
     <div class="row">
         <form th:action="@{/dbedit}" method="post">
             <div class="mb-3 mt-4">
-                <input type="text" name="query" placeholder="SQL query string" style="width: 600px;">
+                <input type="text" name="query" placeholder="SQL query string" style="min-width: 1000px;">
             </div>
             <div class="mb-3">
                 <input class="btn btn-light" type="submit">
