@@ -29,25 +29,17 @@ body #startPage{
     background-color: rgba(212, 184, 165, 0.2);
 }
 
-.card-img {
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-}
-
-.col-sm-3 {
-    margin: 10px;
-    margin-top: 20px;
-}
 
 .card-text {
     color: #F9F4F1;
     background-color: rgba(99, 99, 99, 0.6);
-    width: 35%;
+    width: 55%;
     margin: auto;
+    margin-bottom: 20%;
+    border-radius: calc(.25rem - 1px);
 }
 
-.row {
+#containerRow {
     justify-content: center;
 }
 
@@ -98,8 +90,39 @@ body #startPage{
 
 .carousel-item {
     height: 26rem;
+    border-radius: calc(.25rem - 1px);
 }
 
 .carousel {
     width: 75%;
+}
+
+img.d-block.w-100 {
+    border-radius: calc(.25rem - 1px);
+}
+
+.acticityTitle {
+    font-size: 2.3rem;
+}
+
+.acticityText {
+    font-size: 1.3rem;
+}
+
+.carousel-indicators {
+    background-color: rgba(99, 99, 99, 0.4);
+    width: 15%;
+    margin: auto;
+    margin-bottom: 2rem;
+    border-radius: calc(.25rem - 1px);
+}
+
+.carousel-control-next-icon {
+    background-color: rgba(99, 99, 99, 0.4);
+    border-radius: 1rem;
+}
+
+.carousel-control-prev-icon {
+    background-color: rgba(99, 99, 99, 0.4);
+    border-radius: 1rem;
 }
