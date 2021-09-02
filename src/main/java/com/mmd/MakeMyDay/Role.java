@@ -16,6 +16,7 @@ public class Role {
     Role() {
     }
 
+
     public Role(String role) {
         this.name = role;
     }

@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="icon" href="/img/LOGO-R.png">
+<title>Make my day</title>
+</head>
+
+<body>
+<header th:insert="fragments/header :: header"></header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:if="${rowsEffected}" class="alert alert-primary" role="alert" th:text="'Rows affected: ' + ${rowsEffected}">
+            A simple primary alert—check it out!
+        </div>
+        <div th:if="${SQLFail}" class="alert alert-danger" role="alert" th:text="${SQLFail}">
+            SQL query failed
+        </div>
+        <form th:action="@{/dbedit}" method="post">
+            <div class="mb-3 mt-4">
+                <input type="text" name="query" placeholder="SQL query string" style="min-width: 1000px;">
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-light" type="submit">
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <h2>CATEGORY</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="category : ${categories}">
+                    <td scope="row" th:text="${category.id}"></td>
+                    <td th:text="${category.categoryName}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>ACTIVITY</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">NAME</th>
+                <th scope="col">HOURS</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">URL</th>
+                <th scope="col">STREETNAME</th>
+                <th scope="col">STREETNUMBER</th>
+                <th scope="col">POSTALCODE</th>
+                <th scope="col">CITY</th>
+                <th scope="col">LATITUDE</th>
+                <th scope="col">LONGITUDE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="activity : ${activities}">
+                <td scope="row" th:text="${activity.id}"></td>
+                <td th:text="${activity.name}"></td>
+                <td th:text="${activity.hours}"></td>
+                <td th:text="${activity.price}"></td>
+                <td th:text="${activity.description}"></td>
+                <td th:text="${activity.url}"></td>
+                <td th:text="${activity.streetName}"></td>
+                <td th:text="${activity.streetNumber}"></td>
+                <td th:text="${activity.postalCode}"></td>
+                <td th:text="${activity.city}"></td>
+                <td th:text="${activity.latitude}"></td>
+                <td th:text="${activity.longitude}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>ACTIVITY_CATEGORIES</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ACTIVITIES_ID</th>
+                <th scope="col">CATEGORIES_ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ac : ${activityCategories}">
+                <td scope="row" th:text="${ac[0]}"></td>
+                <td th:text="${ac[1]}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>PACKAGE</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">PACKAGE_NAME</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">START_TIMES</th>
+                <th scope="col">LONG_DESCRIPTION</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="package : ${packages}">
+                <td scope="row" th:text="${package.id}"></td>
+                <td th:text="${package.packageName}"></td>
+                <td th:text="${package.description}"></td>
+                <td th:text="${package.startTimes}"></td>
+                <td th:text="${package.longDescription}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>PACKAGE_ACTIVITIES</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ACTIVITIES_ID</th>
+                <th scope="col">CATEGORIES_ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pa : ${packageActivities}">
+                <td scope="row" th:text="${pa[0]}"></td>
+                <td th:text="${pa[1]}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>USERS</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">FIRST_NAME</th>
+                <th scope="col">LAST_NAME</th>
+                <th scope="col">USERNAME</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td scope="row" th:text="${user.id}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.username}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>ROLE</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">NAME</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="role : ${roles}">
+                <td scope="row" th:text="${role.id}"></td>
+                <td th:text="${role.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>USERS_ROLES</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">USERS_ID</th>
+                <th scope="col">ROLES_ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ur : ${userRoles}">
+                <td scope="row" th:text="${ur[0]}"></td>
+                <td th:text="${ur[1]}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>USER_DAY</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">USER_ID</th>
+                <th scope="col">DATE</th>
+                <th scope="col">NAME</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="userDay : ${userDays}">
+                <td scope="row" th:text="${userDay.id}"></td>
+                <td th:text="${userDay.user.id}"></td>
+                <td th:text="${userDay.date}"></td>
+                <td th:text="${userDay.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>USER_EVENT</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">USER_DAY_ID</th>
+                <th scope="col">ACTIVITY_ID</th>
+                <th scope="col">START_TIME</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="userEvent : ${userEvents}">
+                <td scope="row" th:text="${userEvent.id}"></td>
+                <td th:text="${userEvent.userDay.id}"></td>
+                <td th:text="${userEvent.activity.id}"></td>
+                <td th:text="${userEvent.startTime}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <h2>REVIEW</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">RATING</th>
+                <th scope="col">REVIEWTEXT</th>
+                <th scope="col">DATE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="review : ${reviews}">
+                <td scope="row" th:text="${review.id}"></td>
+                <td th:text="${review.rating}"></td>
+                <td th:text="${review.reviewText}"></td>
+                <td th:text="${review.date}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="row">
+        <form th:action="@{/dbedit}" method="post">
+            <div class="mb-3 mt-4">
+                <input type="text" name="query" placeholder="SQL query string" style="min-width: 1000px;">
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-light" type="submit">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+</html>
