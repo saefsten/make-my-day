@@ -12,7 +12,7 @@
 	<artifactId>MakeMyDay</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MakeMyDay</name>
-	<description>Graduation projet Make My Day, Group 2</description>
+	<description>Graduation project Make My Day, Group 2</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
