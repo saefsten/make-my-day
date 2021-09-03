@@ -61,11 +61,6 @@ public class ActivityController {
 
     @PostMapping("/createActivity")
     String saveActivity(Model model, @ModelAttribute Activity activity, @RequestParam(value = "category") List<Integer> categories) {
-//        if (categories.isEmpty()) {
-//            model.addAttribute("message", "choose at least one category");
-//            model.addAttribute("activity", activity);
-//            return "activity/create";
-//        }
         Set<Category> currentCategoriesInActivity = activity.getCategories();
         Set<Category> categoriesInActivity = new HashSet<>();
         // make the checked boxes from html to a list of categories: categoriesInActivity

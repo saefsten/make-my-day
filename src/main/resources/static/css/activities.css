@@ -28,6 +28,8 @@
 .activitiesPage .activities a{
     text-decoration: none;
     color: #002660;
+    height: 75%;
+    margin-top: 3%;
 }
 
 .card-img-top {
