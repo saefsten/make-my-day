@@ -14,7 +14,7 @@ searchBar.addEventListener('keyup', function(e){
     Array.from(activities).forEach((activity) => {
         const title = activity.firstElementChild.textContent;
 
-        if(title.toLowerCase().indexOf(e.target.value) != -1) {
+        if(title.toLowerCase().indexOf(term) != -1) {
             activity.style.display = 'block';
         } else {
             activity.style.display = 'none';
