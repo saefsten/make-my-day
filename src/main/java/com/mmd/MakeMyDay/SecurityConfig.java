@@ -8,12 +8,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
@@ -24,23 +20,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/",
-                        "/h2",
-                        "/h2/**",
                         "/packages",
                         "/package/**",
                         "/activities",
                         "/img/**",
                         "/css/**",
                         "/js/**",
-                        "/init",
                         "/start",
                         "/register",
-                        "/activity/**",
-                        "/maps",
-                        "/location"
+                        "/activity/**"
                 ).permitAll()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/admin", "/createActivity", "/updateActivity", "/dbedit").hasAuthority("ADMIN")
+                .antMatchers("/createActivity", "/updateActivity", "/dbedit").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .logout()
