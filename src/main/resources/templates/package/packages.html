@@ -34,7 +34,7 @@
         <div class="packages">
             <article class="package-list" th:each="package: ${packages}">
                 <a th:href="${'/package/' + package.id}">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card h-100" style="width: 18rem;">
                         <img th:src="${'/img/' + package.packageName + '.jpg'}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title" id="package-name" th:text="${package.packageName}"></h5>
