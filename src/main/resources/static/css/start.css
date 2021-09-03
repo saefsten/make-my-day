@@ -129,3 +129,10 @@ img.d-block.w-100 {
 .card-text:last-child {
     margin-bottom: 20%;
 }
+
+.truncate {
+  width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

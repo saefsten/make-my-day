@@ -25,6 +25,7 @@
 <header th:insert="fragments/header :: header"></header>
 
 <div class="banner">
+    <div class="startPageText d-none d-lg-block">
     <div class="headline">Plan your trip with Make My Day</div>
     <div class="description">We are delighted to help you plan your day of fun activities at your destination.
         <br>
@@ -33,9 +34,10 @@
     <a class="btn btn-dark activityBtn" href="/activities" role="button" aria-expanded="false">
         Browse activities
     </a>
+    </div>
     <div class='input-group'>
         <div class="search-element">
-            <input class="form-control search-text" id="searchBar" type="text" placeholder="Search activity">
+            <input class="form-control search-text truncate" id="searchBar" type="text" placeholder="Search activity">
 
             <div class="search-dropdown hidden" id="dropdown-id" th:each="activity : ${activities}">
                 <a th:href="'/activity/' + ${activity.id}" class="dropdown-item" th:text="${activity.name}"></a>
