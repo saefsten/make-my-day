@@ -1,18 +1,10 @@
 package com.mmd.MakeMyDay;
 
-/*
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-*/
-import org.dom4j.rule.Mode;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.availability.AvailabilityChangeEvent;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -44,13 +36,26 @@ public class MMDController {
     @GetMapping("/")
     String index(Model model){
         List <Activity> activities = activityService.findAllActivities();
+        Activity carouselActivity1 = activityService.findActivityById(7L);
+        Activity carouselActivity2 = activityService.findActivityById(6L);
+        Activity carouselActivity3 = activityService.findActivityById(3L);
+        model.addAttribute("activity1", carouselActivity1);
+        model.addAttribute("activity2", carouselActivity2);
+        model.addAttribute("activity3", carouselActivity3);
         model.addAttribute("activities", activities);
         return "start";
     }
 
+
     @GetMapping("/start")
     String start(Model model){
         List <Activity> activities = activityService.findAllActivities();
+        Activity carouselAct1 = activityService.findActivityById(7L);
+        Activity carouselAct2 = activityService.findActivityById(6L);
+        Activity carouselAct3 = activityService.findActivityById(3L);
+        model.addAttribute("activity1", carouselAct1);
+        model.addAttribute("activity2", carouselAct2);
+        model.addAttribute("activity3", carouselAct3);
         model.addAttribute("activities", activities);
         return "start";
     }

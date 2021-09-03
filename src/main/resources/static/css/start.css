@@ -21,7 +21,6 @@
 }
 
 #recommended {
-    padding-top: 20px;
     height: 85vh;
 }
 
@@ -101,11 +100,11 @@ img.d-block.w-100 {
     border-radius: calc(.25rem - 1px);
 }
 
-.acticityTitle {
+.activityTitle {
     font-size: 2.3rem;
 }
 
-.acticityText {
+.activityText {
     font-size: 1.3rem;
 }
 
@@ -125,4 +124,8 @@ img.d-block.w-100 {
 .carousel-control-prev-icon {
     background-color: rgba(99, 99, 99, 0.4);
     border-radius: 1rem;
+}
+
+.card-text:last-child {
+    margin-bottom: 20%;
 }
